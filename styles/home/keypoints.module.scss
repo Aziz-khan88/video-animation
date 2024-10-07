@@ -1,0 +1,279 @@
+.aboutSection {
+    .keypointsContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .keypointsTitle {
+            flex: 0 0 45%;
+
+            .keypointsListing {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 20px;
+
+                .listingItem {
+                    font-family: 'Poppins';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 30px;
+                    line-height: 60px;
+                    color: #8C8C8C;
+                    position: relative;
+                    width: 100%;
+                    cursor: pointer;
+                    transition: font-size 0.5s ease, color 0.5s ease, padding-left 0.5s ease;
+
+                    &.active {
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 36px;
+                        line-height: 55px;
+                        letter-spacing: -0.165px;
+                        color: #000000;
+                        padding-left: 30px;
+
+                        &::before {
+                            display: block;
+                        }
+                    }
+
+                    &::before {
+                        content: '';
+                        width: 22px;
+                        height: 2px;
+                        background: #ED1919;
+                        position: absolute;
+                        top: 50%;
+                        left: 0px;
+                        display: none;
+                    }
+                }
+
+            }
+        }
+
+        .keypointsContent {
+            flex: 0 0 55%;
+        }
+
+    }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1600px) {
+    .aboutSection {
+        .keypointsContainer {
+            .keypointsTitle {
+                flex: 0 0 45%;
+
+                .keypointsListing {
+                    gap: 20px;
+
+                    .listingItem {
+                        font-size: 30px;
+                        line-height: 60px;
+
+                        &.active {
+                            font-size: 36px;
+                            line-height: 55px;
+                            padding-left: 30px;
+                        }
+
+                        &::before {
+                            width: 22px;
+                        }
+                    }
+
+                }
+            }
+
+            .keypointsContent {
+                flex: 0 0 55%;
+            }
+
+        }
+    }
+}
+
+@media only screen and (min-width: 1300px) and (max-width: 1399px) {
+    .aboutSection {
+        .keypointsContainer {
+            .keypointsTitle {
+                flex: 0 0 45%;
+
+                .keypointsListing {
+                    gap: 20px;
+
+                    .listingItem {
+                        font-size: 28px;
+                        line-height: 55px;
+
+                        &.active {
+                            font-size: 34px;
+                            line-height: 52px;
+                            padding-left: 30px;
+                        }
+
+                        &::before {
+                            width: 20px;
+                        }
+                    }
+
+                }
+            }
+
+            .keypointsContent {
+                flex: 0 0 55%;
+            }
+
+        }
+    }
+}
+
+@media only screen and (min-width: 1100px) and (max-width: 1299px) {
+    .aboutSection {
+        .keypointsContainer {
+            .keypointsTitle {
+                flex: 0 0 40%;
+
+                .keypointsListing {
+                    gap: 20px;
+
+                    .listingItem {
+                        font-size: 25px;
+                        line-height: 50px;
+
+                        &.active {
+                            font-size: 32px;
+                            line-height: 52px;
+                            padding-left: 30px;
+                        }
+
+                        &::before {
+                            width: 20px;
+                        }
+                    }
+
+                }
+            }
+
+            .keypointsContent {
+                flex: 0 0 60%;
+            }
+
+        }
+    }
+}
+
+@media only screen and (min-width: 900px) and (max-width:1099px) {
+    .aboutSection {
+        .keypointsContainer {
+            .keypointsTitle {
+                flex: 0 0 40%;
+
+                .keypointsListing {
+                    gap: 20px;
+
+                    .listingItem {
+                        font-size: 22px;
+                        line-height: 45px;
+
+                        &.active {
+                            font-size: 30px;
+                            line-height: 50px;
+                            padding-left: 30px;
+                        }
+
+                        &::before {
+                            width: 20px;
+                        }
+                    }
+
+                }
+            }
+
+            .keypointsContent {
+                flex: 0 0 60%;
+            }
+
+        }
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width:899px) {
+    .aboutSection {
+        .keypointsContainer {
+            .keypointsTitle {
+                flex: 0 0 40%;
+
+                .keypointsListing {
+                    gap: 10px;
+
+                    .listingItem {
+                        font-size: 20px;
+                        line-height: 30px;
+
+                        &.active {
+                            font-size: 22px;
+                            line-height: 35px;
+                            padding-left: 20px;
+                        }
+
+                        &::before {
+                            width: 15px;
+                        }
+                    }
+
+                }
+            }
+
+            .keypointsContent {
+                flex: 0 0 60%;
+            }
+
+        }
+    }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 599px) {
+    .aboutSection {
+        .keypointsContainer {
+            flex-wrap: wrap;
+
+            .keypointsTitle {
+                flex: 0 0 100%;
+
+                .keypointsListing {
+                    gap: 10px;
+                    text-align: center;
+                    margin-bottom: 20px;
+
+                    .listingItem {
+                        font-size: 20px;
+                        line-height: 30px;
+                        max-width: max-content;
+                        margin: auto;
+
+                        &.active {
+                            font-size: 22px;
+                            line-height: 35px;
+                            padding-left: 20px;
+                        }
+
+                        &::before {
+                            width: 15px;
+                        }
+                    }
+
+                }
+            }
+
+            .keypointsContent {
+                flex: 0 0 100%;
+            }
+
+        }
+    }
+}

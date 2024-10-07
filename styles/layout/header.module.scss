@@ -1,0 +1,123 @@
+.headerSection {
+    height: 58px;
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    top: 38px;
+    z-index: 99;
+
+    .mainLogoBox {
+        position: relative;
+        height: 58px;
+        display: block;
+
+        .mainLogo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            height: 58px;
+
+            &.show {
+                animation: fadeIn 1s forwards;
+            }
+
+            &.hide {
+                animation: fadeOut 1s forwards;
+            }
+
+            @keyframes fadeIn {
+                0% {
+                    opacity: 0;
+                }
+
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes fadeOut {
+                0% {
+                    opacity: 1;
+                }
+
+                100% {
+                    opacity: 0;
+                }
+            }
+        }
+    }
+
+    .menuIcon {
+        text-align: right;
+        cursor: pointer;
+        position: relative;
+        z-index: 9;
+    }
+
+    .mainMain {
+        opacity: 0;
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(10px);
+        left: 0px;
+        top: -100%;
+        /* Start hidden above the viewport */
+        padding: 150px 0px 20px;
+        transition: opacity 0.5s ease, transform 0.5s ease;
+
+        .mainMainItems {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
+
+            li {
+                height: 110px;
+                border-bottom: 1px solid hsl(0deg 0% 85% / 30%);
+                width: 100%;
+
+                a {
+                    font-family: 'Poppins';
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 50px;
+                    line-height: 50px;
+                    color: #FFFFFF;
+                    width: 100%;
+                    height: 100%;
+                    transition: .3s linear;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    &:hover {
+                        color: #ED1919;
+                        transition: .3s linear;
+
+                        svg {
+                            path {
+                                stroke: #ED1919;
+                                transition: .3s linear;
+                            }
+                        }
+                    }
+
+                    svg {
+                        width: 50px;
+                        height: 50px;
+                    }
+                }
+            }
+        }
+
+        &.active {
+            opacity: 1;
+            transform: translateY(100%);
+        }
+    }
+}

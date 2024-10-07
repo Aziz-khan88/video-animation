@@ -1,0 +1,572 @@
+body {
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-image: linear-gradient(106.24deg, #ED1919 25.96%, #FFE100 140.6%);
+        outline: 0px solid slategrey;
+    }
+
+
+    .container {
+        max-width: 1440px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .p-150 {
+        padding: 150px 0px;
+    }
+
+    .p-100 {
+        padding: 100px 0px;
+    }
+
+    .pt-100 {
+        padding-top: 100px;
+    }
+
+    .pb-100 {
+        padding-bottom: 100px;
+    }
+
+    h1 {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 800;
+        font-size: 66px;
+        line-height: 80px;
+        color: #FFFFFF;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 45px;
+        line-height: 60px;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        margin-bottom: 40px;
+    }
+
+    h3 {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 55px;
+        letter-spacing: -0.165px;
+        color: #000000;
+    }
+
+    p {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: -0.165px;
+        color: #7C7C7C;
+    }
+
+    // Read More Button
+    .readMoreBtn {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 55px;
+        color: #FFFFFF;
+        height: 55px;
+        min-width: 210px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background: transparent;
+        border-radius: 33px;
+        padding: 0px 25px;
+
+        &.bgColor {
+            background: linear-gradient(106.24deg, #ED1919 25.96%, #FFE100 140.6%);
+        }
+
+        svg {
+            margin-left: 20px;
+        }
+
+        &:hover {
+            background: linear-gradient(106.24deg, #ED1919 25.96%, #FFE100 140.6%);
+        }
+    }
+
+    // Common Button
+    .buttonCommon {
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(7.5px);
+        width: 110px;
+        height: 110px;
+        border-radius: 100%;
+        position: relative;
+
+        a {
+            height: 110px;
+            width: 110px;
+            display: block;
+            transition: transform 0.4s ease-in-out;
+
+            svg {
+                position: absolute;
+                left: 50%;
+                top: 55%;
+                transform: translate(-50%, -50%);
+                width: 60%;
+                height: auto;
+            }
+        }
+
+        span {
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 20px;
+            color: #FFFFFF;
+            opacity: 0.8;
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        &:hover {
+            background: linear-gradient(106.24deg, #ED1919 25.96%, #FFE100 140.6%);
+
+            a {
+                transition: transform 0.4s ease-in-out;
+                transform: rotate(-95deg);
+            }
+
+        }
+    }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1600px) {
+    body {
+        .container {
+            max-width: 1300px;
+        }
+
+        .p-150 {
+            padding: 120px 0px;
+        }
+
+        .p-100 {
+            padding: 80px 0px;
+        }
+
+        .pt-100 {
+            padding-top: 80px;
+        }
+
+        .pb-100 {
+            padding-bottom: 80px;
+        }
+
+        h1 {
+            font-size: 60px;
+            line-height: 75px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 42px;
+            line-height: 55px;
+            margin-bottom: 35px;
+        }
+
+        .readMoreBtn {
+            font-size: 18px;
+            line-height: 50px;
+            height: 50px;
+            min-width: 200px;
+            padding: 0px 20px;
+
+            svg {
+                margin-left: 20px;
+                width: 26px;
+                height: auto;
+            }
+
+        }
+
+
+        .buttonCommon {
+            width: 100px;
+            height: 100px;
+
+            a {
+                height: 100px;
+                width: 100px;
+            }
+
+            span {
+                font-size: 15px;
+                line-height: 20px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1300px) and (max-width: 1399px) {
+    body {
+        .container {
+            max-width: 1200px;
+        }
+
+        .p-150 {
+            padding: 100px 0px;
+        }
+
+        .p-100 {
+            padding: 70px 0px;
+        }
+
+        .pt-100 {
+            padding-top: 70px;
+        }
+
+        .pb-100 {
+            padding-bottom: 70px;
+        }
+
+        h1 {
+            font-size: 50px;
+            line-height: 65px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 40px;
+            line-height: 52px;
+            margin-bottom: 30px;
+        }
+
+        .readMoreBtn {
+            font-size: 17px;
+            line-height: 45px;
+            height: 45px;
+            min-width: 200px;
+            padding: 0px 20px;
+
+            svg {
+                margin-left: 18px;
+                width: 24px;
+                height: auto;
+            }
+
+        }
+
+
+        .buttonCommon {
+            width: 90px;
+            height: 90px;
+
+            a {
+                height: 90px;
+                width: 90px;
+            }
+
+            span {
+                font-size: 14px;
+                line-height: 18px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1100px) and (max-width: 1299px) {
+    body {
+        .container {
+            max-width: 1050px;
+        }
+
+        .p-150 {
+            padding: 90px 0px;
+        }
+
+        .p-100 {
+            padding: 60px 0px;
+        }
+
+        .pt-100 {
+            padding-top: 60px;
+        }
+
+        .pb-100 {
+            padding-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 45px;
+            line-height: 60px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 35px;
+            line-height: 45px;
+            margin-bottom: 30px;
+        }
+
+        .readMoreBtn {
+            font-size: 16px;
+            line-height: 42px;
+            height: 42px;
+            min-width: 170px;
+            padding: 0px 20px;
+
+            svg {
+                margin-left: 15px;
+                width: 22px;
+                height: auto;
+            }
+
+        }
+
+
+        .buttonCommon {
+            width: 80px;
+            height: 80px;
+
+            a {
+                height: 80px;
+                width: 80px;
+            }
+
+            span {
+                font-size: 14px;
+                line-height: 18px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 900px) and (max-width:1099px) {
+    body {
+        .container {
+            max-width: 900px;
+        }
+
+        .p-150 {
+            padding: 80px 0px;
+        }
+
+        .p-100 {
+            padding: 50px 0px;
+        }
+
+        .pt-100 {
+            padding-top: 50px;
+        }
+
+        .pb-100 {
+            padding-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 42px;
+            line-height: 57px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 32px;
+            line-height: 42px;
+            margin-bottom: 30px;
+        }
+
+        .readMoreBtn {
+            font-size: 15px;
+            line-height: 40px;
+            height: 40px;
+            min-width: 170px;
+            padding: 0px 20px;
+
+            svg {
+                margin-left: 15px;
+                width: 20px;
+                height: auto;
+            }
+
+        }
+
+
+        .buttonCommon {
+            width: 70px;
+            height: 70px;
+
+            a {
+                height: 70px;
+                width: 70px;
+            }
+
+            span {
+                font-size: 13px;
+                line-height: 18px;
+                margin-top: 5px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width:899px) {
+    body {
+        .container {
+            max-width: 96%;
+            margin: auto;
+        }
+
+        .p-150 {
+            padding: 80px 0px;
+        }
+
+        .p-100 {
+            padding: 50px 0px;
+        }
+
+        .pt-100 {
+            padding-top: 50px;
+        }
+
+        .pb-100 {
+            padding-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 35px;
+            line-height: 45px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 30px;
+            line-height: 40px;
+            margin-bottom: 30px;
+        }
+
+        .readMoreBtn {
+            font-size: 15px;
+            line-height: 40px;
+            height: 40px;
+            min-width: 170px;
+            padding: 0px 20px;
+
+            svg {
+                margin-left: 15px;
+                width: 20px;
+                height: auto;
+            }
+
+        }
+
+
+        .buttonCommon {
+            width: 65px;
+            height: 65px;
+
+            a {
+                height: 65px;
+                width: 65px;
+            }
+
+            span {
+                font-size: 12px;
+                line-height: 18px;
+                margin-top: 8px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 599px) {
+    body {
+        .container {
+            max-width: 100%;
+            margin: auto;
+        }
+
+        .p-150 {
+            padding: 80px 0px;
+        }
+
+        .p-100 {
+            padding: 50px 0px;
+        }
+
+        .pt-100 {
+            padding-top: 50px;
+        }
+
+        .pb-100 {
+            padding-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 35px;
+            line-height: 45px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 28px;
+            line-height: 38px;
+            margin-bottom: 25px;
+        }
+
+        .readMoreBtn {
+            font-size: 14px;
+            line-height: 40px;
+            height: 40px;
+            min-width: 150px;
+            padding: 0px 20px;
+
+            svg {
+                margin-left: 12px;
+                width: 18px;
+                height: auto;
+            }
+
+        }
+
+
+        .buttonCommon {
+            width: 50px;
+            height: 50px;
+
+            a {
+                height: 50px;
+                width: 50px;
+            }
+
+            span {
+                display: none;
+            }
+        }
+    }
+}

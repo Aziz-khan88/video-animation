@@ -1,0 +1,358 @@
+.faqsSection {
+    background: #F7F8F9;
+
+    h2 {
+        &::after {
+            content: '';
+            width: 100px;
+            height: 3px;
+            background: #ED1919;
+            border-radius: 26px;
+            display: block;
+            margin-top: 20px;
+        }
+    }
+
+    .faqsBox {
+        border-bottom: 1px solid #D9D9D9;
+        height: 130px;
+        overflow: hidden;
+        transition: height 0.4s ease, opacity 0.4s ease;
+
+
+        .faqsTitle {
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 26px;
+            line-height: 130px;
+            color: #000000;
+            cursor: pointer;
+            position: relative;
+            padding-right: 80px;
+
+            .iconBox {
+                position: absolute;
+                right: 0px;
+                top: 50%;
+                transform: translate(0, -50%);
+                width: 56px;
+                height: 56px;
+                background: #000000;
+                border-radius: 64px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                svg {
+                    height: 30px;
+                    width: 30px;
+                    transition: all 0.5s ease;
+
+                    path {
+                        fill: #fff;
+                    }
+                }
+            }
+        }
+
+        .faqscontent {
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 30px;
+            letter-spacing: -0.165px;
+            opacity: 0;
+            max-height: 0;
+            transition: max-height 0.4s ease, opacity 0.4s ease;
+            padding-right: 80px;
+
+            p,
+            li {
+                color: #73858F;
+            }
+        }
+
+        &.active {
+            opacity: 1;
+            height: auto;
+            padding-bottom: 20px;
+
+            .faqscontent {
+                opacity: 1;
+                max-height: 500px;
+            }
+
+            .iconBox {
+                background: linear-gradient(106.24deg, #ED1919 25.96%, #FFE100 140.6%);
+
+                svg {
+                    transform: rotate(45deg);
+                    transition: all 0.5s ease;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1600px) {
+    .faqsSection {
+
+        h2 {
+            &::after {
+                width: 100px;
+                height: 3px;
+                margin-top: 20px;
+            }
+        }
+
+        .faqsBox {
+            height: 130px;
+
+            .faqsTitle {
+                font-size: 24px;
+                line-height: 130px;
+                padding-right: 70px;
+
+                .iconBox {
+                    width: 52px;
+                    height: 52px;
+
+                    svg {
+                        height: 27px;
+                        width: 27px;
+                    }
+                }
+            }
+
+            .faqscontent {
+                font-size: 15px;
+                line-height: 30px;
+                padding-right: 80px;
+            }
+
+            &.active {
+                padding-bottom: 20px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1300px) and (max-width: 1399px) {
+    .faqsSection {
+
+        h2 {
+            &::after {
+                width: 100px;
+                height: 3px;
+                margin-top: 20px;
+            }
+        }
+
+        .faqsBox {
+            height: 120px;
+
+            .faqsTitle {
+                font-size: 22px;
+                line-height: 120px;
+                padding-right: 70px;
+
+                .iconBox {
+                    width: 48px;
+                    height: 48px;
+
+                    svg {
+                        height: 25px;
+                        width: 25px;
+                    }
+                }
+            }
+
+            .faqscontent {
+                font-size: 14px;
+                line-height: 28px;
+                padding-right: 70px;
+            }
+
+            &.active {
+                padding-bottom: 20px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1100px) and (max-width: 1299px) {
+    .faqsSection {
+
+        h2 {
+            &::after {
+                width: 100px;
+                height: 3px;
+                margin-top: 20px;
+            }
+        }
+
+        .faqsBox {
+            height: 100px;
+
+            .faqsTitle {
+                font-size: 20px;
+                line-height: 100px;
+                padding-right: 60px;
+
+                .iconBox {
+                    width: 43px;
+                    height: 43px;
+
+                    svg {
+                        height: 22px;
+                        width: 22px;
+                    }
+                }
+            }
+
+            .faqscontent {
+                font-size: 14px;
+                line-height: 28px;
+                padding-right: 60px;
+            }
+
+            &.active {
+                padding-bottom: 20px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 900px) and (max-width:1099px) {
+    .faqsSection {
+        h2 {
+            &::after {
+                width: 100px;
+                height: 3px;
+                margin-top: 20px;
+            }
+        }
+
+        .faqsBox {
+            height: 100px;
+
+            .faqsTitle {
+                font-size: 20px;
+                line-height: 100px;
+                padding-right: 60px;
+
+                .iconBox {
+                    width: 40px;
+                    height: 40px;
+
+                    svg {
+                        height: 20px;
+                        width: 20px;
+                    }
+                }
+            }
+
+            .faqscontent {
+                font-size: 14px;
+                line-height: 28px;
+                padding-right: 60px;
+            }
+
+            &.active {
+                padding-bottom: 20px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width:899px) {
+    .faqsSection {
+        h2 {
+            &::after {
+                width: 100px;
+                height: 3px;
+                margin-top: 20px;
+            }
+        }
+
+        .faqsBox {
+            height: 100px;
+
+            .faqsTitle {
+                font-size: 18px;
+                line-height: 28px;
+                padding-right: 60px;
+                display: flex;
+                align-items: center;
+                height: 100px;
+
+                .iconBox {
+                    width: 40px;
+                    height: 40px;
+
+                    svg {
+                        height: 20px;
+                        width: 20px;
+                    }
+                }
+            }
+
+            .faqscontent {
+                font-size: 14px;
+                line-height: 28px;
+                padding-right: 60px;
+            }
+
+            &.active {
+                padding-bottom: 20px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 599px) {
+    .faqsSection {
+        h2 {
+            &::after {
+                width: 100px;
+                height: 3px;
+                margin-top: 20px;
+            }
+        }
+
+        .faqsBox {
+            height: 100px;
+
+            .faqsTitle {
+                font-size: 16px;
+                line-height: 26px;
+                padding-right: 50px;
+                display: flex;
+                align-items: center;
+                height: 100px;
+
+                .iconBox {
+                    width: 30px;
+                    height: 30px;
+
+                    svg {
+                        height: 15px;
+                        width: 15px;
+                    }
+                }
+            }
+
+            .faqscontent {
+                font-size: 13px;
+                line-height: 24px;
+                padding-right: 0px;
+            }
+
+            &.active {
+                padding-bottom: 20px;
+            }
+        }
+    }
+}

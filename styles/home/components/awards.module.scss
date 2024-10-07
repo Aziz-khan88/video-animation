@@ -1,0 +1,134 @@
+.byAwardBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
+
+    .byAwardItem {
+        flex: 0 0 300px;
+        height: 100px;
+        background: #FFFFFF;
+        box-shadow: 20px 10px 40px rgba(159, 159, 159, 0.15);
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 30px;
+
+        img {
+            height: 80px;
+            width: auto;
+        }
+
+    }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1600px) {
+    .byAwardBox {
+        gap: 25px;
+
+        .byAwardItem {
+            flex: 0 0 280px;
+            height: 100px;
+            padding: 28px;
+
+            img {
+                height: 75px;
+                width: auto;
+            }
+
+        }
+    }
+}
+
+@media only screen and (min-width: 1300px) and (max-width: 1399px) {
+    .byAwardBox {
+        gap: 20px;
+
+        .byAwardItem {
+            flex: 0 0 270px;
+            height: 100px;
+            padding: 28px;
+
+            img {
+                height: 70px;
+                width: auto;
+            }
+
+        }
+    }
+}
+
+@media only screen and (min-width: 1100px) and (max-width: 1299px) {
+    .byAwardBox {
+        gap: 20px;
+
+        .byAwardItem {
+            flex: 0 0 250px;
+            height: 100px;
+            padding: 28px;
+
+            img {
+                height: 65px;
+                width: auto;
+            }
+
+        }
+    }
+}
+
+@media only screen and (min-width: 900px) and (max-width:1099px) {
+    .byAwardBox {
+        gap: 20px;
+
+        .byAwardItem {
+            flex: 0 0 230px;
+            height: 100px;
+            padding: 20px;
+
+            img {
+                height: 60px;
+                width: auto;
+            }
+
+        }
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width:899px) {
+    .byAwardBox {
+        gap: 15px;
+
+        .byAwardItem {
+            flex: 0 0 200px;
+            height: 100px;
+            padding: 20px;
+
+            img {
+                height: 55px;
+                width: auto;
+            }
+
+        }
+    }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 599px) {
+    .byAwardBox {
+        gap: 10px;
+
+        .byAwardItem {
+            flex: 0 0 160px;
+            height: 100px;
+            padding: 10px;
+
+            img {
+                height: 50px;
+                width: auto;
+            }
+
+        }
+    }
+}

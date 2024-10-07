@@ -1,0 +1,448 @@
+.portfolioSection {
+  background: #f7f8f9;
+
+  h2 {
+    text-align: center;
+  }
+
+  .tabsBox {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: 50px 0px;
+
+    .tabsItem {
+      color: #adadad;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: normal;
+      text-align: center;
+      padding-left: 0;
+      padding-right: 0;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #d9d9d9;
+      cursor: pointer;
+      padding: 0px 40px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &.active {
+        color: #000000;
+        font-weight: bold;
+        border-color: #f32f53;
+      }
+    }
+
+
+  }
+
+  .embla {
+    .embla__viewport {
+      overflow: hidden;
+
+      .embla__container {
+        display: flex;
+        touch-action: pan-y pinch-zoom;
+        margin-left: calc(15px * -1);
+
+        .embla__slide {
+          transform: translate3d(0, 0, 0);
+          flex: 0 0 50%;
+          min-width: 0;
+          padding-left: 15px;
+
+          .slideBox {
+            height: 565px;
+            border-radius: 20px;
+            position: relative;
+
+            img {
+              border-radius: 20px;
+              width: 100%;
+              height: 100%;
+            }
+
+            .videoButton {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+
+    .embla__controls {
+      margin: 50px 0px 0px;
+
+      .embla__dots {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+
+        .emblaPoints {
+          width: 3px;
+          height: 19px;
+          background: #D9D9D9;
+          border-radius: 32px;
+          cursor: pointer;
+
+          &.active {
+            background: #f32f53;
+            position: relative;
+
+            &::before {
+              content: "";
+              position: absolute;
+              top: -30px;
+              left: 50%;
+              transform: translateX(-50%);
+              width: 0;
+              height: 0;
+              border-left: 10px solid transparent;
+              border-right: 10px solid transparent;
+              border-top: 16px solid #ed1919;
+            }
+          }
+        }
+
+        span {
+          font-family: 'Poppins';
+          font-style: normal;
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 30px;
+          color: #000000;
+
+          .left {
+            margin-right: 10px;
+          }
+
+          .right {
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1600px) {
+  .portfolioSection {
+    .tabsBox {
+      margin: 50px 0px;
+
+      .tabsItem {
+        font-size: 18px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #d9d9d9;
+        padding: 0px 40px;
+        height: 60px;
+      }
+
+    }
+
+    .embla {
+      .embla__viewport {
+        .embla__container {
+          margin-left: calc(15px * -1);
+
+          .embla__slide {
+            flex: 0 0 50%;
+            padding-left: 15px;
+
+            .slideBox {
+              height: 500px;
+              border-radius: 20px;
+            }
+          }
+        }
+      }
+
+      .embla__controls {
+        margin: 50px 0px 0px;
+
+        .embla__dots {
+          gap: 15px;
+
+          .emblaPoints {
+            width: 3px;
+            height: 19px;
+          }
+
+          span {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1300px) and (max-width: 1399px) {
+  .portfolioSection {
+    .tabsBox {
+      margin: 40px 0px;
+
+      .tabsItem {
+        font-size: 16px;
+        padding-bottom: 10px;
+        padding: 0px 30px;
+        height: 55px;
+      }
+
+    }
+
+    .embla {
+      .embla__viewport {
+        .embla__container {
+          margin-left: calc(15px * -1);
+
+          .embla__slide {
+            flex: 0 0 50%;
+            padding-left: 15px;
+
+            .slideBox {
+              height: 450px;
+              border-radius: 18px;
+            }
+          }
+        }
+      }
+
+      .embla__controls {
+        margin: 50px 0px 0px;
+
+        .embla__dots {
+          gap: 15px;
+
+          .emblaPoints {
+            width: 3px;
+            height: 19px;
+          }
+
+          span {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1100px) and (max-width: 1299px) {
+  .portfolioSection {
+    .tabsBox {
+      margin: 40px 0px;
+
+      .tabsItem {
+        font-size: 16px;
+        padding-bottom: 10px;
+        padding: 0px 30px;
+        height: 55px;
+      }
+
+    }
+
+    .embla {
+      .embla__viewport {
+        .embla__container {
+          margin-left: calc(15px * -1);
+
+          .embla__slide {
+            flex: 0 0 50%;
+            padding-left: 15px;
+
+            .slideBox {
+              height: 420px;
+              border-radius: 15px;
+            }
+          }
+        }
+      }
+
+      .embla__controls {
+        margin: 50px 0px 0px;
+
+        .embla__dots {
+          gap: 15px;
+
+          .emblaPoints {
+            width: 3px;
+            height: 19px;
+          }
+
+          span {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 900px) and (max-width:1099px) {
+  .portfolioSection {
+    .tabsBox {
+      margin: 30px 0px;
+
+      .tabsItem {
+        font-size: 15px;
+        padding-bottom: 10px;
+        padding: 0px 15px;
+        height: 50px;
+      }
+
+    }
+
+    .embla {
+      .embla__viewport {
+        .embla__container {
+          margin-left: calc(15px * -1);
+
+          .embla__slide {
+            flex: 0 0 50%;
+            padding-left: 15px;
+
+            .slideBox {
+              height: 350px;
+              border-radius: 15px;
+            }
+          }
+        }
+      }
+
+      .embla__controls {
+        margin: 50px 0px 0px;
+
+        .embla__dots {
+          gap: 15px;
+
+          .emblaPoints {
+            width: 3px;
+            height: 19px;
+          }
+
+          span {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width:899px) {
+  .portfolioSection {
+    .tabsBox {
+      margin: 30px 0px;
+
+      .tabsItem {
+        font-size: 15px;
+        padding-bottom: 10px;
+        padding: 0px 25px;
+        height: 50px;
+      }
+
+    }
+
+    .embla {
+      .embla__viewport {
+        .embla__container {
+          margin-left: calc(15px * -1);
+
+          .embla__slide {
+            flex: 0 0 50%;
+            padding-left: 15px;
+
+            .slideBox {
+              height: 300px;
+              border-radius: 12px;
+
+              img {
+                border-radius: 12px;
+              }
+            }
+          }
+        }
+      }
+
+      .embla__controls {
+        margin: 50px 0px 0px;
+
+        .embla__dots {
+          gap: 15px;
+
+          .emblaPoints {
+            width: 3px;
+            height: 15px;
+          }
+
+          span {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 599px) {
+  .portfolioSection {
+    .tabsBox {
+      margin: 30px 0px;
+
+      .tabsItem {
+        font-size: 15px;
+        padding-bottom: 10px;
+        padding: 0px 25px;
+        height: 50px;
+      }
+
+    }
+
+    .embla {
+      .embla__viewport {
+        .embla__container {
+          margin-left: calc(10px * -1);
+
+          .embla__slide {
+            flex: 0 0 80%;
+            padding-left: 10px;
+
+            .slideBox {
+              height: 250px;
+              border-radius: 10px;
+
+              img {
+                border-radius: 10px;
+              }
+            }
+          }
+        }
+      }
+
+      .embla__controls {
+        margin: 50px 0px 0px;
+
+        .embla__dots {
+          gap: 15px;
+
+          .emblaPoints {
+            width: 3px;
+            height: 15px;
+          }
+
+          span {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}

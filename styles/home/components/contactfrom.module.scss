@@ -1,0 +1,277 @@
+    .contactFrom {
+        .inputsFiled {
+            margin-bottom: 30px;
+
+            input {
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 15px;
+                line-height: 24px;
+                color: #73858F;
+                height: 40px;
+                width: 100%;
+                border: 0px;
+                border-bottom: 1px solid #D9D9D9;
+                outline: none;
+                box-shadow: none;
+            }
+
+            textarea {
+                height: 120px;
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 15px;
+                line-height: 24px;
+                color: #73858F;
+                width: 100%;
+                border: 0px;
+                border-bottom: 1px solid #D9D9D9;
+                outline: none;
+                box-shadow: none;
+            }
+        }
+
+        .inputsButton {
+            button {
+                background: linear-gradient(106.24deg, #ED1919 25.96%, #FFE100 140.6%);
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 55px;
+                color: #FFFFFF;
+                height: 55px;
+                min-width: 210px;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 33px;
+                padding: 0px 25px;
+                border: 0px;
+
+                svg {
+                    margin-left: 15px;
+                }
+            }
+        }
+
+    }
+
+    @media only screen and (min-width: 1400px) and (max-width: 1600px) {
+
+        .contactFrom {
+            .inputsFiled {
+                margin-bottom: 30px;
+
+                input {
+                    font-size: 15px;
+                    line-height: 24px;
+                    height: 40px;
+                }
+
+                textarea {
+                    height: 120px;
+                    font-size: 15px;
+                }
+            }
+
+            .inputsButton {
+                button {
+                    font-size: 18px;
+                    line-height: 50px;
+                    height: 50px;
+                    min-width: 200px;
+                    padding: 0px 20px;
+
+                    svg {
+                        margin-left: 15px;
+                        width: 26px;
+                        height: auto;
+                    }
+                }
+            }
+
+        }
+    }
+
+    @media only screen and (min-width: 1300px) and (max-width: 1399px) {
+        .contactFrom {
+            .inputsFiled {
+                margin-bottom: 30px;
+
+                input {
+                    font-size: 14px;
+                    line-height: 24px;
+                    height: 40px;
+                }
+
+                textarea {
+                    height: 120px;
+                    font-size: 14px;
+                }
+            }
+
+            .inputsButton {
+                button {
+                    font-size: 17px;
+                    line-height: 45px;
+                    height: 45px;
+                    min-width: 200px;
+                    padding: 0px 20px;
+
+                    svg {
+                        margin-left: 18px;
+                        width: 24px;
+                        height: auto;
+                    }
+                }
+            }
+
+        }
+    }
+
+    @media only screen and (min-width: 1100px) and (max-width: 1299px) {
+        .contactFrom {
+            .inputsFiled {
+                margin-bottom: 30px;
+
+                input {
+                    font-size: 14px;
+                    line-height: 24px;
+                    height: 40px;
+                }
+
+                textarea {
+                    height: 120px;
+                    font-size: 14px;
+                }
+            }
+
+            .inputsButton {
+                button {
+                    font-size: 16px;
+                    line-height: 42px;
+                    height: 42px;
+                    min-width: 170px;
+                    padding: 0px 20px;
+
+                    svg {
+                        margin-left: 15px;
+                        width: 22px;
+                        height: auto;
+                    }
+                }
+            }
+
+        }
+    }
+
+    @media only screen and (min-width: 900px) and (max-width:1099px) {
+        .contactFrom {
+            .inputsFiled {
+                margin-bottom: 30px;
+
+                input {
+                    font-size: 13px;
+                    line-height: 24px;
+                    height: 40px;
+                }
+
+                textarea {
+                    height: 100px;
+                    font-size: 13px;
+                }
+            }
+
+            .inputsButton {
+                button {
+                    font-size: 15px;
+                    line-height: 40px;
+                    height: 40px;
+                    min-width: 170px;
+                    padding: 0px 20px;
+
+                    svg {
+                        margin-left: 15px;
+                        width: 20px;
+                        height: auto;
+                    }
+                }
+            }
+
+        }
+    }
+
+    @media only screen and (min-width: 600px) and (max-width:899px) {
+        .contactFrom {
+            .inputsFiled {
+                margin-bottom: 20px;
+
+                input {
+                    font-size: 13px;
+                    line-height: 24px;
+                    height: 40px;
+                }
+
+                textarea {
+                    height: 80px;
+                    font-size: 13px;
+                }
+            }
+
+            .inputsButton {
+                button {
+                    font-size: 15px;
+                    line-height: 40px;
+                    height: 40px;
+                    min-width: 170px;
+                    padding: 0px 20px;
+
+                    svg {
+                        margin-left: 15px;
+                        width: 20px;
+                        height: auto;
+                    }
+                }
+            }
+
+        }
+    }
+
+    @media only screen and (min-width: 0px) and (max-width: 599px) {
+        .contactFrom {
+            .inputsFiled {
+                margin-bottom: 20px;
+
+                input {
+                    font-size: 13px;
+                    line-height: 24px;
+                    height: 40px;
+                }
+
+                textarea {
+                    height: 80px;
+                    font-size: 13px;
+                }
+            }
+
+            .inputsButton {
+                button {
+                    font-size: 15px;
+                    line-height: 40px;
+                    height: 40px;
+                    min-width: 170px;
+                    padding: 0px 20px;
+
+                    svg {
+                        margin-left: 15px;
+                        width: 20px;
+                        height: auto;
+                    }
+                }
+            }
+
+        }
+    }

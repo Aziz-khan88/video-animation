@@ -1,0 +1,687 @@
+.testimonialSection {
+    background: #F9F9F9;
+
+    .tagTitle {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 26px;
+        line-height: 36px;
+        letter-spacing: -0.165px;
+        color: #ED1919;
+    }
+
+    p {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 30px;
+        text-transform: lowercase;
+        color: #7C7C7C;
+    }
+
+    .ratingImg {
+        text-align: right;
+    }
+
+    .embla {
+        margin-top: 50px;
+
+        .embla__viewport {
+            overflow: hidden;
+
+            .embla__container {
+                backface-visibility: hidden;
+                display: flex;
+                touch-action: pan-y pinch-zoom;
+                margin-left: calc(20px * -1);
+
+                .embla__slide {
+                    min-width: 0;
+                    flex: 0 0 calc(100% / 3);
+                    padding-left: 20px;
+
+                    .testimonialBox {
+                        height: 344px;
+                        border-radius: 23px;
+                        width: 100%;
+                        position: relative;
+
+                        &::after {
+                            content: '';
+                            width: 100%;
+                            height: 100%;
+                            position: absolute;
+                            left: 0px;
+                            top: 0px;
+                            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 32.7%, rgba(0, 0, 0, 0.5) 81.25%);
+                            border-radius: 23px;
+                        }
+
+                        .testVideo {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            top: 0px;
+                            left: 0px;
+                            border-radius: 23px;
+                        }
+
+                        .testimonialContent {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            padding: 20px;
+                            position: absolute;
+                            width: 100%;
+                            bottom: 0px;
+                            z-index: 1;
+
+                            .testimonialHeading {
+                                .testimonialName {
+                                    font-family: 'Poppins';
+                                    font-style: normal;
+                                    font-weight: 600;
+                                    font-size: 20px;
+                                    line-height: 29px;
+                                    letter-spacing: -0.165px;
+                                    color: #FFFFFF;
+                                }
+
+                                .testimonialJob {
+                                    font-family: 'Poppins';
+                                    font-style: normal;
+                                    font-weight: 300;
+                                    font-size: 18px;
+                                    line-height: 29px;
+                                    letter-spacing: -0.165px;
+                                    color: #FFFFFF;
+                                }
+                            }
+
+                            .testimonialButton {
+                                background: rgba(255, 255, 255, 0.4);
+                                backdrop-filter: blur(7.5px);
+                                width: 47px;
+                                height: 47px;
+                                border-radius: 100%;
+                                position: relative;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                cursor: pointer;
+
+                                &:hover {
+                                    background: linear-gradient(106.24deg, #ED1919 25.96%, #FFE100 140.6%);
+
+                                    svg {
+                                        transition: transform 0.4s ease-in-out;
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }
+
+        .embla_container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 70px 0px 0px;
+            gap: 25px;
+
+            div {
+                cursor: pointer;
+                background-color: transparent;
+                height: 35px;
+                width: 35px;
+                display: flex;
+                justify-content: center;
+                transition: .3s linear;
+
+                align-items: center;
+                opacity: 1;
+
+                svg {
+                    width: 20px;
+                    height: auto;
+
+                    path {
+                        stroke: #ADADAD;
+                        opacity: 1;
+                    }
+                }
+
+                &:hover {
+                    transition: .3s linear;
+
+                    svg {
+                        path {
+                            stroke: #ED1919;
+                        }
+                    }
+                }
+            }
+
+            .embla_next {
+                transform: rotate(-180deg);
+            }
+        }
+
+    }
+
+
+
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1600px) {
+    .testimonialSection {
+        .tagTitle {
+            font-size: 24px;
+            line-height: 34px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 28px;
+        }
+
+        .embla {
+            margin-top: 40px;
+
+            .embla__viewport {
+                .embla__container {
+                    margin-left: calc(15px * -1);
+
+                    .embla__slide {
+                        padding-left: 15px;
+
+                        .testimonialBox {
+                            height: 330px;
+
+                            .testimonialContent {
+                                padding: 20px;
+
+                                .testimonialHeading {
+                                    .testimonialName {
+                                        font-size: 18px;
+                                        line-height: 28px;
+                                    }
+
+                                    .testimonialJob {
+                                        font-size: 16px;
+                                        line-height: 26px;
+                                    }
+                                }
+
+                                .testimonialButton {
+                                    width: 45px;
+                                    height: 45px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+            }
+
+            .embla_container {
+                margin: 60px 0px 0px;
+                gap: 25px;
+
+                div {
+                    height: 32px;
+                    width: 32px;
+
+                    svg {
+                        width: 18px;
+                    }
+                }
+            }
+
+        }
+
+
+
+    }
+}
+
+@media only screen and (min-width: 1300px) and (max-width: 1399px) {
+    .testimonialSection {
+        .tagTitle {
+            font-size: 22px;
+            line-height: 32px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 26px;
+        }
+
+        .embla {
+            margin-top: 30px;
+
+            .embla__viewport {
+                .embla__container {
+                    margin-left: calc(15px * -1);
+
+                    .embla__slide {
+                        padding-left: 15px;
+
+                        .testimonialBox {
+                            height: 300px;
+                            border-radius: 18px;
+
+                            &::after {
+                                border-radius: 18px;
+                            }
+
+                            .testVideo {
+                                border-radius: 18px;
+                            }
+
+                            .testimonialContent {
+                                padding: 15px;
+
+                                .testimonialHeading {
+                                    .testimonialName {
+                                        font-size: 16px;
+                                        line-height: 26px;
+                                    }
+
+                                    .testimonialJob {
+                                        font-size: 16px;
+                                        line-height: 26px;
+                                    }
+                                }
+
+                                .testimonialButton {
+                                    width: 45px;
+                                    height: 45px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+            }
+
+            .embla_container {
+                margin: 60px 0px 0px;
+                gap: 25px;
+
+                div {
+                    height: 32px;
+                    width: 32px;
+
+                    svg {
+                        width: 18px;
+                    }
+                }
+            }
+
+        }
+
+
+
+    }
+}
+
+@media only screen and (min-width: 1100px) and (max-width: 1299px) {
+    .testimonialSection {
+        .tagTitle {
+            font-size: 20px;
+            line-height: 28px;
+        }
+
+        p {
+            font-size: 15px;
+            line-height: 25px;
+        }
+
+        .embla {
+            margin-top: 20px;
+
+            .embla__viewport {
+                .embla__container {
+                    margin-left: calc(15px * -1);
+
+                    .embla__slide {
+                        padding-left: 15px;
+
+                        .testimonialBox {
+                            height: 250px;
+                            border-radius: 15px;
+
+                            &::after {
+                                border-radius: 15px;
+                            }
+
+                            .testVideo {
+                                border-radius: 15px;
+                            }
+
+                            .testimonialContent {
+                                padding: 15px;
+
+                                .testimonialHeading {
+                                    .testimonialName {
+                                        font-size: 15px;
+                                        line-height: 25px;
+                                    }
+
+                                    .testimonialJob {
+                                        font-size: 14px;
+                                        line-height: 24px;
+                                    }
+                                }
+
+                                .testimonialButton {
+                                    width: 40px;
+                                    height: 40px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+            }
+
+            .embla_container {
+                margin: 50px 0px 0px;
+                gap: 25px;
+
+                div {
+                    height: 30px;
+                    width: 30px;
+
+                    svg {
+                        width: 15px;
+                    }
+                }
+            }
+
+        }
+
+
+
+    }
+}
+
+@media only screen and (min-width: 900px) and (max-width:1099px) {
+    .testimonialSection {
+        .tagTitle {
+            font-size: 20px;
+            line-height: 28px;
+        }
+
+        p {
+            font-size: 15px;
+            line-height: 25px;
+        }
+
+        .embla {
+            margin-top: 20px;
+
+            .embla__viewport {
+                .embla__container {
+                    margin-left: calc(15px * -1);
+
+                    .embla__slide {
+                        padding-left: 15px;
+
+                        .testimonialBox {
+                            height: 220px;
+                            border-radius: 10px;
+
+                            &::after {
+                                border-radius: 10px;
+                            }
+
+                            .testVideo {
+                                border-radius: 10px;
+                            }
+
+                            .testimonialContent {
+                                padding: 15px;
+
+                                .testimonialHeading {
+                                    .testimonialName {
+                                        font-size: 14px;
+                                        line-height: 24px;
+                                    }
+
+                                    .testimonialJob {
+                                        font-size: 13px;
+                                        line-height: 20px;
+                                    }
+                                }
+
+                                .testimonialButton {
+                                    width: 35px;
+                                    height: 35px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+            }
+
+            .embla_container {
+                margin: 30px 0px 0px;
+                gap: 20px;
+
+                div {
+                    height: 30px;
+                    width: 30px;
+
+                    svg {
+                        width: 14px;
+                    }
+                }
+            }
+
+        }
+
+
+
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width:899px) {
+    .testimonialSection {
+        .tagTitle {
+            font-size: 18px;
+            line-height: 24px;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 24px;
+        }
+
+        .ratingImg {
+            text-align: left;
+            margin: 20px 0px;
+
+            img {
+                height: 40px;
+                width: auto;
+            }
+        }
+
+        .embla {
+            margin-top: 20px;
+
+            .embla__viewport {
+                .embla__container {
+                    margin-left: calc(15px * -1);
+
+                    .embla__slide {
+                        padding-left: 15px;
+                        flex: 0 0 calc(100% / 2);
+
+                        .testimonialBox {
+                            height: 250px;
+                            border-radius: 10px;
+
+                            &::after {
+                                border-radius: 10px;
+                            }
+
+                            .testVideo {
+                                border-radius: 10px;
+                            }
+
+                            .testimonialContent {
+                                padding: 15px;
+
+                                .testimonialHeading {
+                                    .testimonialName {
+                                        font-size: 14px;
+                                        line-height: 24px;
+                                    }
+
+                                    .testimonialJob {
+                                        font-size: 13px;
+                                        line-height: 20px;
+                                    }
+                                }
+
+                                .testimonialButton {
+                                    width: 35px;
+                                    height: 35px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+            }
+
+            .embla_container {
+                margin: 30px 0px 0px;
+                gap: 20px;
+
+                div {
+                    height: 30px;
+                    width: 30px;
+
+                    svg {
+                        width: 14px;
+                    }
+                }
+            }
+
+        }
+
+
+
+    }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 599px) {
+    .testimonialSection {
+        .tagTitle {
+            font-size: 18px;
+            line-height: 24px;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 24px;
+        }
+
+        .ratingImg {
+            text-align: left;
+            margin: 20px 0px;
+
+            img {
+                height: 35px;
+                width: auto;
+            }
+        }
+
+        .embla {
+            margin-top: 20px;
+
+            .embla__viewport {
+                .embla__container {
+                    margin-left: calc(10px * -1);
+
+                    .embla__slide {
+                        padding-left: 10px;
+                        flex: 0 0 calc(100% / 1.2);
+
+                        .testimonialBox {
+                            height: 250px;
+                            border-radius: 10px;
+
+                            &::after {
+                                border-radius: 10px;
+                            }
+
+                            .testVideo {
+                                border-radius: 10px;
+                            }
+
+                            .testimonialContent {
+                                padding: 15px;
+
+                                .testimonialHeading {
+                                    .testimonialName {
+                                        font-size: 14px;
+                                        line-height: 24px;
+                                    }
+
+                                    .testimonialJob {
+                                        font-size: 13px;
+                                        line-height: 20px;
+                                    }
+                                }
+
+                                .testimonialButton {
+                                    width: 35px;
+                                    height: 35px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+            }
+
+            .embla_container {
+                margin: 30px 0px 0px;
+                gap: 20px;
+
+                div {
+                    height: 30px;
+                    width: 30px;
+
+                    svg {
+                        width: 14px;
+                    }
+                }
+            }
+
+        }
+
+
+
+    }
+}

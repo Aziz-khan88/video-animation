@@ -1,0 +1,134 @@
+.byClientsBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
+
+    .byClientsItem {
+        flex: 0 0 300px;
+        height: 100px;
+        background: #FFFFFF;
+        box-shadow: 20px 10px 40px rgba(159, 159, 159, 0.15);
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 20px;
+
+        img {
+            height: 50px;
+            width: auto;
+        }
+
+    }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1600px) {
+    .byClientsBox {
+        gap: 25px;
+
+        .byClientsItem {
+            flex: 0 0 280px;
+            height: 100px;
+            padding: 28px;
+
+            img {
+                height: 45px;
+                width: auto;
+            }
+
+        }
+    }
+}
+
+@media only screen and (min-width: 1300px) and (max-width: 1399px) {
+    .byClientsBox {
+        gap: 20px;
+
+        .byClientsItem {
+            flex: 0 0 270px;
+            height: 100px;
+            padding: 28px;
+
+            img {
+                height: 40px;
+                width: auto;
+            }
+
+        }
+    }
+}
+
+@media only screen and (min-width: 1100px) and (max-width: 1299px) {
+    .byClientsBox {
+        gap: 20px;
+
+        .byClientsItem {
+            flex: 0 0 250px;
+            height: 100px;
+            padding: 28px;
+
+            img {
+                height: 40px;
+                width: auto;
+            }
+
+        }
+    }
+}
+
+@media only screen and (min-width: 900px) and (max-width:1099px) {
+    .byClientsBox {
+        gap: 20px;
+
+        .byClientsItem {
+            flex: 0 0 230px;
+            height: 100px;
+            padding: 20px;
+
+            img {
+                height: 35px;
+                width: auto;
+            }
+
+        }
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width:899px) {
+    .byClientsBox {
+        gap: 15px;
+
+        .byClientsItem {
+            flex: 0 0 200px;
+            height: 100px;
+            padding: 20px;
+
+            img {
+                height: 30px;
+                width: auto;
+            }
+
+        }
+    }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 599px) {
+    .byClientsBox {
+        gap: 10px;
+
+        .byClientsItem {
+            flex: 0 0 160px;
+            height: 100px;
+            padding: 10px;
+
+            img {
+                height: 27px;
+                width: auto;
+            }
+
+        }
+    }
+}

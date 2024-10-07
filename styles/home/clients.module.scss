@@ -1,0 +1,269 @@
+.clientsSection {
+    overflow: hidden;
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    .embla {
+        margin-top: 50px;
+
+        .embla__viewport {
+            overflow: visible;
+
+            .embla__container {
+                display: flex;
+                touch-action: pan-y pinch-zoom;
+                margin-left: calc(20px * -1);
+
+                .embla__slide {
+                    transform: translate3d(0, 0, 0);
+                    flex: 0 0 325px;
+                    min-width: 0;
+                    padding-left: 10px;
+                    height: 165px;
+
+                    .imgBox {
+                        position: relative;
+                        border-radius: 20px;
+
+                    }
+                }
+            }
+
+
+        }
+
+
+    }
+
+
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1600px) {
+    .clientsSection {
+        overflow: hidden;
+
+        .embla {
+            margin-top: 40px;
+
+            .embla__viewport {
+
+                .embla__container {
+                    display: flex;
+                    margin-left: calc(20px * -1);
+
+                    .embla__slide {
+                        flex: 0 0 300px;
+                        padding-left: 10px;
+                        height: 140px;
+
+                        .imgBox {
+                            border-radius: 20px;
+
+                            img {
+                                height: 140px;
+                                width: auto;
+                            }
+
+                        }
+                    }
+                }
+
+
+            }
+
+
+        }
+    }
+}
+
+@media only screen and (min-width: 1300px) and (max-width: 1399px) {
+    .clientsSection {
+        overflow: hidden;
+
+        .embla {
+            margin-top: 35px;
+
+            .embla__viewport {
+
+                .embla__container {
+                    display: flex;
+                    margin-left: calc(20px * -1);
+
+                    .embla__slide {
+                        flex: 0 0 300px;
+                        padding-left: 10px;
+                        height: 140px;
+
+                        .imgBox {
+                            border-radius: 20px;
+
+                            img {
+                                height: 140px;
+                                width: auto;
+                            }
+
+                        }
+                    }
+                }
+
+
+            }
+
+
+        }
+    }
+}
+
+@media only screen and (min-width: 1100px) and (max-width: 1299px) {
+    .clientsSection {
+        overflow: hidden;
+
+        .embla {
+            margin-top: 30px;
+
+            .embla__viewport {
+
+                .embla__container {
+                    display: flex;
+                    margin-left: calc(20px * -1);
+
+                    .embla__slide {
+                        flex: 0 0 300px;
+                        padding-left: 10px;
+                        height: 140px;
+
+                        .imgBox {
+                            border-radius: 20px;
+
+                            img {
+                                height: 140px;
+                                width: auto;
+                            }
+
+                        }
+                    }
+                }
+
+
+            }
+
+
+        }
+    }
+}
+
+@media only screen and (min-width: 900px) and (max-width:1099px) {
+    .clientsSection {
+        overflow: hidden;
+
+        .embla {
+            margin-top: 25px;
+
+            .embla__viewport {
+
+                .embla__container {
+                    display: flex;
+                    margin-left: calc(20px * -1);
+
+                    .embla__slide {
+                        flex: 0 0 300px;
+                        padding-left: 10px;
+                        height: 135px;
+
+                        .imgBox {
+                            border-radius: 20px;
+
+                            img {
+                                height: 135px;
+                                width: auto;
+                            }
+
+                        }
+                    }
+                }
+
+
+            }
+
+
+        }
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width:899px) {
+    .clientsSection {
+        overflow: hidden;
+
+        .embla {
+            margin-top: 25px;
+
+            .embla__viewport {
+
+                .embla__container {
+                    display: flex;
+                    margin-left: calc(20px * -1);
+
+                    .embla__slide {
+                        flex: 0 0 300px;
+                        padding-left: 10px;
+                        height: 140px;
+
+                        .imgBox {
+                            border-radius: 20px;
+
+                            img {
+                                height: 140px;
+                                width: auto;
+                            }
+
+                        }
+                    }
+                }
+
+
+            }
+
+
+        }
+    }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 599px) {
+    .clientsSection {
+        overflow: hidden;
+
+        .embla {
+            margin-top: 20px;
+
+            .embla__viewport {
+
+                .embla__container {
+                    display: flex;
+                    margin-left: calc(20px * -1);
+
+                    .embla__slide {
+                        flex: 0 0 280px;
+                        padding-left: 10px;
+                        height: 130px;
+
+                        .imgBox {
+                            border-radius: 20px;
+
+                            img {
+                                height: 130px;
+                                width: auto;
+                            }
+
+                        }
+                    }
+                }
+
+
+            }
+
+
+        }
+    }
+}
