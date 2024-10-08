@@ -99,53 +99,103 @@
             'i i i i k k';
 
         &>div {
+            position: relative;
+
             img {
                 width: 100%;
                 object-fit: cover;
                 object-position: center;
             }
+
+            &:hover {
+                .bannerContentBox {
+                    display: flex;
+                }
+
+            }
+
+            .bannerContentBox {
+                background: rgba(0, 0, 0, 0.55);
+                height: 100%;
+                width: 100%;
+                display: none;
+                justify-content: center;
+                align-items: end;
+                position: relative;
+                z-index: 2;
+                position: absolute;
+                top: 0;
+                padding: 15px;
+
+                .bannerHeading {
+                    flex: 0 0 60%;
+
+                    h1 {
+                        font-size: 22px;
+                        font-weight: 600;
+                        line-height: 33px;
+                        ;
+                    }
+
+                    p {
+                        color: #fff;
+                    }
+                }
+
+                .bannerButton {
+                    flex: 0 0 40%;
+                    display: flex;
+                    justify-content: flex-end;
+                }
+            }
         }
+
+
     }
 }
 
 // X-Large devices (large desktops, less than 1400px)
 @media (max-width: 1399.98px) {
-    .portfolio {
-        .gridContainer {
-            display: grid;
-            grid-template-areas:
-                'a a a b b b'
-                'e e e e e e'
-                'c c c d d d'
-                'h h h h h h'
-                'f f f g g g'
-                'i i i i i i'
-                'j j j k k k';
-        }
-    }
+    .portfolioSection {
 
-    .tabHeaders {
-        .tabHeader {
-            font-size: 14px;
-            line-height: 40px;
+        .tabHeaders {
 
-            &.active {
-                font-size: 14px;
-                padding: 0 15px;
-                margin: 0 10px 0 0;
-            }
+            li {
+                height: auto;
+                font-size: 16px;
+                line-height: 44px;
+                text-align: center;
+                color: rgb(255, 255, 255, 0.5);
+                padding: 0px 30px;
+                cursor: pointer;
 
-            &:nth-child(2) {
-                min-width: auto;
+                &:first-child {
+                    border: 0px;
+                    color: #fff;
+                }
+
+                &.active {
+                    background: linear-gradient(106.24deg, #ED1919 25.96%, #FFE100 140.6%);
+                    color: #fff;
+                }
             }
         }
+
     }
 }
 
 @media (max-width: 1199.98px) {
-    .tabHeaders {
-        flex-wrap: wrap;
-        justify-content: center;
+    .portfolioSection {
+
+        .tabHeaders {
+
+            li {
+                height: auto;
+                font-size: 14px;
+                line-height: 42px;
+            }
+        }
+
     }
 }
 
@@ -173,6 +223,8 @@
                     object-position: center;
                 }
             }
+
+
         }
     }
 }
