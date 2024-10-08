@@ -254,7 +254,7 @@ const PortfolioTabs = () => {
                                     {tabs.find(tab => tab.label === activeTab)?.images.map((image, index) => (
 
                                         <div key={index} className={image.className}>
-                                            <Image src={image.src} width={image.width} height={image.height} />
+                                            <Image src={image.src} width={image.width} height={image.height} alt="Image" />
                                             <div className={styles.bannerContentBox}>
                                                 <div className={styles.bannerHeading}>
                                                     <h1>Lorem ipsum dolor sit amet consectetur.</h1>
