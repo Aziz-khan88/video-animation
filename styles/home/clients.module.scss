@@ -3,6 +3,18 @@
 
     h2 {
         margin-bottom: 20px;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+
+        &::after {
+            content: '';
+            width: 100px;
+            height: 3px;
+            background: #ED1919;
+            border-radius: 26px;
+            display: block;
+            margin-top: 20px;
+        }
     }
 
     .embla {
@@ -18,7 +30,7 @@
 
                 .embla__slide {
                     transform: translate3d(0, 0, 0);
-                    flex: 0 0 325px;
+                    flex: 0 0 auto;
                     min-width: 0;
                     padding-left: 10px;
                     height: 165px;
@@ -26,6 +38,11 @@
                     .imgBox {
                         position: relative;
                         border-radius: 20px;
+
+                        img {
+                            height: 165px;
+                            width: auto;
+                        }
 
                     }
                 }

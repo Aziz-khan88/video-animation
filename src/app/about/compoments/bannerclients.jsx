@@ -50,7 +50,7 @@ const BannerClients = () => {
         [
             AutoScroll({
                 delay: 3000,
-                speed: 3,
+                speed: 4,
                 playOnInit: true,
             })
         ]
@@ -61,7 +61,7 @@ const BannerClients = () => {
         [
             AutoScroll({
                 delay: 3000,
-                speed: 3,
+                speed: 4,
                 playOnInit: true,
             })
         ]

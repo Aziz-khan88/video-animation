@@ -63,7 +63,7 @@ const Header = () => {
             <Container className="h-100">
                 <Row className="h-100">
                     <Col xs={6} className="my-auto">
-                        <Link href="#" className={styles.mainLogoBox}>
+                        <Link href="/" className={styles.mainLogoBox}>
                             <div className={`${styles.mainLogo} ${showDefault ? styles.show : styles.hide}`}>
                                 <DefaultLogo />
                             </div>
@@ -84,12 +84,12 @@ const Header = () => {
                                 <Row>
                                     <Col>
                                         <ul className={styles.mainMainItems}>
-                                            <li><Link href="#">Home <ArrowBtn /></Link></li>
-                                            <li><Link href="#">Portfolio <ArrowBtn /></Link></li>
+                                            <li onClick={toggleMenu}><Link href="/">Home <ArrowBtn /></Link></li>
+                                            <li onClick={toggleMenu}><Link href="/portfolio">Portfolio <ArrowBtn /></Link></li>
                                             <li onClick={toggleSubMenu}>
                                                 <Link href="#">Services <ArrowBtn /></Link>
                                                 <ul className={`${styles.haschildMenu} ${isSubMenuActive ? styles.active : ''}`}>
-                                                    <li onClick={toggleMenu}><Link href="#" >2D Animation</Link></li>
+                                                    <li onClick={toggleMenu}><Link href="/services" >2D Animation</Link></li>
                                                     <li><Link href="#">3D Animation</Link></li>
                                                     <li><Link href="#">Whiteboard Animation</Link></li>
                                                     <li><Link href="#">Motion Graphics</Link></li>
@@ -102,9 +102,9 @@ const Header = () => {
                                                 </ul>
 
                                             </li>
-                                            <li><Link href="#">Pricing <ArrowBtn /></Link></li>
-                                            <li><Link href="#">About Us <ArrowBtn /></Link></li>
-                                            <li><Link href="#">Contact Us <ArrowBtn /></Link></li>
+                                            <li onClick={toggleMenu}><Link href="/pricing">Pricing <ArrowBtn /></Link></li>
+                                            <li onClick={toggleMenu}><Link href="/about">About Us <ArrowBtn /></Link></li>
+                                            <li onClick={toggleMenu}><Link href="/contact">Contact Us <ArrowBtn /></Link></li>
                                         </ul>
                                     </Col>
                                 </Row>

@@ -2,6 +2,22 @@
   overflow: hidden;
   background: #F7F8F9;
 
+  h2 {
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+
+    &::after {
+      content: '';
+      width: 100px;
+      height: 3px;
+      background: #ED1919;
+      border-radius: 26px;
+      display: block;
+      margin-top: 20px;
+    }
+
+  }
+
   .embla {
     margin-top: 50px;
 
