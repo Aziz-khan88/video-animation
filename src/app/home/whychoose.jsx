@@ -1,7 +1,7 @@
 "use client";
 import useEmblaCarousel from "embla-carousel-react";
 import ClassNames from "embla-carousel-class-names";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "@/styles/home/whychoose.module.scss";
 import { Container, Row, Col } from "react-bootstrap";
@@ -14,17 +14,17 @@ const WhyChooes = (props) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [scrollSnaps, setScrollSnaps] = useState([]);
 
-    const onSelect = () => {
+    const onSelect = useCallback(() => {
         if (!emblaApi) return;
         setSelectedIndex(emblaApi.selectedScrollSnap());
-    };
+    }, [emblaApi]);
 
     useEffect(() => {
         if (!emblaApi) return;
         emblaApi.on("select", onSelect);
         setScrollSnaps(emblaApi.scrollSnapList());
         onSelect();
-    }, [emblaApi]);
+    }, [emblaApi, onSelect]);
 
     const getPrevIndex = () => {
         return selectedIndex === 0 ? slides.length - 1 : selectedIndex - 1;
@@ -56,17 +56,14 @@ const WhyChooes = (props) => {
                                         const isPrev = index === getPrevIndex() ? styles.prev : "";
                                         const isNext = index === getNextIndex() ? styles.next : "";
                                         return (
-                                            <>
-                                                <div
-                                                    className={`${styles.embla__slide} embla__class - names ${isActive} ${isPrev} ${isNext} `}
-                                                    key={index}
-                                                >
-                                                    <div className={styles.embla__slide__img}>
-                                                        <Image src={item.Img} alt={item.title} height={450} width={330} />
-                                                    </div>
+                                            <div
+                                                className={`${styles.embla__slide} embla__class-names ${isActive} ${isPrev} ${isNext}`}
+                                                key={index}
+                                            >
+                                                <div className={styles.embla__slide__img}>
+                                                    <Image src={item.Img} alt={item.title} height={450} width={330} />
                                                 </div>
-
-                                            </>
+                                            </div>
                                         );
                                     })}
                                 </div>
@@ -76,7 +73,7 @@ const WhyChooes = (props) => {
                                     {scrollSnaps.map((_, index) => (
                                         <div
                                             key={index}
-                                            className={`${styles.embla__dot} ${index === selectedIndex ? styles.active : ""} `}
+                                            className={`${styles.embla__dot} ${index === selectedIndex ? styles.active : ""}`}
                                             onClick={() => handleDotClick(index)}
                                         ></div>
                                     ))}
@@ -89,13 +86,11 @@ const WhyChooes = (props) => {
                                     Let’s Discuss <ArrowBtn />
                                 </Link>
                             </div>
-
                         </div>
                     </Col>
                 </Row>
-            </Container >
-        </section >
-
+            </Container>
+        </section>
     );
 };
 

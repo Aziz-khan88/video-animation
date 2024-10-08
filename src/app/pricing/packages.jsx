@@ -11,7 +11,7 @@ const data = {
 
 export default function Packages() {
     return (
-        <section className={styles.PrincingSec}>
+        <section className={`${styles.PrincingSec} p-100`}>
             <Container >
                 <Row className={styles.PrincingContent}>
                     <Col xl={6} lg={6} md={6} className={styles.PrincingContentLeft}>

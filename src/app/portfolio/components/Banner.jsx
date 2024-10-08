@@ -13,7 +13,7 @@ const Banner = () => {
                             <div className={styles.bannerHeading}>
                                 <h1>Portfolio</h1>
                                 <p>Lorem ipsum dolor sit amet,adipiscing Lorem ipsum dolor sit dolor Ipsum. Lorem ipsum dolor sit amet,adipiscing Lorem ipsum dolor sit dolor Ipsum.</p>
-                                <Link href="" className="readMoreBtn">Let's Discuss <ArrowBtn /></Link>
+                                <Link href="" className="readMoreBtn">Let’s Discuss <ArrowBtn /></Link>
                             </div>
                             <div className={styles.bannerButton}>
                                 <div className="buttonCommon">

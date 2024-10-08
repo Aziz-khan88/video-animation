@@ -150,7 +150,7 @@ const WhyItems = [
 export default function Services() {
   return (
     <>
-      {/* <Banner video={true} /> */}
+      <Banner video={true} />
       <BannerClients />
       <Portfolio slides={caseStudiesList} options={OPTIONS} caseStudies={caseStudiesList} />
       <KeyPoints />
