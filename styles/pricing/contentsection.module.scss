@@ -1,0 +1,51 @@
+.ContentSec {
+  position: relative;
+  background-color: #ffffff;
+  padding-bottom: 120px;
+//   padding: 80px 0;
+
+  .Content {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+
+    .ContentLeft {
+      h2 {
+        font-family: "Poppins";
+        font-weight: 700;
+        font-size: 56px;
+        text-transform: capitalize;
+        color: #000000;
+        letter-spacing: normal;
+        line-height: 80px;
+        margin-bottom: 15px;
+      }
+
+      p {
+        font-family: "Poppins";
+        font-weight: 400;
+        font-size: 16px;
+        color: #7c7c7c;
+        opacity: 0.7;
+        width: 90%;
+      }
+    }
+
+    .ContentRight {
+      position: relative;
+      .Img1 {
+        height: 600px;
+        width: auto;
+        margin: auto;
+        display: block;
+        margin-bottom: 90px;
+      }
+      .Img2 {
+        position: absolute;
+        bottom: 5px;
+        right: 0;
+        
+      }
+    }
+  }
+}

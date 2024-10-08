@@ -1,0 +1,57 @@
+.processSection {
+  position: relative;
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  .processCardBox {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    .processCard {
+      background: #f7f8f9;
+      border-radius: 20px;
+      padding: 35px 30px;
+      margin: 15px auto;
+
+      span {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 56px;
+        line-height: 50px;
+        background: linear-gradient(106.24deg, #ed1919 25.96%, #ffe100 140.6%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+      }
+
+      h4 {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 26px;
+        line-height: 50px;
+        color: #000000;
+      }
+
+      p {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 30px;
+        letter-spacing: -0.165px;
+        color: #73858f;
+        margin-bottom: 0;
+      }
+
+      &:hover {
+        background: #ffffff;
+        box-shadow: 20px 10px 40px rgba(159, 159, 159, 0.15);
+      }
+    }
+  }
+}

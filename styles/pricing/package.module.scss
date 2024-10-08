@@ -1,0 +1,516 @@
+.PrincingSec {
+  position: relative;
+  background-color: #f7f8f9;
+  padding: 80px 0;
+
+  .PrincingContent {
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .PrincingContentLeft {
+      span {
+        font-family: "Poppins";
+        font-weight: 500;
+        font-size: 25px;
+        color: #000000;
+        text-transform: uppercase;
+      }
+      .heading {
+        font-family: "Poppins";
+        font-weight: 700;
+        font-size: 60px;
+        letter-spacing: normal;
+        background: linear-gradient(128.57deg, #ed1919 25.98%, #ffe100 106.07%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        margin-top: 15px;
+        text-transform: uppercase;
+      }
+      p {
+        font-family: "Poppins";
+        font-weight: 400;
+        font-size: 16px;
+        color: #73858f;
+      }
+    }
+    .PrincingContentRight {
+      display: flex;
+      justify-content: end;
+      align-items: center;
+
+      span {
+        font-family: "Poppins";
+        font-weight: 500;
+        font-size: 20px;
+        background: linear-gradient(106.24deg, #ed1919 25.96%, #ffe100 140.6%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        margin-right: 5px;
+      }
+      .PrincingSelect {
+        background: #ffffff;
+        border-radius: 81.6667px;
+        border: none;
+        padding: 12px 20px;
+        outline: none;
+        max-width: 240px;
+
+        &:hover,
+        &:focus {
+          outline: none;
+        }
+
+        option {
+          background: #f7f7f7;
+          box-shadow: 9px 20px 30px rgba(157, 164, 168, 0.2);
+          border-radius: 20px;
+        }
+      }
+    }
+  }
+
+  .pricing {
+    display: flex;
+    gap: 10px;
+    padding-top: 25px;
+
+    .pricingBox {
+      width: 470px;
+      border: 1.5px solid rgba(115, 133, 143, 0.13);
+      border-radius: 27px;
+      .box {
+        border-bottom: 1.5px solid;
+        border-color: rgba(115, 133, 143, 0.13);
+        padding: 25px;
+
+        .package {
+          background: #eeeeee;
+          border-radius: 100px;
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 20px;
+          line-height: 83px;
+          text-transform: capitalize;
+          color: #000000;
+          padding: 8px 25px;
+        }
+
+        h4 {
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 600;
+          font-size: 60px;
+          line-height: 83px;
+        }
+
+        p {
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 25px;
+          /* or 156% */
+          letter-spacing: -0.165px;
+
+          color: #73858f;
+        }
+
+        .button {
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 600;
+          font-size: 18px;
+          line-height: 16px;
+          /* identical to box height, or 89% */
+          text-align: center;
+          letter-spacing: -0.165px;
+          background: #000000;
+          border-radius: 33px;
+          color: #ffffff;
+          width: 100%;
+          padding: 18px;
+          border: none;
+
+          &:hover {
+            background: linear-gradient(
+              106.24deg,
+              #ed1919 25.96%,
+              #ffe100 140.6%
+            );
+          }
+        }
+      }
+      .pricingList {
+        padding: 25px;
+        margin-bottom: 0;
+        li {
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 20px;
+          line-height: 55px;
+          letter-spacing: -0.165px;
+          list-style: none;
+          color: #000000;
+          display: flex;
+          align-items: center;
+
+          svg {
+            margin-left: 8px;
+            margin-right: 15px;
+            path {
+              fill: #000;
+            }
+          }
+        }
+      }
+
+      &:hover {
+        background: #ffffff;
+        box-shadow: 10px 15px 20px rgba(206, 210, 214, 0.25);
+        .box {
+          .package {
+            background: rgba(0, 0, 0, 0.1);
+          }
+        }
+        .pricingList {
+          li {
+            svg {
+              path {
+                fill: #0edc5d;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1600px) {
+  .PrincingSec {
+    .PrincingContent {
+      .PrincingContentLeft {
+        .heading {
+          font-size: 55px;
+          margin-top: 5px;
+        }
+      }
+    }
+    .pricing {
+      .pricingBox {
+        .box {
+          .package {
+            font-size: 20px;
+          }
+
+          h4 {
+            font-size: 55px;
+          }
+        }
+        .pricingList {
+          li {
+            font-size: 18px;
+            line-height: 50px;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (min-width: 1300px) and (max-width: 1399px) {
+  .PrincingSec {
+    .PrincingContent {
+      .PrincingContentLeft {
+        .heading {
+          font-size: 55px;
+          margin-top: 15px;
+        }
+      }
+    }
+    .pricing {
+      .pricingBox {
+        .box {
+          .package {
+            font-size: 18px;
+          }
+
+          h4 {
+            font-size: 50px;
+          }
+          .button {
+            font-size: 16px;
+          }
+        }
+        .pricingList {
+          li {
+            font-size: 18px;
+            line-height: 50px;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (min-width: 1100px) and (max-width: 1299px) {
+  .PrincingSec {
+    .PrincingContent {
+      .PrincingContentLeft {
+        .heading {
+          font-size: 50px;
+        }
+      }
+      .PrincingContentRight {
+        span {
+          font-size: 18px;
+        }
+      }
+    }
+    .pricing {
+      .pricingBox {
+        .box {
+          .package {
+            font-size: 17px;
+          }
+
+          h4 {
+            font-size: 50px;
+            line-height: 68px;
+          }
+
+          p {
+            font-size: 15px;
+          }
+        }
+        .pricingList {
+          li {
+            font-size: 17px;
+            line-height: 45px;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (min-width: 900px) and (max-width: 1099px) {
+  .PrincingSec {
+    .PrincingContent {
+      .PrincingContentLeft {
+        .heading {
+          font-size: 40px;
+          margin-top: 0;
+        }
+      }
+      .PrincingContentRight {
+        span {
+          font-size: 18px;
+        }
+        .PrincingSelect {
+          max-width: 180px;
+        }
+      }
+    }
+    .pricing {
+      .pricingBox {
+        .box {
+          .package {
+            font-size: 17px;
+          }
+
+          h4 {
+            font-size: 45px;
+            line-height: 68px;
+          }
+
+          p {
+            font-size: 15px;
+          }
+
+          .button {
+            font-size: 16px;
+            padding: 16px;
+          }
+        }
+        .pricingList {
+          li {
+            font-size: 17px;
+            line-height: 42px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 899px) {
+    .PrincingSec {
+        .PrincingContent {
+          .PrincingContentLeft {
+            .heading {
+              font-size: 35px;
+              margin-top: 0;
+            }
+          }
+          .PrincingContentRight {
+            span {
+              font-size: 18px;
+            }
+            .PrincingSelect {
+              max-width: 180px;
+            }
+          }
+        }
+        .pricing {
+          .pricingBox {
+            width: 350px;
+            .box {
+                padding: 20px;
+              .package {
+                font-size: 17px;
+              }
+    
+              h4 {
+                font-size: 35px;
+                line-height: 54px;
+              }
+    
+              p {
+                font-size: 15px;
+              }
+    
+              .button {
+                font-size: 16px;
+                padding: 16px;
+              }
+            }
+            .pricingList {
+                padding: 20px;
+              li {
+                font-size: 16px;
+                line-height: 42px;
+              }
+            }
+          }
+        }
+      }
+}
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+    .PrincingSec {
+        .PrincingContent {
+          .PrincingContentLeft {
+            .heading {
+              font-size: 35px;
+              margin-top: 0;
+            }
+          }
+          .PrincingContentRight {
+            span {
+              font-size: 18px;
+              margin-right: 10px;
+            }
+            .PrincingSelect {
+              max-width: 180px;
+            }
+          }
+        }
+        .pricing {
+            flex-wrap: wrap;
+            justify-content: center;
+          .pricingBox {
+            width: 470px;
+            margin-bottom: 15px;
+            .box {
+                padding: 20px;
+              .package {
+                font-size: 17px;
+              }
+    
+              h4 {
+                font-size: 35px;
+                line-height: 54px;
+              }
+    
+              p {
+                font-size: 15px;
+              }
+    
+              .button {
+                font-size: 16px;
+                padding: 16px;
+              }
+            }
+            .pricingList {
+                padding: 20px;
+              li {
+                font-size: 16px;
+                line-height: 42px;
+              }
+            }
+          }
+        }
+      }
+
+}
+
+@media only screen and (min-width: 0px) and (max-width: 599px) {
+    .PrincingSec {
+        .PrincingContent {
+          .PrincingContentLeft {
+            .heading {
+              font-size: 35px;
+              margin-top: 0;
+            }
+          }
+          .PrincingContentRight {
+            span {
+              font-size: 18px;
+              margin-right: 10px;
+            }
+            .PrincingSelect {
+              max-width: 180px;
+            }
+          }
+        }
+        .pricing {
+            flex-wrap: wrap;
+            justify-content: center;
+          .pricingBox {
+            width: 100%;
+            margin-bottom: 20px;
+            .box {
+                padding: 20px;
+              .package {
+                font-size: 17px;
+              }
+    
+              h4 {
+                font-size: 35px;
+                line-height: 54px;
+              }
+    
+              p {
+                font-size: 15px;
+              }
+    
+              .button {
+                font-size: 16px;
+                padding: 16px;
+              }
+            }
+            .pricingList {
+                padding: 20px;
+              li {
+                font-size: 16px;
+                line-height: 42px;
+              }
+            }
+          }
+        }
+      }
+}
