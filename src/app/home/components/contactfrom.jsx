@@ -2,10 +2,10 @@ import styles from "@/styles/home/components/contactfrom.module.scss"
 import { ArrowBtn } from "../../app-constants"
 import { Form } from "react-bootstrap"
 
-const ContactFrom = () => {
+const ContactFrom = ({ contact }) => {
     return (
         <Form>
-            <div className={styles.contactFrom}>
+            <div className={`${styles.contactFrom} ${contact ? styles.contactPage : ''}`}>
                 <div className={styles.inputsFiled}>
                     <input type="text" name="name" placeholder="Full Name" required />
                 </div>

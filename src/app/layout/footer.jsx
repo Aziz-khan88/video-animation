@@ -4,7 +4,7 @@ import styles from "@/styles/layout/footer.module.scss"
 import ContactFrom from "@/src/app/home/components/contactfrom"
 import Image from "next/image"
 import IMG from "media/home/rotateImg.webp"
-import { Facebook, FavLogo, Instagram, Linkedin, Twitter, Youtube } from "../app-constants"
+import { Facebook, FavLogo, Instagram, Linkedin, Twitter, Youtube } from "@/src/app/app-constants"
 import Link from "next/link"
 import { useEffect, useState } from "react";
 

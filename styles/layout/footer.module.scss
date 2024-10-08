@@ -4,8 +4,6 @@
     .footerBox {
         position: relative;
 
-
-
         .footerBG {
             display: flex;
             background: #FFFFFF;
@@ -43,6 +41,8 @@
 
                     img {
                         animation: rotate 5s linear infinite;
+                        height: 180px;
+                        width: auto;
                     }
 
                 }
@@ -516,11 +516,6 @@
                     .rotateImg {
                         margin-top: 20px;
 
-                        img {
-                            height: 150px;
-                            width: auto;
-                        }
-
                     }
 
                     .footerFrom {
@@ -767,11 +762,6 @@
 
                     .rotateImg {
                         margin-top: 20px;
-
-                        img {
-                            height: 120px;
-                            width: auto;
-                        }
 
                     }
 

@@ -1,9 +1,7 @@
-.clientsSection {
+.bannerClients {
     overflow: hidden;
+    background: #000000;
 
-    h2 {
-        margin-bottom: 20px;
-    }
 
     .embla {
         margin-top: 50px;
@@ -18,9 +16,9 @@
 
                 .embla__slide {
                     transform: translate3d(0, 0, 0);
-                    flex: 0 0 325px;
+                    flex: 0 0 auto;
                     min-width: 0;
-                    padding-left: 10px;
+                    padding-left: 20px;
                     height: 165px;
 
                     .imgBox {
@@ -41,7 +39,7 @@
 }
 
 @media only screen and (min-width: 1400px) and (max-width: 1600px) {
-    .clientsSection {
+    .bannerClients {
         overflow: hidden;
 
         .embla {
@@ -79,7 +77,7 @@
 }
 
 @media only screen and (min-width: 1300px) and (max-width: 1399px) {
-    .clientsSection {
+    .bannerClients {
         overflow: hidden;
 
         .embla {
@@ -117,11 +115,49 @@
 }
 
 @media only screen and (min-width: 1100px) and (max-width: 1299px) {
-    .clientsSection {
+    .bannerClients {
         overflow: hidden;
 
         .embla {
             margin-top: 30px;
+
+            .embla__viewport {
+
+                .embla__container {
+                    display: flex;
+                    margin-left: calc(20px * -1);
+
+                    .embla__slide {
+                        flex: 0 0 auto;
+                        padding-left: 20px;
+                        height: 110px;
+
+                        .imgBox {
+                            border-radius: 20px;
+
+                            img {
+                                height: 110px;
+                                width: auto;
+                            }
+
+                        }
+                    }
+                }
+
+
+            }
+
+
+        }
+    }
+}
+
+@media only screen and (min-width: 900px) and (max-width:1099px) {
+    .bannerClients {
+        overflow: hidden;
+
+        .embla {
+            margin-top: 25px;
 
             .embla__viewport {
 
@@ -154,8 +190,8 @@
     }
 }
 
-@media only screen and (min-width: 900px) and (max-width:1099px) {
-    .clientsSection {
+@media only screen and (min-width: 600px) and (max-width:899px) {
+    .bannerClients {
         overflow: hidden;
 
         .embla {
@@ -192,12 +228,12 @@
     }
 }
 
-@media only screen and (min-width: 600px) and (max-width:899px) {
-    .clientsSection {
+@media only screen and (min-width: 0px) and (max-width: 599px) {
+    .bannerClients {
         overflow: hidden;
 
         .embla {
-            margin-top: 25px;
+            margin-top: 20px;
 
             .embla__viewport {
 
@@ -215,44 +251,6 @@
 
                             img {
                                 height: 90px;
-                                width: auto;
-                            }
-
-                        }
-                    }
-                }
-
-
-            }
-
-
-        }
-    }
-}
-
-@media only screen and (min-width: 0px) and (max-width: 599px) {
-    .clientsSection {
-        overflow: hidden;
-
-        .embla {
-            margin-top: 20px;
-
-            .embla__viewport {
-
-                .embla__container {
-                    display: flex;
-                    margin-left: calc(20px * -1);
-
-                    .embla__slide {
-                        flex: 0 0 280px;
-                        padding-left: 10px;
-                        height: 130px;
-
-                        .imgBox {
-                            border-radius: 20px;
-
-                            img {
-                                height: 130px;
                                 width: auto;
                             }
 

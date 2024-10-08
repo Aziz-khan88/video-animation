@@ -1,16 +1,6 @@
 .testimonialSection {
     background: #F9F9F9;
 
-    .tagTitle {
-        font-family: 'Poppins';
-        font-style: normal;
-        font-weight: 600;
-        font-size: 26px;
-        line-height: 36px;
-        letter-spacing: -0.165px;
-        color: #ED1919;
-    }
-
     p {
         font-family: 'Poppins';
         font-style: normal;
@@ -183,10 +173,6 @@
 
 @media only screen and (min-width: 1400px) and (max-width: 1600px) {
     .testimonialSection {
-        .tagTitle {
-            font-size: 24px;
-            line-height: 34px;
-        }
 
         p {
             font-size: 18px;
@@ -338,10 +324,7 @@
 
 @media only screen and (min-width: 1100px) and (max-width: 1299px) {
     .testimonialSection {
-        .tagTitle {
-            font-size: 20px;
-            line-height: 28px;
-        }
+
 
         p {
             font-size: 15px;
@@ -420,10 +403,7 @@
 
 @media only screen and (min-width: 900px) and (max-width:1099px) {
     .testimonialSection {
-        .tagTitle {
-            font-size: 20px;
-            line-height: 28px;
-        }
+
 
         p {
             font-size: 15px;
@@ -502,10 +482,6 @@
 
 @media only screen and (min-width: 600px) and (max-width:899px) {
     .testimonialSection {
-        .tagTitle {
-            font-size: 18px;
-            line-height: 24px;
-        }
 
         p {
             font-size: 14px;
@@ -595,10 +571,7 @@
 
 @media only screen and (min-width: 0px) and (max-width: 599px) {
     .testimonialSection {
-        .tagTitle {
-            font-size: 18px;
-            line-height: 24px;
-        }
+
 
         p {
             font-size: 14px;

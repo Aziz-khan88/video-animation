@@ -44,7 +44,7 @@ const Testimonials = (props) => {
             <Container>
                 <Row>
                     <Col lg={5} className='my-auto'>
-                        <div className={styles.tagTitle}>Testimonials</div>
+                        <div className="tagTitle">Testimonials</div>
                         <h3>Some work we are proud of</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
                     </Col>
