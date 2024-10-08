@@ -1,0 +1,188 @@
+.portfolio {
+    display: block;
+    max-width: 1920px;
+    width: 100%;
+    margin: auto;
+
+    .item1 {
+        grid-area: a;
+    }
+
+    .item2 {
+        grid-area: b;
+    }
+
+    .item3 {
+        grid-area: c;
+    }
+
+    .item4 {
+        grid-area: d;
+    }
+
+    .item5 {
+        grid-area: e;
+    }
+
+    .item6 {
+        grid-area: f;
+    }
+
+    .item7 {
+        grid-area: g;
+    }
+
+    .item8 {
+        grid-area: h;
+    }
+
+    .item9 {
+        grid-area: i;
+    }
+
+    .item10 {
+        grid-area: j;
+    }
+
+    .item11 {
+        grid-area: k;
+    }
+
+
+    .gridContainer {
+        display: grid;
+        grid-template-areas:
+            'a a a b b b'
+            'c c e e e e'
+            'd d e e e e'
+            'f f f g g g'
+            'h h h h h h'
+            'i i i i j j'
+            'i i i i k k';
+
+        &>div {
+            img {
+                width: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+    }
+}
+
+.tabHeaders {
+    display: flex;
+    position: relative;
+    margin-top: 300px;
+    margin-bottom: 80px;
+    align-items: center;
+
+    .tabHeader {
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 60px;
+        padding: 0 25px;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        color: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        border-radius: 70px;
+        background: transparent;
+        margin: 0 15px 0 0;
+        transition: background 0.3s, color 0.3s, transform 0.3s;
+        position: relative;
+        z-index: 1;
+
+        &.active {
+            background: linear-gradient(128.57deg, #ED1919 25.98%, #FFE100 106.07%);
+            color: #fff;
+            border: none;
+        }
+
+        &:nth-child(2) {
+            min-width: 145px;
+        }
+    }
+
+    .tabContent {
+        padding: 20px;
+    }
+}
+
+
+
+
+
+// X-Large devices (large desktops, less than 1400px)
+@media (max-width: 1399.98px) {
+    .portfolio {
+        .gridContainer {
+            display: grid;
+            grid-template-areas:
+                'a a a b b b'
+                'e e e e e e'
+                'c c c d d d'
+                'h h h h h h'
+                'f f f g g g'
+                'i i i i i i'
+                'j j j k k k';
+        }
+    }
+
+    .tabHeaders {
+        .tabHeader {
+            font-size: 14px;
+            line-height: 40px;
+
+            &.active {
+                font-size: 14px;
+                padding: 0 15px;
+                margin: 0 10px 0 0;
+            }
+
+            &:nth-child(2) {
+                min-width: auto;
+            }
+        }
+    }
+}
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) {
+    .tabHeaders {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+}
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) {
+    .portfolio {
+        .gridContainer {
+            display: grid;
+            grid-template-areas:
+                'a a a a a a'
+                'b b b b b b'
+                'c c c c c c'
+                'd d d d d d'
+                'e e e e e e'
+                'f f f f f f'
+                'g g g g g g'
+                'h h h h h h'
+                'i i i i i i'
+                'j j j j j j'
+                'k k k k k k';
+
+            &>div {
+                img {
+                    width: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+    }
+}
