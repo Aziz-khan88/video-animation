@@ -459,3 +459,52 @@ export function ClosedIcon() {
             ></path>
         </svg>)
 }
+
+export function PackageTick() {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="16"
+            fill="none"
+            viewBox="0 0 18 16"
+        >
+            <path
+                // fill="#000"
+                d="M17.545 3.742a1.674 1.674 0 000-2.293 1.502 1.502 0 00-2.191 0l-9.236 9.662-3.037-3.176a1.502 1.502 0 00-2.192 0 1.675 1.675 0 000 2.292l4.133 4.324a1.502 1.502 0 002.192 0L17.545 3.742z"
+            ></path>
+        </svg>
+    )
+}
+
+export function PackageDownArrow() {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="10"
+            fill="none"
+            viewBox="0 0 20 10"
+        >
+            <path
+                fill="url(#paint0_linear_2089_125)"
+                fillRule="evenodd"
+                d="M.233.66A.968.968 0 011.598.557L10 7.758 18.402.556a.968.968 0 011.26 1.47L10.63 9.766a.968.968 0 01-1.26 0L.338 2.025A.968.968 0 01.233.661z"
+                clipRule="evenodd"
+            ></path>
+            <defs>
+                <linearGradient
+                    id="paint0_linear_2089_125"
+                    x1="7"
+                    x2="7.529"
+                    y1="13"
+                    y2="-6.241"
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <stop stopColor="#ED1919"></stop>
+                    <stop offset="1" stopColor="#FFE100"></stop>
+                </linearGradient>
+            </defs>
+        </svg>
+    )
+}

@@ -1,0 +1,38 @@
+.mainBanner {
+  background: #000000;
+  height: 85vh;
+  padding-bottom: 100px;
+  &.contactpage {
+    height: 550px;
+  }
+
+  &.pricingPage {
+    position: relative;
+    background: transparent;
+
+    .bannerContent {
+      margin-top: auto;
+      // margin-bottom: auto;
+      z-index: 3;
+    }
+
+    &::before {
+      content: "";
+      background: rgb(0, 0, 0, 0.5);
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      height: 100%;
+      width: 100%;
+    }
+    .bannerVideo {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+  }
+}
