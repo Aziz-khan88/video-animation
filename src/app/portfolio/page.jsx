@@ -3,7 +3,7 @@ import Faqs from "@/src/app/home/faq";
 import Industries from "@/src/app/home/industries";
 import Testimonials from "@/src/app/home/testimonials";
 import Banner from "@/src/app/portfolio/components/banner";
-import PortfolioTabs from "@/src/app/portfolio/components/PortfolioTabs";
+import PortfolioTabs from "@/src/app/portfolio/components/portfoliotabs";
 
 import Test01 from "media/home/testimonial/test01.webp"
 import Test02 from "media/home/testimonial/test02.webp"
