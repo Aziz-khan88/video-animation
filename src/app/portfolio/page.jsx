@@ -2,7 +2,7 @@ import Clients from "@/src/app/home/clients";
 import Faqs from "@/src/app/home/faq";
 import Industries from "@/src/app/home/industries";
 import Testimonials from "@/src/app/home/testimonials";
-import Banner from "@/src/app/portfolio/components/banner";
+import Banner from "@/src/app/portfolio/components/Banner";
 import PortfolioTabs from "@/src/app/portfolio/components/PortfolioTabs";
 
 import Test01 from "media/home/testimonial/test01.webp"
