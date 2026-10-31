@@ -2,6 +2,13 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { AnimatePresence, motion } from "motion/react";
+import {
+  EASE_OUT_EXPO,
+  Reveal,
+  StaggerGroup,
+  StaggerItem,
+} from "@/components/motion/MotionPrimitives";
 
 const FAQ_ITEMS = [
   {
@@ -99,7 +106,7 @@ export function TwoDWhyChooseUs() {
       </svg>
 
       {/* Top-Left Header: 11 Badge + WHY CHOOSE US + FAQ + Subtitle */}
-      <div className="w-full px-6 pt-2 sm:px-10 lg:px-[2.45vw] lg:pt-[2.1vw]">
+      <Reveal className="w-full px-6 pt-2 sm:px-10 lg:px-[2.45vw] lg:pt-[2.1vw]" y={18}>
         <div className="flex items-center gap-4 lg:gap-[2.05vw]">
           <span className="grid h-[48px] w-[52px] shrink-0 place-items-center rounded-[12px] bg-[linear-gradient(135deg,#ff171d_0%,#ff4b16_55%,#ff7610_100%)] font-sans text-[20px] font-extrabold tracking-[-0.02em] text-white shadow-[0_8px_20px_-4px_rgb(255_55_22/0.45)] lg:h-[5.85vw] lg:w-[6.35vw] lg:rounded-[1.1vw] lg:text-[2.35vw]">
             11
@@ -116,25 +123,31 @@ export function TwoDWhyChooseUs() {
             </p>
           </div>
         </div>
-      </div>
+      </Reveal>
 
       {/* Main 2-Column Content: Left Artist Studio Image + Right FAQ Card */}
       <div className="mt-5 w-full px-6 sm:px-10 lg:mt-[1.4vw] lg:px-[2.25vw]">
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-12 lg:items-stretch lg:gap-[1.15vw]">
           {/* Left Column: Studio Artist Image */}
-          <div className="relative aspect-[441/345] w-full overflow-hidden rounded-[14px] bg-[#1a1312] shadow-[0_12px_30px_-8px_rgb(15_23_42/0.18)] lg:col-span-5 lg:aspect-auto lg:h-[34.5vw] lg:rounded-[1.15vw]">
-            <Image
-              src="/images/two-d-why-choose-us.jpg"
-              alt="2D character artist with glasses sketching the young adventurer girl on a large digital drawing monitor in a warm studio with concept sketches pinned to the wall"
-              fill
-              quality={92}
-              sizes="(min-width: 1024px) 44vw, 94vw"
-              className="object-cover object-center"
-            />
-          </div>
+          <Reveal className="lg:col-span-5" y={22} delay={0.05}>
+            <div className="group relative aspect-[441/345] w-full overflow-hidden rounded-[14px] bg-[#1a1312] shadow-[0_12px_30px_-8px_rgb(15_23_42/0.18)] lg:aspect-auto lg:h-[34.5vw] lg:rounded-[1.15vw]">
+              <Image
+                src="/images/two-d-why-choose-us.jpg"
+                alt="2D character artist with glasses sketching the young adventurer girl on a large digital drawing monitor in a warm studio with concept sketches pinned to the wall"
+                fill
+                quality={92}
+                sizes="(min-width: 1024px) 44vw, 94vw"
+                className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+              />
+            </div>
+          </Reveal>
 
           {/* Right Column: Frequently Asked Questions Card */}
-          <div className="flex flex-col justify-center rounded-[14px] border border-[#eceef4] bg-white px-5 py-6 shadow-[0_10px_28px_-8px_rgb(15_23_42/0.06)] sm:px-7 lg:col-span-7 lg:min-h-[34.5vw] lg:rounded-[1.15vw] lg:px-[2.25vw] lg:py-[1.9vw]">
+          <Reveal
+            className="flex flex-col justify-center rounded-[14px] border border-[#eceef4] bg-white px-5 py-6 shadow-[0_10px_28px_-8px_rgb(15_23_42/0.06)] sm:px-7 lg:col-span-7 lg:min-h-[34.5vw] lg:rounded-[1.15vw] lg:px-[2.25vw] lg:py-[1.9vw]"
+            y={22}
+            delay={0.12}
+          >
             <h3 className="font-sans text-[20px] font-extrabold leading-tight tracking-[-0.025em] text-[#090a0d] lg:text-[2.05vw]">
               Frequently Asked Questions
             </h3>
@@ -162,7 +175,8 @@ export function TwoDWhyChooseUs() {
                       >
                         <svg
                           viewBox="0 0 16 16"
-                          className="size-4 lg:size-[1.4vw]"
+                          className="size-4 transition-transform duration-200 lg:size-[1.4vw]"
+                          style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}
                           fill="none"
                         >
                           <path
@@ -175,39 +189,51 @@ export function TwoDWhyChooseUs() {
                       </span>
                     </button>
 
-                    {isOpen && (
-                      <div className="border-t border-[#ebedf3] bg-white px-4 py-3 font-sans text-[13px] leading-[1.45] text-[#5c606b] lg:px-[1.45vw] lg:py-[0.9vw] lg:text-[1.22vw]">
-                        {item.answer}
-                      </div>
-                    )}
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.28, ease: EASE_OUT_EXPO }}
+                          className="overflow-hidden"
+                        >
+                          <div className="border-t border-[#ebedf3] bg-white px-4 py-3 font-sans text-[13px] leading-[1.45] text-[#5c606b] lg:px-[1.45vw] lg:py-[0.9vw] lg:text-[1.22vw]">
+                            {item.answer}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 );
               })}
             </div>
-          </div>
+          </Reveal>
         </div>
 
         {/* Bottom 4 "Why Choose Us" Numbered Feature Cards */}
-        <div className="mt-5 grid grid-cols-1 gap-3.5 sm:grid-cols-2 lg:mt-[1.5vw] lg:grid-cols-4 lg:gap-[1.35vw]">
+        <StaggerGroup
+          className="mt-5 grid grid-cols-1 gap-3.5 sm:grid-cols-2 lg:mt-[1.5vw] lg:grid-cols-4 lg:gap-[1.35vw]"
+          stagger={0.08}
+        >
           {WHY_CHOOSE_CARDS.map((card) => (
-            <div
-              key={card.number}
-              className="flex items-center gap-3.5 rounded-[12px] border border-[#edf0f5] bg-white px-4 py-3.5 shadow-[0_6px_20px_-6px_rgb(15_23_42/0.06)] lg:gap-[0.95vw] lg:rounded-[1.05vw] lg:px-[1.15vw] lg:py-[1.15vw]"
-            >
-              <span className="grid size-9 shrink-0 place-items-center rounded-full bg-[linear-gradient(135deg,#ff171d_0%,#ff4e15_55%,#ff7a10_100%)] font-sans text-[15px] font-extrabold text-white shadow-[0_4px_12px_rgb(255_55_22/0.35)] lg:size-[3.55vw] lg:text-[1.48vw]">
-                {card.number}
-              </span>
-              <div className="min-w-0">
-                <h4 className="font-sans text-[14.5px] font-extrabold leading-[1.15] tracking-[-0.02em] text-[#090a0d] lg:truncate lg:text-[1.38vw]">
-                  {card.title}
-                </h4>
-                <p className="mt-0.5 font-sans text-[12px] font-normal leading-[1.25] tracking-[-0.01em] text-[#7a7e88] lg:mt-[0.22vw] lg:truncate lg:text-[1.08vw]">
-                  {card.subtitle}
-                </p>
+            <StaggerItem key={card.number} y={18}>
+              <div className="flex h-full items-center gap-3.5 rounded-[12px] border border-[#edf0f5] bg-white px-4 py-3.5 shadow-[0_6px_20px_-6px_rgb(15_23_42/0.06)] transition-transform duration-200 hover:-translate-y-0.5 lg:gap-[0.95vw] lg:rounded-[1.05vw] lg:px-[1.15vw] lg:py-[1.15vw]">
+                <span className="grid size-9 shrink-0 place-items-center rounded-full bg-[linear-gradient(135deg,#ff171d_0%,#ff4e15_55%,#ff7a10_100%)] font-sans text-[15px] font-extrabold text-white shadow-[0_4px_12px_rgb(255_55_22/0.35)] lg:size-[3.55vw] lg:text-[1.48vw]">
+                  {card.number}
+                </span>
+                <div className="min-w-0">
+                  <h4 className="font-sans text-[14.5px] font-extrabold leading-[1.15] tracking-[-0.02em] text-[#090a0d] lg:truncate lg:text-[1.38vw]">
+                    {card.title}
+                  </h4>
+                  <p className="mt-0.5 font-sans text-[12px] font-normal leading-[1.25] tracking-[-0.01em] text-[#7a7e88] lg:mt-[0.22vw] lg:truncate lg:text-[1.08vw]">
+                    {card.subtitle}
+                  </p>
+                </div>
               </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
       </div>
     </section>
   );

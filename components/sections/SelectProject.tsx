@@ -2,6 +2,13 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { AnimatePresence, motion } from "motion/react";
+import {
+  EASE_OUT_EXPO,
+  Reveal,
+  StaggerGroup,
+  StaggerItem,
+} from "@/components/motion/MotionPrimitives";
 
 interface ProjectItem {
   id: number;
@@ -62,7 +69,7 @@ export function SelectProject() {
     >
       <div className="w-full px-6 sm:px-10 lg:px-[2.65vw]">
         {/* Top-Left Section Header: 02 Badge + SELECT A PROJECT */}
-        <div className="flex items-center gap-4 lg:gap-[3.3vw]">
+        <Reveal className="flex items-center gap-4 lg:gap-[3.3vw]" y={18}>
           <span className="grid h-[50px] w-[56px] shrink-0 place-items-center rounded-[11px] border border-[#e3e5eb] bg-[#f5f6f8] font-sans text-[20px] font-extrabold tracking-[-0.03em] text-[#0c0c10] shadow-[0_2px_6px_rgb(15_23_42/0.04)] lg:h-[5.3vw] lg:w-[6.05vw] lg:rounded-[0.95vw] lg:text-[2.15vw]">
             02
           </span>
@@ -77,12 +84,12 @@ export function SelectProject() {
               Click to explore a featured animation.
             </p>
           </div>
-        </div>
+        </Reveal>
 
         {/* Showcase Row: Left 3D-Tilted Featured Player + Right 3 Stacked Thumbnails */}
         <div className="mt-7 grid grid-cols-1 items-center gap-6 lg:mt-[1.1vw] lg:grid-cols-[1fr_21.8vw] lg:gap-[2.1vw]">
           {/* Left Column: Featured Animation Screen with subtle perspective tilt & orange glow */}
-          <div className="relative w-full lg:py-[0.8vw] lg:pl-[0.4vw]">
+          <Reveal className="relative w-full lg:py-[0.8vw] lg:pl-[0.4vw]" y={24} delay={0.06}>
             <div
               onClick={handleNext}
               role="button"
@@ -96,16 +103,26 @@ export function SelectProject() {
               }}
               className="group relative aspect-[16/9] w-full cursor-pointer overflow-hidden rounded-[16px] border-[2.2px] border-[#f48836] bg-[#12131a] shadow-[0_14px_38px_-6px_rgb(255_104_26/0.34),0_0_0_1px_rgb(255_140_66/0.2)] transition-all duration-300 lg:aspect-auto lg:h-[36.2vw] lg:rounded-[1.25vw] lg:[transform:perspective(1500px)_rotateY(6.5deg)_skewY(-1.35deg)] lg:hover:[transform:perspective(1500px)_rotateY(5deg)_skewY(-1deg)_scale(1.005)]"
             >
-              <Image
-                key={activeProject.image}
-                src={activeProject.image}
-                alt={activeProject.alt}
-                fill
-                priority
-                quality={90}
-                sizes="(min-width: 1024px) 72vw, 95vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-              />
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeProject.image}
+                  initial={{ opacity: 0, scale: 1.02 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.99 }}
+                  transition={{ duration: 0.42, ease: EASE_OUT_EXPO }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={activeProject.image}
+                    alt={activeProject.alt}
+                    fill
+                    priority
+                    quality={90}
+                    sizes="(min-width: 1024px) 72vw, 95vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+                </motion.div>
+              </AnimatePresence>
 
               {/* Subtle warm vignette */}
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-black/10" />
@@ -123,37 +140,41 @@ export function SelectProject() {
                 </span>
               </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* Right Column: 3 Stacked Interactive Project Thumbnails */}
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 lg:flex lg:flex-col lg:gap-[1.15vw]">
+          <StaggerGroup
+            className="grid grid-cols-1 gap-4 sm:grid-cols-3 lg:flex lg:flex-col lg:gap-[1.15vw]"
+            stagger={0.09}
+          >
             {sideProjects.map((project) => {
               const originalIndex = PROJECTS.findIndex((p) => p.id === project.id);
               return (
-                <button
-                  key={project.id}
-                  type="button"
-                  onClick={() => setActiveIndex(originalIndex)}
-                  aria-label={`Select project: ${project.title}`}
-                  className="group relative aspect-[16/9] w-full cursor-pointer overflow-hidden rounded-[12px] border-[2px] border-[#ee964b] bg-[#12131a] text-left shadow-[0_10px_24px_-6px_rgb(244_124_42/0.28)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#ff5516] hover:shadow-[0_14px_28px_-6px_rgb(255_85_22/0.42)] lg:aspect-auto lg:h-[11.35vw] lg:rounded-[0.95vw] lg:[transform:perspective(1100px)_rotateY(-5deg)_skewY(-0.9deg)]"
-                >
-                  <Image
-                    src={project.image}
-                    alt={project.alt}
-                    fill
-                    quality={85}
-                    sizes="(min-width: 1024px) 22vw, (min-width: 640px) 32vw, 92vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <span className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-200 group-hover:bg-black/10" />
-                </button>
+                <StaggerItem key={project.id} x={20} y={12}>
+                  <button
+                    type="button"
+                    onClick={() => setActiveIndex(originalIndex)}
+                    aria-label={`Select project: ${project.title}`}
+                    className="group relative aspect-[16/9] w-full cursor-pointer overflow-hidden rounded-[12px] border-[2px] border-[#ee964b] bg-[#12131a] text-left shadow-[0_10px_24px_-6px_rgb(244_124_42/0.28)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#ff5516] hover:shadow-[0_14px_28px_-6px_rgb(255_85_22/0.42)] lg:aspect-auto lg:h-[11.35vw] lg:rounded-[0.95vw] lg:[transform:perspective(1100px)_rotateY(-5deg)_skewY(-0.9deg)]"
+                  >
+                    <Image
+                      src={project.image}
+                      alt={project.alt}
+                      fill
+                      quality={85}
+                      sizes="(min-width: 1024px) 22vw, (min-width: 640px) 32vw, 92vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <span className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-200 group-hover:bg-black/10" />
+                  </button>
+                </StaggerItem>
               );
             })}
-          </div>
+          </StaggerGroup>
         </div>
 
         {/* Bottom Pagination Controls: Prev Arrow + 01 / 04 + Next Arrow */}
-        <div className="mt-8 flex items-center justify-center gap-6 lg:mt-[1.65vw] lg:gap-[3.3vw]">
+        <Reveal className="mt-8 flex items-center justify-center gap-6 lg:mt-[1.65vw] lg:gap-[3.3vw]" y={14} delay={0.14}>
           <button
             type="button"
             onClick={handlePrev}
@@ -196,7 +217,7 @@ export function SelectProject() {
               />
             </svg>
           </button>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

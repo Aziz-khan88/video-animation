@@ -1,4 +1,12 @@
+"use client";
+
 import Image from "next/image";
+import {
+  ParallaxBackground,
+  Reveal,
+  StaggerGroup,
+  StaggerItem,
+} from "@/components/motion/MotionPrimitives";
 
 const SHOWREEL_INDUSTRIES = [
   {
@@ -130,7 +138,10 @@ export function LandingShowreel() {
       className="relative isolate w-full overflow-hidden bg-white py-12 lg:min-h-[56.25vw] lg:py-0"
     >
       {/* Full-bleed 16:9 background artwork with upper-right 3D robot showreel composite */}
-      <div className="pointer-events-none hidden lg:absolute lg:inset-0 lg:-z-10 lg:block">
+      <ParallaxBackground
+        className="pointer-events-none hidden lg:absolute lg:inset-0 lg:-z-10 lg:block"
+        offset={24}
+      >
         <Image
           src="/images/landing-showreel-bg.jpg"
           alt="3D robot character reaching out from a widescreen showreel video player surrounded by floating industry animation frames for education, technology, marketing, and healthcare"
@@ -139,62 +150,76 @@ export function LandingShowreel() {
           sizes="100vw"
           className="object-cover object-center"
         />
-      </div>
+      </ParallaxBackground>
 
       {/* Main Content Container calibrated to the 1024x576 reference */}
       <div className="flex w-full flex-col justify-between px-6 sm:px-10 lg:min-h-[56.25vw] lg:px-[2.65vw] lg:pt-[4.4vw] lg:pb-[3.8vw]">
         {/* Top Row: Left Heading Column + Mobile/Tablet Showreel Preview */}
         <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:pl-[1.45vw]">
-          <div className="max-w-[500px] lg:max-w-[31vw] lg:pt-[3.1vw]">
+          <StaggerGroup
+            className="max-w-[500px] lg:max-w-[31vw] lg:pt-[3.1vw]"
+            stagger={0.09}
+            delayChildren={0.05}
+          >
             {/* 02 — ENTER THE SHOWREEL -> Eyebrow */}
-            <div className="flex items-center gap-3 lg:gap-[0.95vw]">
-              <span className="font-sans text-[18px] font-bold tracking-[-0.02em] text-[#626c7f] lg:text-[1.78vw]">
-                02
-              </span>
-              <span
-                aria-hidden="true"
-                className="h-[1.5px] w-6 shrink-0 bg-[#c8cdd8] lg:w-[2.3vw]"
-              />
-              <p className="whitespace-nowrap font-sans text-[11px] font-bold uppercase tracking-[0.06em] text-[#1b1e26] lg:text-[0.98vw]">
-                ENTER THE SHOWREEL
-              </p>
-              <svg
-                viewBox="0 0 44 12"
-                className="h-3 w-9 shrink-0 text-[#626c7f] lg:h-[0.9vw] lg:w-[3.8vw]"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M1 6h41M37 1.5 42 6l-5 4.5"
-                  stroke="currentColor"
-                  strokeWidth="1.4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+            <StaggerItem>
+              <div className="flex items-center gap-3 lg:gap-[0.95vw]">
+                <span className="font-sans text-[18px] font-bold tracking-[-0.02em] text-[#626c7f] lg:text-[1.78vw]">
+                  02
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="h-[1.5px] w-6 shrink-0 bg-[#c8cdd8] lg:w-[2.3vw]"
                 />
-              </svg>
-            </div>
+                <p className="whitespace-nowrap font-sans text-[11px] font-bold uppercase tracking-[0.06em] text-[#1b1e26] lg:text-[0.98vw]">
+                  ENTER THE SHOWREEL
+                </p>
+                <svg
+                  viewBox="0 0 44 12"
+                  className="h-3 w-9 shrink-0 text-[#626c7f] lg:h-[0.9vw] lg:w-[3.8vw]"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M1 6h41M37 1.5 42 6l-5 4.5"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+            </StaggerItem>
 
             {/* 3-Line Display Heading */}
-            <h2
-              id="landing-showreel-heading"
-              className="mt-4 font-sans text-[clamp(2.1rem,5.25vw,5.4rem)] font-extrabold leading-[0.99] tracking-[-0.045em] text-[#08090c] lg:mt-[1.35vw]"
-            >
-              <span className="block sm:whitespace-nowrap">Every idea</span>
-              <span className="mt-[0.04vw] block sm:whitespace-nowrap">deserves</span>
-              <span className="mt-[0.04vw] block sm:whitespace-nowrap bg-[linear-gradient(90deg,#ef131e_0%,#ff4617_54%,#ff6c10_100%)] bg-clip-text text-transparent">
-                motion.
-              </span>
-            </h2>
+            <StaggerItem>
+              <h2
+                id="landing-showreel-heading"
+                className="mt-4 font-sans text-[clamp(2.1rem,5.25vw,5.4rem)] font-extrabold leading-[0.99] tracking-[-0.045em] text-[#08090c] lg:mt-[1.35vw]"
+              >
+                <span className="block sm:whitespace-nowrap">Every idea</span>
+                <span className="mt-[0.04vw] block sm:whitespace-nowrap">deserves</span>
+                <span className="mt-[0.04vw] block sm:whitespace-nowrap bg-[linear-gradient(90deg,#ef131e_0%,#ff4617_54%,#ff6c10_100%)] bg-clip-text text-transparent">
+                  motion.
+                </span>
+              </h2>
+            </StaggerItem>
 
             {/* 2-Line Subtitle */}
-            <p className="mt-4 font-sans text-[14px] font-normal leading-[1.44] tracking-[-0.01em] text-[#555a68] lg:mt-[1.4vw] lg:text-[1.28vw]">
-              Explore our showreel and see how animation
-              <br className="hidden sm:inline" /> brings ideas to life across six industries.
-            </p>
-          </div>
+            <StaggerItem>
+              <p className="mt-4 font-sans text-[14px] font-normal leading-[1.44] tracking-[-0.01em] text-[#555a68] lg:mt-[1.4vw] lg:text-[1.28vw]">
+                Explore our showreel and see how animation
+                <br className="hidden sm:inline" /> brings ideas to life across six industries.
+              </p>
+            </StaggerItem>
+          </StaggerGroup>
 
           {/* Mobile/Tablet Showreel Player Preview */}
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[18px] shadow-[0_16px_38px_-10px_rgb(15_23_42/0.22)] lg:hidden">
+          <Reveal
+            className="relative aspect-[16/9] w-full overflow-hidden rounded-[18px] shadow-[0_16px_38px_-10px_rgb(15_23_42/0.22)] lg:hidden"
+            y={18}
+            scale={0.97}
+          >
             <Image
               src="/images/landing-showreel-bg.jpg"
               alt="Showreel preview featuring 3D robot character and industry highlights"
@@ -203,47 +228,50 @@ export function LandingShowreel() {
               sizes="95vw"
               className="object-cover object-[88%_25%]"
             />
-          </div>
+          </Reveal>
         </div>
 
         {/* Bottom 6 Industry Cards Row */}
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:mt-auto lg:grid-cols-6 lg:gap-[0.88vw]">
+        <StaggerGroup
+          className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:mt-auto lg:grid-cols-6 lg:gap-[0.88vw]"
+          stagger={0.08}
+          delayChildren={0.1}
+        >
           {SHOWREEL_INDUSTRIES.map((item) => (
-            <article
-              key={item.title}
-              className="group flex flex-col overflow-hidden rounded-[12px] border border-[#eef0f5] bg-white shadow-[0_10px_28px_-8px_rgb(15_23_42/0.12)] transition-transform duration-200 hover:-translate-y-1 lg:rounded-[0.85vw]"
-            >
-              {/* Top 16:10 Industry Thumbnail Image */}
-              <div className="relative aspect-[153/95] w-full overflow-hidden bg-[#0d1220]">
-                <Image
-                  src={item.image}
-                  alt={item.alt}
-                  fill
-                  quality={90}
-                  sizes="(min-width: 1024px) 16vw, (min-width: 768px) 32vw, (min-width: 640px) 48vw, 92vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-
-              {/* Bottom Card Footer: Colored Circular Icon Badge + Title & 3-Word Tagline */}
-              <div className="flex items-center gap-2.5 px-3 py-3 lg:gap-[0.65vw] lg:px-[0.75vw] lg:py-[0.78vw]">
-                <span
-                  className={`grid size-8 shrink-0 place-items-center rounded-full text-white lg:size-[2.85vw] ${item.badgeClass}`}
-                >
-                  {item.icon}
-                </span>
-                <div className="min-w-0">
-                  <h3 className="truncate font-sans text-[14px] font-bold leading-[1.15] tracking-[-0.015em] text-[#0c0d12] lg:text-[1.06vw]">
-                    {item.title}
-                  </h3>
-                  <p className="mt-0.5 truncate font-sans text-[11px] font-normal leading-[1.2] tracking-[-0.01em] text-[#6d7280] lg:mt-[0.18vw] lg:text-[0.74vw]">
-                    {item.subtitle}
-                  </p>
+            <StaggerItem key={item.title} className="h-full">
+              <article className="group flex h-full flex-col overflow-hidden rounded-[12px] border border-[#eef0f5] bg-white shadow-[0_10px_28px_-8px_rgb(15_23_42/0.12)] transition-transform duration-200 hover:-translate-y-1 lg:rounded-[0.85vw]">
+                {/* Top 16:10 Industry Thumbnail Image */}
+                <div className="relative aspect-[153/95] w-full overflow-hidden bg-[#0d1220]">
+                  <Image
+                    src={item.image}
+                    alt={item.alt}
+                    fill
+                    quality={90}
+                    sizes="(min-width: 1024px) 16vw, (min-width: 768px) 32vw, (min-width: 640px) 48vw, 92vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                 </div>
-              </div>
-            </article>
+
+                {/* Bottom Card Footer: Colored Circular Icon Badge + Title & 3-Word Tagline */}
+                <div className="flex items-center gap-2.5 px-3 py-3 lg:gap-[0.65vw] lg:px-[0.75vw] lg:py-[0.78vw]">
+                  <span
+                    className={`grid size-8 shrink-0 place-items-center rounded-full text-white transition-transform duration-300 group-hover:scale-110 lg:size-[2.85vw] ${item.badgeClass}`}
+                  >
+                    {item.icon}
+                  </span>
+                  <div className="min-w-0">
+                    <h3 className="truncate font-sans text-[14px] font-bold leading-[1.15] tracking-[-0.015em] text-[#0c0d12] lg:text-[1.06vw]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-0.5 truncate font-sans text-[11px] font-normal leading-[1.2] tracking-[-0.01em] text-[#6d7280] lg:mt-[0.18vw] lg:text-[0.74vw]">
+                      {item.subtitle}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
       </div>
     </section>
   );

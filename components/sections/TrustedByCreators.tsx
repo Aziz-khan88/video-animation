@@ -2,6 +2,13 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { AnimatePresence, motion } from "motion/react";
+import {
+  EASE_OUT_EXPO,
+  Reveal,
+  StaggerGroup,
+  StaggerItem,
+} from "@/components/motion/MotionPrimitives";
 
 const TESTIMONIALS = [
   {
@@ -67,7 +74,7 @@ export function TrustedByCreators() {
       {/* Framed Rounded Card Container */}
       <div className="relative isolate w-full overflow-hidden rounded-[18px] border-[1.5px] border-[#f28430] bg-white px-5 pt-6 pb-6 shadow-[0_14px_40px_-12px_rgb(15_23_42/0.07)] sm:px-8 lg:rounded-[1.25vw] lg:px-[2.2vw] lg:pt-[2.25vw] lg:pb-[1.85vw]">
         {/* Top Header Row: 10 Badge + TRUSTED BY CREATORS WORLDWIDE */}
-        <div className="flex items-center gap-4 lg:gap-[2.5vw]">
+        <Reveal className="flex items-center gap-4 lg:gap-[2.5vw]" y={18}>
           <span className="grid h-[58px] w-[68px] shrink-0 place-items-center rounded-[13px] bg-[linear-gradient(135deg,#f3271c_0%,#ff5516_55%,#f68d14_100%)] font-sans text-[26px] font-extrabold tracking-[-0.03em] text-white shadow-[0_8px_20px_-6px_rgb(243_39_28/0.45)] lg:h-[6.35vw] lg:w-[7.05vw] lg:rounded-[1.25vw] lg:text-[2.85vw]">
             10
           </span>
@@ -85,7 +92,7 @@ export function TrustedByCreators() {
               Authors, brands and businesses who believe in the power of animation.
             </p>
           </div>
-        </div>
+        </Reveal>
 
         {/* Middle Showcase Row: Left Testimonial Card + Right 4x2 Brand Logos Grid */}
         <div className="relative mt-6 flex flex-col items-center justify-between gap-6 lg:mt-[2.2vw] lg:flex-row lg:items-stretch lg:gap-[1.2vw]">
@@ -108,7 +115,12 @@ export function TrustedByCreators() {
           </button>
 
           {/* Left Testimonial Card */}
-          <article className="relative flex w-full flex-col items-center gap-5 rounded-[16px] border-[1.4px] border-[#f39855] bg-white p-5 shadow-[0_10px_28px_-8px_rgb(243_130_50/0.18)] sm:flex-row lg:h-[18.6vw] lg:w-[42.5vw] lg:shrink-0 lg:gap-[1.5vw] lg:rounded-[1.15vw] lg:px-[1.5vw] lg:py-[1.3vw]">
+          <Reveal
+            as="article"
+            className="relative flex w-full flex-col items-center gap-5 rounded-[16px] border-[1.4px] border-[#f39855] bg-white p-5 shadow-[0_10px_28px_-8px_rgb(243_130_50/0.18)] sm:flex-row lg:h-[18.6vw] lg:w-[42.5vw] lg:shrink-0 lg:gap-[1.5vw] lg:rounded-[1.15vw] lg:px-[1.5vw] lg:py-[1.3vw]"
+            y={22}
+            delay={0.05}
+          >
             {/* Circular Client Portrait */}
             <div className="relative size-[110px] shrink-0 overflow-hidden rounded-full border-[3px] border-white shadow-[0_6px_18px_rgb(0_0_0/0.12)] lg:size-[13.6vw]">
               <Image
@@ -122,60 +134,71 @@ export function TrustedByCreators() {
             </div>
 
             {/* Quote & Author Details */}
-            <div className="relative flex flex-col justify-center text-center sm:text-left">
-              {/* Opening Double Quote Icon */}
-              <svg
-                viewBox="0 0 38 28"
-                className="mx-auto mb-1 h-6 w-8 sm:mx-0 lg:-ml-[1.6vw] lg:mb-[0.1vw] lg:h-[2.6vw] lg:w-[3.5vw]"
-                aria-hidden="true"
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentTestimonial.id}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.3, ease: EASE_OUT_EXPO }}
+                className="relative flex flex-col justify-center text-center sm:text-left"
               >
-                <defs>
-                  <linearGradient id="quote-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#f1221c" />
-                    <stop offset="100%" stopColor="#ff7a14" />
-                  </linearGradient>
-                </defs>
-                <path
-                  d="M14.8 1.6C8.2 4.4 4.2 9.8 4.2 16.5c0 4.8 3.2 8.2 7.4 8.2 4 0 6.8-2.8 6.8-6.5 0-3.6-2.6-6.2-6-6.2-.8 0-1.6.2-2.1.4.7-3.4 3.2-6.4 6.8-8.1L14.8 1.6Zm18 0c-6.6 2.8-10.6 8.2-10.6 14.9 0 4.8 3.2 8.2 7.4 8.2 4 0 6.8-2.8 6.8-6.5 0-3.6-2.6-6.2-6-6.2-.8 0-1.6.2-2.1.4.7-3.4 3.2-6.4 6.8-8.1L32.8 1.6Z"
-                  fill="url(#quote-grad)"
-                />
-              </svg>
+                {/* Opening Double Quote Icon */}
+                <svg
+                  viewBox="0 0 38 28"
+                  className="mx-auto mb-1 h-6 w-8 sm:mx-0 lg:-ml-[1.6vw] lg:mb-[0.1vw] lg:h-[2.6vw] lg:w-[3.5vw]"
+                  aria-hidden="true"
+                >
+                  <defs>
+                    <linearGradient id="quote-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#f1221c" />
+                      <stop offset="100%" stopColor="#ff7a14" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    d="M14.8 1.6C8.2 4.4 4.2 9.8 4.2 16.5c0 4.8 3.2 8.2 7.4 8.2 4 0 6.8-2.8 6.8-6.5 0-3.6-2.6-6.2-6-6.2-.8 0-1.6.2-2.1.4.7-3.4 3.2-6.4 6.8-8.1L14.8 1.6Zm18 0c-6.6 2.8-10.6 8.2-10.6 14.9 0 4.8 3.2 8.2 7.4 8.2 4 0 6.8-2.8 6.8-6.5 0-3.6-2.6-6.2-6-6.2-.8 0-1.6.2-2.1.4.7-3.4 3.2-6.4 6.8-8.1L32.8 1.6Z"
+                    fill="url(#quote-grad)"
+                  />
+                </svg>
 
-              <blockquote className="font-sans text-[14px] font-normal leading-[1.42] tracking-[-0.01em] text-[#22252f] lg:text-[1.22vw]">
-                {currentTestimonial.quote}
-              </blockquote>
+                <blockquote className="font-sans text-[14px] font-normal leading-[1.42] tracking-[-0.01em] text-[#22252f] lg:text-[1.22vw]">
+                  {currentTestimonial.quote}
+                </blockquote>
 
-              <div className="mt-3 lg:mt-[1.05vw]">
-                <p className="font-sans text-[16px] font-extrabold leading-tight tracking-[-0.02em] text-[#0c0c10] lg:text-[1.48vw]">
-                  {currentTestimonial.name}
-                </p>
-                <p className="mt-0.5 font-sans text-[13px] font-normal leading-tight text-[#727682] lg:mt-[0.2vw] lg:text-[1.22vw]">
-                  {currentTestimonial.role}
-                </p>
-              </div>
-            </div>
-          </article>
+                <div className="mt-3 lg:mt-[1.05vw]">
+                  <p className="font-sans text-[16px] font-extrabold leading-tight tracking-[-0.02em] text-[#0c0c10] lg:text-[1.48vw]">
+                    {currentTestimonial.name}
+                  </p>
+                  <p className="mt-0.5 font-sans text-[13px] font-normal leading-tight text-[#727682] lg:mt-[0.2vw] lg:text-[1.22vw]">
+                    {currentTestimonial.role}
+                  </p>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </Reveal>
 
           {/* Right 4x2 Brand Logos Grid */}
-          <div className="grid w-full grid-cols-2 gap-3 sm:grid-cols-4 lg:w-[48.5vw] lg:gap-[0.95vw]">
+          <StaggerGroup
+            className="grid w-full grid-cols-2 gap-3 sm:grid-cols-4 lg:w-[48.5vw] lg:gap-[0.95vw]"
+            stagger={0.06}
+          >
             {BRAND_LOGOS.map((brand) => (
-              <div
-                key={brand.name}
-                className="flex h-[82px] items-center justify-center overflow-hidden rounded-[10px] border border-[#f0f1f5] bg-white p-2 shadow-[0_6px_20px_-6px_rgb(15_23_42/0.09)] transition-transform duration-200 hover:-translate-y-0.5 lg:h-[8.8vw] lg:rounded-[0.78vw] lg:p-[0.5vw]"
-              >
-                <div className="relative h-full w-full">
-                  <Image
-                    src={brand.image}
-                    alt={brand.name}
-                    fill
-                    quality={90}
-                    sizes="(min-width: 1024px) 11vw, (min-width: 640px) 22vw, 44vw"
-                    className="object-contain"
-                  />
+              <StaggerItem key={brand.name} y={16}>
+                <div className="flex h-[82px] items-center justify-center overflow-hidden rounded-[10px] border border-[#f0f1f5] bg-white p-2 shadow-[0_6px_20px_-6px_rgb(15_23_42/0.09)] transition-transform duration-200 hover:-translate-y-0.5 lg:h-[8.8vw] lg:rounded-[0.78vw] lg:p-[0.5vw]">
+                  <div className="relative h-full w-full">
+                    <Image
+                      src={brand.image}
+                      alt={brand.name}
+                      fill
+                      quality={90}
+                      sizes="(min-width: 1024px) 11vw, (min-width: 640px) 22vw, 44vw"
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
 
           {/* Right Circular Next Arrow Button */}
           <button

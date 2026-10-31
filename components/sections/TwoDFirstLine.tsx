@@ -1,4 +1,12 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "motion/react";
+import {
+  EASE_OUT_EXPO,
+  ParallaxBackground,
+  Reveal,
+} from "@/components/motion/MotionPrimitives";
 
 export function TwoDFirstLine() {
   return (
@@ -10,7 +18,7 @@ export function TwoDFirstLine() {
       {/* Full-width overlay layout calibrated to the 1024x576 reference coordinates */}
       <div className="flex w-full flex-col justify-between gap-6 px-6 py-8 sm:px-10 lg:h-[56.25vw] lg:px-[3.1vw] lg:pt-[3.1vw] lg:pb-[6.2vw]">
         {/* Top-Left: 02 Badge + THE FIRST LINE + Subtitle */}
-        <div className="relative z-10 flex items-center gap-4 lg:gap-[2.15vw]">
+        <Reveal className="relative z-10 flex items-center gap-4 lg:gap-[2.15vw]" y={20}>
           <span className="grid h-[52px] w-[54px] shrink-0 place-items-center rounded-[12px] bg-[linear-gradient(135deg,#ff171d_0%,#ff4b16_55%,#ff7610_100%)] font-sans text-[22px] font-extrabold tracking-[-0.02em] text-white shadow-[0_8px_20px_-4px_rgb(255_55_22/0.45)] lg:h-[6.4vw] lg:w-[6.6vw] lg:rounded-[1.15vw] lg:text-[2.6vw]">
             02
           </span>
@@ -25,10 +33,13 @@ export function TwoDFirstLine() {
               It all starts with a simple idea.
             </p>
           </div>
-        </div>
+        </Reveal>
 
         {/* Full-width 16:9 animator's sketch & red pencil artwork (inline on mobile/tablet, full-bleed background on desktop) */}
-        <div className="pointer-events-none relative -mx-6 aspect-[16/9] w-[calc(100%+3rem)] overflow-hidden sm:-mx-10 sm:w-[calc(100%+5rem)] lg:absolute lg:inset-0 lg:-z-10 lg:mx-0 lg:aspect-auto lg:w-full">
+        <ParallaxBackground
+          className="pointer-events-none relative -mx-6 aspect-[16/9] w-[calc(100%+3rem)] overflow-hidden sm:-mx-10 sm:w-[calc(100%+5rem)] lg:absolute lg:inset-0 lg:-z-10 lg:mx-0 lg:aspect-auto lg:w-full"
+          offset={22}
+        >
           <Image
             src="/images/two-d-first-line-bg.jpg"
             alt="Animator's hand holding a bright red pencil sketching a joyful young adventurer girl on cream construction-grid paper, with a full-body pose study on the left and a sweeping red-orange line flourish"
@@ -37,10 +48,10 @@ export function TwoDFirstLine() {
             sizes="100vw"
             className="object-cover object-center"
           />
-        </div>
+        </ParallaxBackground>
 
         {/* Bottom-Right: Hand-drawn curved orange arrow + 3-Line Display Quote */}
-        <div className="relative z-10 self-end lg:mr-[0.65vw]">
+        <Reveal className="relative z-10 self-end lg:mr-[0.65vw]" y={24} delay={0.14}>
           <div className="relative flex items-end gap-3 lg:gap-[1.15vw]">
             {/* Hand-drawn curved orange arrow pointing into "of possibilities." */}
             <svg
@@ -49,18 +60,26 @@ export function TwoDFirstLine() {
               aria-hidden="true"
               className="mb-1 h-10 w-14 shrink-0 text-[#f57919] lg:mb-[0.3vw] lg:h-[5.4vw] lg:w-[8.1vw]"
             >
-              <path
+              <motion.path
                 d="M7 10c7 29 37 44 76 26"
                 stroke="currentColor"
                 strokeWidth="5.5"
                 strokeLinecap="round"
+                initial={{ pathLength: 0, opacity: 0 }}
+                whileInView={{ pathLength: 1, opacity: 1 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.9, delay: 0.2, ease: EASE_OUT_EXPO }}
               />
-              <path
+              <motion.path
                 d="M65 25c9 1 17 4 21 9-4 6-8 14-10 22"
                 stroke="currentColor"
                 strokeWidth="5.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                initial={{ pathLength: 0, opacity: 0 }}
+                whileInView={{ pathLength: 1, opacity: 1 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.55, delay: 0.72, ease: EASE_OUT_EXPO }}
               />
             </svg>
 
@@ -76,7 +95,7 @@ export function TwoDFirstLine() {
               </span>
             </p>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

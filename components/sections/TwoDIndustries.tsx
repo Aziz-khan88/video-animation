@@ -1,5 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import {
+  Reveal,
+  StaggerGroup,
+  StaggerItem,
+} from "@/components/motion/MotionPrimitives";
 
 const INDUSTRIES = [
   {
@@ -42,7 +49,7 @@ export function TwoDIndustries() {
       className="relative isolate w-full overflow-hidden bg-white py-8 lg:min-h-[56.25vw] lg:py-0"
     >
       {/* Top-Left Header: 09 Badge + INDUSTRIES + Subtitle */}
-      <div className="w-full px-6 pt-2 sm:px-10 lg:px-[2.45vw] lg:pt-[2.1vw]">
+      <Reveal className="w-full px-6 pt-2 sm:px-10 lg:px-[2.45vw] lg:pt-[2.1vw]" y={18}>
         <div className="flex items-center gap-4 lg:gap-[2.05vw]">
           <span className="grid h-[48px] w-[50px] shrink-0 place-items-center rounded-[12px] bg-[linear-gradient(135deg,#ff171d_0%,#ff4b16_55%,#ff7610_100%)] font-sans text-[20px] font-extrabold tracking-[-0.02em] text-white shadow-[0_8px_20px_-4px_rgb(255_55_22/0.45)] lg:h-[5.85vw] lg:w-[6.05vw] lg:rounded-[1.1vw] lg:text-[2.35vw]">
             09
@@ -59,58 +66,60 @@ export function TwoDIndustries() {
             </p>
           </div>
         </div>
-      </div>
+      </Reveal>
 
       {/* 3x2 Industry Cards Grid */}
       <div className="mt-5 w-full px-6 sm:px-10 lg:mt-[1.4vw] lg:px-[2.45vw]">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-[1.65vw] lg:gap-y-[1.35vw]">
+        <StaggerGroup
+          className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-[1.65vw] lg:gap-y-[1.35vw]"
+          stagger={0.08}
+        >
           {INDUSTRIES.map((industry) => (
-            <article
-              key={industry.title}
-              className="group flex flex-col rounded-[14px] border border-[#edf0f5] bg-white p-1.5 shadow-[0_8px_24px_-6px_rgb(15_23_42/0.09)] transition-transform duration-200 hover:-translate-y-0.5 lg:rounded-[1.1vw] lg:p-[0.55vw]"
-            >
-              {/* Top Rounded Artwork Panel */}
-              <div className="relative aspect-[300/141] w-full overflow-hidden rounded-[10px] bg-[#f4f6fa] lg:aspect-auto lg:h-[13.8vw] lg:rounded-[0.8vw]">
-                <Image
-                  src={industry.image}
-                  alt={industry.alt}
-                  fill
-                  quality={92}
-                  sizes="(min-width: 1024px) 30vw, (min-width: 640px) 46vw, 92vw"
-                  className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
+            <StaggerItem key={industry.title} y={22}>
+              <article className="group flex h-full flex-col rounded-[14px] border border-[#edf0f5] bg-white p-1.5 shadow-[0_8px_24px_-6px_rgb(15_23_42/0.09)] transition-transform duration-300 hover:-translate-y-1 lg:rounded-[1.1vw] lg:p-[0.55vw]">
+                {/* Top Rounded Artwork Panel */}
+                <div className="relative aspect-[300/141] w-full overflow-hidden rounded-[10px] bg-[#f4f6fa] lg:aspect-auto lg:h-[13.8vw] lg:rounded-[0.8vw]">
+                  <Image
+                    src={industry.image}
+                    alt={industry.alt}
+                    fill
+                    quality={92}
+                    sizes="(min-width: 1024px) 30vw, (min-width: 640px) 46vw, 92vw"
+                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
 
-              {/* Bottom Title + Circular Red-Orange Arrow Button */}
-              <div className="flex items-center justify-between gap-2 px-2.5 pt-2.5 pb-1.5 lg:px-[0.8vw] lg:pt-[0.85vw] lg:pb-[0.45vw]">
-                <h3 className="truncate font-sans text-[15px] font-extrabold tracking-[-0.02em] text-[#090a0d] lg:text-[1.42vw]">
-                  {industry.title}
-                </h3>
+                {/* Bottom Title + Circular Red-Orange Arrow Button */}
+                <div className="flex items-center justify-between gap-2 px-2.5 pt-2.5 pb-1.5 lg:px-[0.8vw] lg:pt-[0.85vw] lg:pb-[0.45vw]">
+                  <h3 className="truncate font-sans text-[15px] font-extrabold tracking-[-0.02em] text-[#090a0d] lg:text-[1.42vw]">
+                    {industry.title}
+                  </h3>
 
-                <Link
-                  href="#work"
-                  aria-label={`Explore ${industry.title}`}
-                  className="grid size-8 shrink-0 place-items-center rounded-full bg-[linear-gradient(135deg,#ff171d_0%,#ff4e15_55%,#ff7a10_100%)] text-white shadow-[0_4px_12px_rgb(255_55_22/0.35)] transition-transform duration-200 group-hover:scale-105 lg:size-[3.05vw]"
-                >
-                  <svg
-                    viewBox="0 0 20 20"
-                    className="size-4 lg:size-[1.45vw]"
-                    fill="none"
-                    aria-hidden="true"
+                  <Link
+                    href="#work"
+                    aria-label={`Explore ${industry.title}`}
+                    className="grid size-8 shrink-0 place-items-center rounded-full bg-[linear-gradient(135deg,#ff171d_0%,#ff4e15_55%,#ff7a10_100%)] text-white shadow-[0_4px_12px_rgb(255_55_22/0.35)] transition-transform duration-200 group-hover:scale-105 lg:size-[3.05vw]"
                   >
-                    <path
-                      d="M4.5 10h11M11 5.5 15.5 10 11 14.5"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </Link>
-              </div>
-            </article>
+                    <svg
+                      viewBox="0 0 20 20"
+                      className="size-4 transition-transform duration-200 group-hover:translate-x-0.5 lg:size-[1.45vw]"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M4.5 10h11M11 5.5 15.5 10 11 14.5"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </Link>
+                </div>
+              </article>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
       </div>
     </section>
   );

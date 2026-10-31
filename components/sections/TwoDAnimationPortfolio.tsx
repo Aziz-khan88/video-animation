@@ -3,6 +3,13 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { AnimatePresence, motion } from "motion/react";
+import {
+  EASE_OUT_EXPO,
+  Reveal,
+  StaggerGroup,
+  StaggerItem,
+} from "@/components/motion/MotionPrimitives";
 
 const CAROUSEL_SLIDES = [
   {
@@ -116,7 +123,7 @@ export function TwoDAnimationPortfolio() {
       {/* Framed Rounded Card Container */}
       <div className="relative isolate w-full overflow-hidden rounded-[18px] border-[1.5px] border-[#ee8d43] bg-white pt-6 pb-6 shadow-[0_14px_40px_-12px_rgb(15_23_42/0.07)] lg:rounded-[1.25vw] lg:pt-[1.6vw] lg:pb-[1.8vw]">
         {/* Row 1: 05 Badge + 2D ANIMATION PORTFOLIO on Left, View All Button on Right */}
-        <div className="flex flex-wrap items-center justify-between gap-4 px-5 sm:px-8 lg:px-[1.55vw]">
+        <Reveal className="flex flex-wrap items-center justify-between gap-4 px-5 sm:px-8 lg:px-[1.55vw]" y={18}>
           <div className="flex items-center gap-4 lg:gap-[2.9vw]">
             <span className="grid h-[56px] w-[66px] shrink-0 place-items-center rounded-[13px] bg-[linear-gradient(135deg,#f3271c_0%,#ff5516_55%,#f68d14_100%)] font-sans text-[24px] font-extrabold tracking-[-0.03em] text-white shadow-[0_8px_20px_-6px_rgb(243_39_28/0.45)] lg:h-[6.35vw] lg:w-[7.22vw] lg:rounded-[1.25vw] lg:text-[2.6vw]">
               05
@@ -136,10 +143,10 @@ export function TwoDAnimationPortfolio() {
 
           <Link
             href="#all-projects"
-            className="inline-flex h-[42px] items-center justify-center gap-3 rounded-full border-[1.4px] border-[#ca5b38] bg-white px-6 font-sans text-[14px] font-bold tracking-[-0.01em] text-[#d9331a] shadow-[0_2px_8px_rgb(217_51_26/0.08)] transition-all hover:-translate-y-0.5 hover:bg-[#fff5f2] lg:h-[4.78vw] lg:w-[18.1vw] lg:gap-[1.5vw] lg:px-0 lg:text-[1.48vw]"
+            className="group inline-flex h-[42px] items-center justify-center gap-3 rounded-full border-[1.4px] border-[#ca5b38] bg-white px-6 font-sans text-[14px] font-bold tracking-[-0.01em] text-[#d9331a] shadow-[0_2px_8px_rgb(217_51_26/0.08)] transition-all hover:-translate-y-0.5 hover:bg-[#fff5f2] lg:h-[4.78vw] lg:w-[18.1vw] lg:gap-[1.5vw] lg:px-0 lg:text-[1.48vw]"
           >
             <span>View All</span>
-            <svg viewBox="0 0 20 20" className="size-4 lg:size-[1.5vw]" fill="none" aria-hidden="true">
+            <svg viewBox="0 0 20 20" className="size-4 transition-transform duration-200 group-hover:translate-x-0.5 lg:size-[1.5vw]" fill="none" aria-hidden="true">
               <path
                 d="M4.2 10h11.6M10.8 5l5 5-5 5"
                 stroke="currentColor"
@@ -149,10 +156,10 @@ export function TwoDAnimationPortfolio() {
               />
             </svg>
           </Link>
-        </div>
+        </Reveal>
 
         {/* Row 2: 3D Side-Peek + Dual Featured Cards Carousel Row */}
-        <div className="relative mt-5 flex items-center justify-between px-5 sm:px-8 lg:mt-[1.46vw] lg:px-0">
+        <Reveal className="relative mt-5 flex items-center justify-between px-5 sm:px-8 lg:mt-[1.46vw] lg:px-0" y={22} delay={0.06}>
           {/* Far-Left 3D Perspective Side Peek Panel (Desktop) */}
           <div
             onClick={handlePrev}
@@ -190,27 +197,47 @@ export function TwoDAnimationPortfolio() {
           {/* Center 2 Large Featured Cards */}
           <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:mx-auto lg:w-[81.5vw] lg:grid-cols-[42.1vw_38.4vw] lg:gap-[1vw]">
             <article className="group relative aspect-[16/10] w-full overflow-hidden rounded-[13px] border-[1.6px] border-[#ee964b] bg-[#12131a] shadow-[0_12px_28px_-8px_rgb(15_23_42/0.22)] lg:aspect-auto lg:h-[25vw] lg:rounded-[1vw]">
-              <Image
-                key={currentSlide.leftMain.image}
-                src={currentSlide.leftMain.image}
-                alt={currentSlide.leftMain.alt}
-                fill
-                quality={90}
-                sizes="(min-width: 1024px) 43vw, (min-width: 768px) 48vw, 95vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-              />
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentSlide.leftMain.image}
+                  initial={{ opacity: 0, scale: 1.02 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.99 }}
+                  transition={{ duration: 0.4, ease: EASE_OUT_EXPO }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={currentSlide.leftMain.image}
+                    alt={currentSlide.leftMain.alt}
+                    fill
+                    quality={90}
+                    sizes="(min-width: 1024px) 43vw, (min-width: 768px) 48vw, 95vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                </motion.div>
+              </AnimatePresence>
             </article>
 
             <article className="group relative aspect-[16/10] w-full overflow-hidden rounded-[13px] border-[1.6px] border-[#ee964b] bg-[#12131a] shadow-[0_12px_28px_-8px_rgb(15_23_42/0.22)] lg:aspect-auto lg:h-[25vw] lg:rounded-[1vw]">
-              <Image
-                key={currentSlide.rightMain.image}
-                src={currentSlide.rightMain.image}
-                alt={currentSlide.rightMain.alt}
-                fill
-                quality={90}
-                sizes="(min-width: 1024px) 39vw, (min-width: 768px) 48vw, 95vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-              />
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentSlide.rightMain.image}
+                  initial={{ opacity: 0, scale: 1.02 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.99 }}
+                  transition={{ duration: 0.4, ease: EASE_OUT_EXPO }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={currentSlide.rightMain.image}
+                    alt={currentSlide.rightMain.alt}
+                    fill
+                    quality={90}
+                    sizes="(min-width: 1024px) 39vw, (min-width: 768px) 48vw, 95vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                </motion.div>
+              </AnimatePresence>
             </article>
           </div>
 
@@ -247,7 +274,7 @@ export function TwoDAnimationPortfolio() {
               className="object-cover"
             />
           </div>
-        </div>
+        </Reveal>
 
         {/* Row 3: Carousel Pagination Indicator Dots */}
         <div className="mt-4 flex items-center justify-center gap-2.5 lg:mt-[1.15vw] lg:gap-[1.35vw]">
@@ -275,33 +302,37 @@ export function TwoDAnimationPortfolio() {
         </div>
 
         {/* Row 4: Bottom 4 2D Animation Thumbnail Cards */}
-        <div className="mt-4 grid grid-cols-1 gap-3.5 px-5 sm:grid-cols-2 sm:px-8 lg:mt-[1.15vw] lg:grid-cols-4 lg:gap-[1.15vw] lg:px-[1.15vw]">
+        <StaggerGroup
+          className="mt-4 grid grid-cols-1 gap-3.5 px-5 sm:grid-cols-2 sm:px-8 lg:mt-[1.15vw] lg:grid-cols-4 lg:gap-[1.15vw] lg:px-[1.15vw]"
+          stagger={0.08}
+        >
           {BOTTOM_THUMBNAILS.map((thumb, idx) => {
             const isSelected = activeSlide === idx;
             return (
-              <button
-                key={thumb.id}
-                type="button"
-                onClick={() => setActiveSlide(idx)}
-                aria-label={`Select 2D animation project: ${thumb.title}`}
-                className={`group relative aspect-[236/123] w-full cursor-pointer overflow-hidden rounded-[11px] border-[1.5px] bg-[#12131a] text-left shadow-[0_8px_20px_-6px_rgb(15_23_42/0.18)] transition-all duration-200 hover:-translate-y-1 lg:aspect-auto lg:h-[12.1vw] lg:rounded-[0.85vw] ${
-                  isSelected
-                    ? "border-[#ff4b18] ring-2 ring-[#ff4b18]/25"
-                    : "border-[#ee964b] hover:border-[#ff4b18]"
-                }`}
-              >
-                <Image
-                  src={thumb.image}
-                  alt={thumb.alt}
-                  fill
-                  quality={85}
-                  sizes="(min-width: 1024px) 24vw, (min-width: 640px) 48vw, 95vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </button>
+              <StaggerItem key={thumb.id} y={18}>
+                <button
+                  type="button"
+                  onClick={() => setActiveSlide(idx)}
+                  aria-label={`Select 2D animation project: ${thumb.title}`}
+                  className={`group relative aspect-[236/123] w-full cursor-pointer overflow-hidden rounded-[11px] border-[1.5px] bg-[#12131a] text-left shadow-[0_8px_20px_-6px_rgb(15_23_42/0.18)] transition-all duration-200 hover:-translate-y-1 lg:aspect-auto lg:h-[12.1vw] lg:rounded-[0.85vw] ${
+                    isSelected
+                      ? "border-[#ff4b18] ring-2 ring-[#ff4b18]/25"
+                      : "border-[#ee964b] hover:border-[#ff4b18]"
+                  }`}
+                >
+                  <Image
+                    src={thumb.image}
+                    alt={thumb.alt}
+                    fill
+                    quality={85}
+                    sizes="(min-width: 1024px) 24vw, (min-width: 640px) 48vw, 95vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </button>
+              </StaggerItem>
             );
           })}
-        </div>
+        </StaggerGroup>
       </div>
     </section>
   );

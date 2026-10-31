@@ -1,4 +1,13 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "motion/react";
+import {
+  EASE_OUT_EXPO,
+  Reveal,
+  StaggerGroup,
+  StaggerItem,
+} from "@/components/motion/MotionPrimitives";
 
 const PROCESS_STEPS = [
   {
@@ -103,7 +112,7 @@ export function BehindTheFrames() {
       {/* Framed Rounded Card Container */}
       <div className="relative isolate w-full overflow-hidden rounded-[18px] border-[1.5px] border-[#ee8d43] bg-white px-5 pt-6 pb-6 shadow-[0_14px_40px_-12px_rgb(15_23_42/0.07)] sm:px-8 lg:rounded-[1.25vw] lg:px-[1.08vw] lg:pt-[1.46vw] lg:pb-[1.6vw]">
         {/* Top-Left Header Row: 09 Badge + BEHIND THE FRAMES */}
-        <div className="relative z-20 flex items-center gap-4 lg:max-w-[54vw] lg:gap-[3.3vw] lg:pl-[0.1vw]">
+        <Reveal className="relative z-20 flex items-center gap-4 lg:max-w-[54vw] lg:gap-[3.3vw] lg:pl-[0.1vw]" y={18}>
           <span className="grid h-[56px] w-[66px] shrink-0 place-items-center rounded-[13px] bg-[linear-gradient(135deg,#f3271c_0%,#ff5516_55%,#f68d14_100%)] font-sans text-[24px] font-extrabold tracking-[-0.03em] text-white shadow-[0_8px_20px_-6px_rgb(243_39_28/0.45)] lg:h-[6.35vw] lg:w-[7.22vw] lg:rounded-[1.25vw] lg:text-[2.6vw]">
             09
           </span>
@@ -118,10 +127,15 @@ export function BehindTheFrames() {
               From concept to final animation.
             </p>
           </div>
-        </div>
+        </Reveal>
 
         {/* Middle Split-Stage Artwork Banner (Sketch on Left -> Full 3D Color on Right) */}
-        <div className="relative z-10 mt-5 aspect-[984/372] w-full overflow-hidden rounded-[12px] lg:-mt-[3.4vw] lg:rounded-[0.95vw]">
+        <Reveal
+          className="relative z-10 mt-5 aspect-[984/372] w-full overflow-hidden rounded-[12px] lg:-mt-[3.4vw] lg:rounded-[0.95vw]"
+          y={20}
+          scale={0.985}
+          delay={0.08}
+        >
           <Image
             src="/images/portfolio-behind-frames.jpg"
             alt="Split-screen animation comparison showing a hand-drawn pencil concept sketch on the left transitioning into a vibrant full-color 3D animated girl and golden puppy in a sunlit meadow on the right"
@@ -130,24 +144,34 @@ export function BehindTheFrames() {
             sizes="(min-width: 1024px) 96vw, 100vw"
             className="object-contain object-center"
           />
-        </div>
+        </Reveal>
 
         {/* Bottom 5-Step Process Timeline */}
         <div className="relative z-20 mt-6 lg:mt-[1.15vw] lg:px-[4.8vw]">
-          {/* Horizontal Connecting Line (Desktop) */}
-          <span
+          {/* Animated Horizontal Connecting Line (Desktop) */}
+          <motion.span
             aria-hidden="true"
-            className="pointer-events-none absolute top-[2.68vw] right-[8.5vw] left-[8.5vw] hidden h-[2px] bg-gradient-to-r from-[#eb4a22] via-[#ef7e22] to-[#e43b20] lg:block"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 1.05, delay: 0.15, ease: EASE_OUT_EXPO }}
+            className="pointer-events-none absolute top-[2.68vw] right-[8.5vw] left-[8.5vw] hidden h-[2px] origin-left bg-gradient-to-r from-[#eb4a22] via-[#ef7e22] to-[#e43b20] lg:block"
           />
 
-          <ol className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:flex lg:items-start lg:justify-between">
+          <StaggerGroup
+            as="ol"
+            className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:flex lg:items-start lg:justify-between"
+            stagger={0.1}
+          >
             {PROCESS_STEPS.map((step) => (
-              <li
+              <StaggerItem
                 key={step.number}
-                className="relative z-10 flex flex-col items-center text-center last:col-span-2 sm:last:col-span-1 lg:w-[11vw]"
+                as="li"
+                y={18}
+                className="group relative z-10 flex flex-col items-center text-center last:col-span-2 sm:last:col-span-1 lg:w-[11vw]"
               >
                 <span
-                  className={`grid size-[52px] place-items-center rounded-full border-[2.5px] bg-white shadow-[0_6px_16px_-4px_rgb(242_100_27/0.25)] lg:size-[5.35vw] lg:border-[0.26vw] ${step.ringClass}`}
+                  className={`grid size-[52px] place-items-center rounded-full border-[2.5px] bg-white shadow-[0_6px_16px_-4px_rgb(242_100_27/0.25)] transition-transform duration-200 group-hover:-translate-y-1 lg:size-[5.35vw] lg:border-[0.26vw] ${step.ringClass}`}
                 >
                   {step.icon}
                 </span>
@@ -157,9 +181,9 @@ export function BehindTheFrames() {
                 <span className="mt-1 font-sans text-[14px] font-normal leading-tight text-[#686b75] lg:mt-[0.28vw] lg:text-[1.42vw]">
                   {step.label}
                 </span>
-              </li>
+              </StaggerItem>
             ))}
-          </ol>
+          </StaggerGroup>
         </div>
       </div>
     </section>

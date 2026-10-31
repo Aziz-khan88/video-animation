@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { AnimatePresence, motion } from "motion/react";
+import { EASE_OUT_EXPO, Reveal } from "@/components/motion/MotionPrimitives";
 
 const CATEGORIES = [
   "All",
@@ -144,7 +146,7 @@ export function AllProjects() {
       {/* Framed Rounded Card Container */}
       <div className="relative isolate w-full overflow-hidden rounded-[18px] border-[1.5px] border-[#ee8d43] bg-white px-5 pt-6 pb-6 shadow-[0_14px_40px_-12px_rgb(15_23_42/0.07)] sm:px-8 lg:rounded-[1.25vw] lg:px-[1.18vw] lg:pt-[1.85vw] lg:pb-[1.85vw]">
         {/* Row 1: 08 Badge + ALL PROJECTS Header on Left, Search Input on Right */}
-        <div className="flex flex-wrap items-center justify-between gap-4">
+        <Reveal className="flex flex-wrap items-center justify-between gap-4" y={18}>
           <div className="flex items-center gap-4 lg:gap-[2.9vw]">
             <span className="grid h-[54px] w-[62px] shrink-0 place-items-center rounded-[12px] bg-[linear-gradient(135deg,#f3271c_0%,#ff5516_55%,#f68d14_100%)] font-sans text-[23px] font-extrabold tracking-[-0.03em] text-white shadow-[0_8px_20px_-6px_rgb(243_39_28/0.45)] lg:ml-[0.5vw] lg:h-[6.05vw] lg:w-[6.05vw] lg:rounded-[1.15vw] lg:text-[2.45vw]">
               08
@@ -182,10 +184,10 @@ export function AllProjects() {
               className="w-full bg-transparent font-sans text-[14px] font-normal text-[#14151a] placeholder:text-[#7c808b] focus:outline-none lg:text-[1.45vw]"
             />
           </label>
-        </div>
+        </Reveal>
 
         {/* Row 2: Category Filter Pills + Grid View Toggle Buttons */}
-        <div className="mt-5 flex flex-wrap items-center justify-between gap-3 lg:mt-[1.46vw] lg:px-[0.5vw]">
+        <Reveal className="mt-5 flex flex-wrap items-center justify-between gap-3 lg:mt-[1.46vw] lg:px-[0.5vw]" y={14} delay={0.06}>
           <div
             role="tablist"
             aria-label="Project categories"
@@ -241,16 +243,21 @@ export function AllProjects() {
               <GridNineIcon />
             </button>
           </div>
-        </div>
+        </Reveal>
 
         {/* Projects Grid */}
         {isDefaultAllView ? (
           <div className="mt-5 lg:mt-[1.46vw] lg:px-[0.5vw]">
             {/* Row 1: 5 Cards */}
             <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 lg:gap-[1.05vw]">
-              {topRowProjects.map((project) => (
-                <article
+              {topRowProjects.map((project, index) => (
+                <motion.article
                   key={project.id}
+                  layout
+                  initial={{ opacity: 0, y: 20, scale: 0.97 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, amount: 0.12 }}
+                  transition={{ duration: 0.55, delay: index * 0.06, ease: EASE_OUT_EXPO }}
                   className="group relative aspect-[190/145] w-full cursor-pointer overflow-hidden rounded-[11px] border-[1.4px] border-[#ee964b] bg-[#f6f7f9] shadow-[0_8px_20px_-6px_rgb(15_23_42/0.16)] transition-all duration-200 hover:-translate-y-1 hover:border-[#ff4b18] hover:shadow-[0_14px_28px_-6px_rgb(255_75_24/0.28)] lg:aspect-auto lg:h-[14.25vw] lg:rounded-[0.85vw]"
                 >
                   <Image
@@ -261,15 +268,20 @@ export function AllProjects() {
                     sizes="(min-width: 1024px) 19vw, (min-width: 768px) 32vw, (min-width: 640px) 48vw, 95vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                </article>
+                </motion.article>
               ))}
             </div>
 
             {/* Row 2: 4 Wide Cards */}
             <div className="mt-3.5 grid grid-cols-1 gap-3.5 sm:grid-cols-2 lg:mt-[1.15vw] lg:grid-cols-4 lg:gap-[1.05vw]">
-              {bottomRowProjects.map((project) => (
-                <article
+              {bottomRowProjects.map((project, index) => (
+                <motion.article
                   key={project.id}
+                  layout
+                  initial={{ opacity: 0, y: 20, scale: 0.97 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, amount: 0.12 }}
+                  transition={{ duration: 0.55, delay: 0.12 + index * 0.07, ease: EASE_OUT_EXPO }}
                   className="group relative aspect-[235/155] w-full cursor-pointer overflow-hidden rounded-[11px] border-[1.4px] border-[#ee964b] bg-[#12131a] shadow-[0_8px_20px_-6px_rgb(15_23_42/0.2)] transition-all duration-200 hover:-translate-y-1 hover:border-[#ff4b18] hover:shadow-[0_14px_28px_-6px_rgb(255_75_24/0.28)] lg:aspect-auto lg:h-[15.2vw] lg:rounded-[0.85vw]"
                 >
                   <Image
@@ -280,27 +292,34 @@ export function AllProjects() {
                     sizes="(min-width: 1024px) 24vw, (min-width: 640px) 48vw, 95vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                </article>
+                </motion.article>
               ))}
             </div>
           </div>
         ) : (
           <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:mt-[1.46vw] lg:grid-cols-4 lg:gap-[1.05vw] lg:px-[0.5vw]">
-            {filteredProjects.map((project) => (
-              <article
-                key={project.id}
-                className="group relative aspect-[16/10] w-full cursor-pointer overflow-hidden rounded-[11px] border-[1.4px] border-[#ee964b] bg-[#12131a] shadow-[0_8px_20px_-6px_rgb(15_23_42/0.18)] transition-all duration-200 hover:-translate-y-1 hover:border-[#ff4b18] lg:rounded-[0.85vw]"
-              >
-                <Image
-                  src={project.image}
-                  alt={project.alt}
-                  fill
-                  quality={85}
-                  sizes="(min-width: 1024px) 24vw, (min-width: 640px) 48vw, 95vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </article>
-            ))}
+            <AnimatePresence mode="popLayout">
+              {filteredProjects.map((project, index) => (
+                <motion.article
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, y: 18, scale: 0.96 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.94 }}
+                  transition={{ duration: 0.4, delay: index * 0.05, ease: EASE_OUT_EXPO }}
+                  className="group relative aspect-[16/10] w-full cursor-pointer overflow-hidden rounded-[11px] border-[1.4px] border-[#ee964b] bg-[#12131a] shadow-[0_8px_20px_-6px_rgb(15_23_42/0.18)] transition-all duration-200 hover:-translate-y-1 hover:border-[#ff4b18] lg:rounded-[0.85vw]"
+                >
+                  <Image
+                    src={project.image}
+                    alt={project.alt}
+                    fill
+                    quality={85}
+                    sizes="(min-width: 1024px) 24vw, (min-width: 640px) 48vw, 95vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </motion.article>
+              ))}
+            </AnimatePresence>
           </div>
         )}
       </div>

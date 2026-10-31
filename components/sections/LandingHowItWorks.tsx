@@ -1,4 +1,13 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "motion/react";
+import {
+  EASE_OUT_EXPO,
+  Reveal,
+  StaggerGroup,
+  StaggerItem,
+} from "@/components/motion/MotionPrimitives";
 
 const HOW_IT_WORKS_STEPS = [
   {
@@ -115,62 +124,76 @@ export function LandingHowItWorks() {
       {/* Main Content Container calibrated to the 1024x576 reference */}
       <div className="flex w-full flex-col justify-between px-6 sm:px-10 lg:min-h-[56.25vw] lg:px-[2.45vw] lg:pt-[4.1vw] lg:pb-[1.8vw]">
         {/* Top Full-Width Heading Block */}
-        <div className="w-full max-w-none lg:pl-[2.6vw]">
+        <StaggerGroup
+          className="w-full max-w-none lg:pl-[2.6vw]"
+          stagger={0.09}
+          delayChildren={0.05}
+        >
           {/* 05 | HOW IT WORKS ——————> Eyebrow */}
-          <div className="flex items-center gap-3 lg:gap-[1.05vw]">
-            <span className="font-sans text-[18px] font-extrabold tracking-[-0.02em] text-[#ef141e] lg:text-[1.78vw]">
-              05
-            </span>
-            <span
-              aria-hidden="true"
-              className="h-4 w-[1.5px] shrink-0 bg-[#ef141e] lg:h-[1.55vw]"
-            />
-            <p className="whitespace-nowrap font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#353946] lg:text-[0.96vw]">
-              HOW IT WORKS
-            </p>
-            <svg
-              viewBox="0 0 210 14"
-              className="ml-1 h-3.5 w-16 shrink-0 text-[#686f80] sm:w-32 lg:ml-[0.6vw] lg:h-[1.05vw] lg:w-[20.5vw]"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M1 7h205M200 2l6 5-6 5"
-                stroke="currentColor"
-                strokeWidth="1.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+          <StaggerItem>
+            <div className="flex items-center gap-3 lg:gap-[1.05vw]">
+              <span className="font-sans text-[18px] font-extrabold tracking-[-0.02em] text-[#ef141e] lg:text-[1.78vw]">
+                05
+              </span>
+              <span
+                aria-hidden="true"
+                className="h-4 w-[1.5px] shrink-0 bg-[#ef141e] lg:h-[1.55vw]"
               />
-            </svg>
-          </div>
+              <p className="whitespace-nowrap font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#353946] lg:text-[0.96vw]">
+                HOW IT WORKS
+              </p>
+              <svg
+                viewBox="0 0 210 14"
+                className="ml-1 h-3.5 w-16 shrink-0 text-[#686f80] sm:w-32 lg:ml-[0.6vw] lg:h-[1.05vw] lg:w-[20.5vw]"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M1 7h205M200 2l6 5-6 5"
+                  stroke="currentColor"
+                  strokeWidth="1.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+          </StaggerItem>
 
           {/* 1-Line Full-Width Display Heading */}
-          <h2
-            id="landing-how-it-works-heading"
-            className="mt-3 font-sans text-[clamp(2.35rem,6.85vw,7.05rem)] font-extrabold leading-[1.02] tracking-[-0.045em] text-[#08090c] lg:mt-[0.9vw] lg:whitespace-nowrap"
-          >
-            You approve{" "}
-            <span className="bg-[linear-gradient(90deg,#ef131e_0%,#ff4617_54%,#ff6c10_100%)] bg-clip-text text-transparent">
-              every step.
-            </span>
-          </h2>
+          <StaggerItem>
+            <h2
+              id="landing-how-it-works-heading"
+              className="mt-3 font-sans text-[clamp(2.35rem,6.85vw,7.05rem)] font-extrabold leading-[1.02] tracking-[-0.045em] text-[#08090c] lg:mt-[0.9vw] lg:whitespace-nowrap"
+            >
+              You approve{" "}
+              <span className="bg-[linear-gradient(90deg,#ef131e_0%,#ff4617_54%,#ff6c10_100%)] bg-clip-text text-transparent">
+                every step.
+              </span>
+            </h2>
+          </StaggerItem>
 
           {/* 2-Line Wide Subtitle */}
-          <p className="mt-3.5 max-w-[780px] font-sans text-[15px] font-normal leading-[1.38] tracking-[-0.015em] text-[#353b4b] lg:mt-[1.05vw] lg:max-w-[76vw] lg:text-[1.86vw]">
-            A simple, transparent process from first thought to final frame.
-            <br className="hidden sm:inline" /> We keep you involved at every stage so the result is exactly what you envision.
-          </p>
-        </div>
+          <StaggerItem>
+            <p className="mt-3.5 max-w-[780px] font-sans text-[15px] font-normal leading-[1.38] tracking-[-0.015em] text-[#353b4b] lg:mt-[1.05vw] lg:max-w-[76vw] lg:text-[1.86vw]">
+              A simple, transparent process from first thought to final frame.
+              <br className="hidden sm:inline" /> We keep you involved at every stage so the result is exactly what you envision.
+            </p>
+          </StaggerItem>
+        </StaggerGroup>
 
         {/* Middle Row: 4 Process Cards + Glowing White-Orange Chevrons Between Cards */}
-        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-[1.45vw] lg:grid-cols-4 lg:gap-[1.75vw]">
+        <StaggerGroup
+          className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-[1.45vw] lg:grid-cols-4 lg:gap-[1.75vw]"
+          stagger={0.11}
+          delayChildren={0.08}
+        >
           {HOW_IT_WORKS_STEPS.map((step, index) => (
-            <div key={step.number} className="relative flex flex-col">
+            <StaggerItem key={step.number} className="relative flex flex-col">
               <article className="group flex h-full flex-col justify-between overflow-hidden rounded-[16px] border border-[#edf0f6] bg-white p-4 shadow-[0_14px_34px_-10px_rgb(15_23_42/0.1)] transition-transform duration-200 hover:-translate-y-1 lg:rounded-[1.2vw] lg:p-[1.25vw]">
                 {/* Top Card Header: Red Number Circle + Outlined Red Icon + Bold Title + 2-Line Copy */}
                 <div>
                   <div className="flex items-center gap-2.5 lg:gap-[0.75vw]">
-                    <span className="grid size-7 shrink-0 place-items-center rounded-full bg-[#f2131d] font-sans text-[12px] font-extrabold text-white shadow-[0_4px_10px_rgb(242_19_29/0.3)] lg:size-[2.35vw] lg:text-[0.98vw]">
+                    <span className="grid size-7 shrink-0 place-items-center rounded-full bg-[#f2131d] font-sans text-[12px] font-extrabold text-white shadow-[0_4px_10px_rgb(242_19_29/0.3)] transition-transform duration-300 group-hover:scale-110 lg:size-[2.35vw] lg:text-[0.98vw]">
                       {step.number}
                     </span>
                     {step.icon}
@@ -227,12 +250,12 @@ export function LandingHowItWorks() {
                   </svg>
                 </div>
               )}
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
 
         {/* Bottom Callout Banner: Curved Red-Orange Arc + Handwritten Tagline + Sweeping Right Arrow */}
-        <div className="mt-8 flex flex-col items-center justify-center lg:mt-[0.9vw]">
+        <Reveal className="mt-8 flex flex-col items-center justify-center lg:mt-[0.9vw]" y={14} delay={0.18}>
           <div className="flex w-full max-w-[780px] items-center justify-center gap-3 lg:max-w-[68vw] lg:gap-[1.4vw]">
             {/* Left Curved Arc */}
             <svg
@@ -247,11 +270,15 @@ export function LandingHowItWorks() {
                   <stop offset="100%" stopColor="#f2281c" stopOpacity="0.95" />
                 </linearGradient>
               </defs>
-              <path
+              <motion.path
                 d="M4 4c18 19 68 27 154 28"
                 stroke="url(#how-left-arc)"
                 strokeWidth="1.8"
                 strokeLinecap="round"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.9, delay: 0.25, ease: EASE_OUT_EXPO }}
               />
             </svg>
 
@@ -276,18 +303,26 @@ export function LandingHowItWorks() {
               fill="none"
               aria-hidden="true"
             >
-              <path
+              <motion.path
                 d="M2 26c58-2 118-9 160-20"
                 stroke="url(#how-right-arc)"
                 strokeWidth="2.1"
                 strokeLinecap="round"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.9, delay: 0.35, ease: EASE_OUT_EXPO }}
               />
-              <path
+              <motion.path
                 d="M148 3.5 163.5 5.5 154 16"
                 stroke="#ff4b14"
                 strokeWidth="2.1"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                initial={{ pathLength: 0, opacity: 0 }}
+                whileInView={{ pathLength: 1, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.95, ease: EASE_OUT_EXPO }}
               />
               <defs>
                 <linearGradient id="how-right-arc" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -297,7 +332,7 @@ export function LandingHowItWorks() {
               </defs>
             </svg>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

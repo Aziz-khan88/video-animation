@@ -2,6 +2,13 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { AnimatePresence, motion } from "motion/react";
+import {
+  EASE_OUT_EXPO,
+  ParallaxBackground,
+  StaggerGroup,
+  StaggerItem,
+} from "@/components/motion/MotionPrimitives";
 
 const FAQ_ITEMS = [
   {
@@ -134,7 +141,10 @@ export function LandingFaq() {
       className="relative isolate w-full overflow-hidden bg-white py-14 lg:min-h-[56.25vw] lg:py-0"
     >
       {/* Full-bleed 16:9 background artwork featuring the 3D animated woman at a laptop with floating question & workflow thumbnails */}
-      <div className="pointer-events-none relative mb-8 aspect-[16/9] w-full overflow-hidden lg:absolute lg:inset-0 lg:-z-10 lg:mb-0 lg:aspect-auto">
+      <ParallaxBackground
+        className="pointer-events-none relative mb-8 aspect-[16/9] w-full overflow-hidden lg:absolute lg:inset-0 lg:-z-10 lg:mb-0 lg:aspect-auto"
+        offset={22}
+      >
         <Image
           src="/images/landing-faq-bg.jpg"
           alt="Thoughtful 3D animated woman in a red sweater sitting at a desk with a laptop and branded mug, surrounded by floating 3D question mark bubbles, video player, storyboard sketch, and clapperboard cards"
@@ -143,44 +153,54 @@ export function LandingFaq() {
           sizes="100vw"
           className="object-cover object-right lg:object-center"
         />
-      </div>
+      </ParallaxBackground>
 
       {/* Main Content Container calibrated to the 1024x576 reference */}
       <div className="relative z-10 flex w-full flex-col justify-between px-6 sm:px-10 lg:min-h-[56.25vw] lg:px-[4.4vw] lg:pt-[4.6vw] lg:pb-[3.2vw]">
         {/* Top Row: Left Heading Column + Top-Right Arrow */}
         <div className="flex items-start justify-between gap-6">
-          <div className="max-w-[480px] lg:max-w-[38vw]">
+          <StaggerGroup
+            className="max-w-[480px] lg:max-w-[38vw]"
+            stagger={0.09}
+            delayChildren={0.05}
+          >
             {/* 07 | COMMON QUESTIONS Eyebrow */}
-            <div className="flex items-center gap-3 lg:gap-[1.05vw]">
-              <span className="font-sans text-[18px] font-extrabold tracking-[-0.02em] text-[#2c3342] lg:text-[1.78vw]">
-                07
-              </span>
-              <span
-                aria-hidden="true"
-                className="h-4 w-[1.5px] shrink-0 bg-[#c8cdd8] lg:h-[1.55vw]"
-              />
-              <p className="whitespace-nowrap font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#353b4b] lg:text-[0.95vw]">
-                COMMON QUESTIONS
-              </p>
-            </div>
+            <StaggerItem>
+              <div className="flex items-center gap-3 lg:gap-[1.05vw]">
+                <span className="font-sans text-[18px] font-extrabold tracking-[-0.02em] text-[#2c3342] lg:text-[1.78vw]">
+                  07
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="h-4 w-[1.5px] shrink-0 bg-[#c8cdd8] lg:h-[1.55vw]"
+                />
+                <p className="whitespace-nowrap font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#353b4b] lg:text-[0.95vw]">
+                  COMMON QUESTIONS
+                </p>
+              </div>
+            </StaggerItem>
 
             {/* 2-Line Display Heading */}
-            <h2
-              id="landing-faq-heading"
-              className="mt-3 font-sans text-[clamp(2.45rem,5.45vw,5.6rem)] font-extrabold leading-[0.98] tracking-[-0.045em] text-[#08090c] lg:mt-[1.35vw]"
-            >
-              <span className="block whitespace-nowrap">Common</span>
-              <span className="mt-[0.04vw] block whitespace-nowrap bg-[linear-gradient(90deg,#ef131e_0%,#ff4617_54%,#ff6c10_100%)] bg-clip-text text-transparent">
-                questions.
-              </span>
-            </h2>
+            <StaggerItem>
+              <h2
+                id="landing-faq-heading"
+                className="mt-3 font-sans text-[clamp(2.45rem,5.45vw,5.6rem)] font-extrabold leading-[0.98] tracking-[-0.045em] text-[#08090c] lg:mt-[1.35vw]"
+              >
+                <span className="block whitespace-nowrap">Common</span>
+                <span className="mt-[0.04vw] block whitespace-nowrap bg-[linear-gradient(90deg,#ef131e_0%,#ff4617_54%,#ff6c10_100%)] bg-clip-text text-transparent">
+                  questions.
+                </span>
+              </h2>
+            </StaggerItem>
 
             {/* 2-Line Subtitle */}
-            <p className="mt-3 font-sans text-[14.5px] font-normal leading-[1.4] tracking-[-0.01em] text-[#454a59] lg:mt-[1.1vw] lg:text-[1.34vw]">
-              Straight answers to help you feel confident
-              <br className="hidden sm:inline" /> about your animation project.
-            </p>
-          </div>
+            <StaggerItem>
+              <p className="mt-3 font-sans text-[14.5px] font-normal leading-[1.4] tracking-[-0.01em] text-[#454a59] lg:mt-[1.1vw] lg:text-[1.34vw]">
+                Straight answers to help you feel confident
+                <br className="hidden sm:inline" /> about your animation project.
+              </p>
+            </StaggerItem>
+          </StaggerGroup>
 
           {/* Top-Right Decorative Arrow */}
           <div className="hidden pt-1 lg:block lg:pt-[0.3vw]" aria-hidden="true">
@@ -201,11 +221,15 @@ export function LandingFaq() {
         </div>
 
         {/* 5 Stacked FAQ Accordion Bars */}
-        <div className="mt-6 w-full max-w-[540px] space-y-2.5 lg:mt-[1.65vw] lg:max-w-[42.2vw] lg:space-y-[0.65vw]">
+        <StaggerGroup
+          className="mt-6 w-full max-w-[540px] space-y-2.5 lg:mt-[1.65vw] lg:max-w-[42.2vw] lg:space-y-[0.65vw]"
+          stagger={0.07}
+          delayChildren={0.12}
+        >
           {FAQ_ITEMS.map((item, idx) => {
             const isOpen = openIndex === idx;
             return (
-              <div
+              <StaggerItem
                 key={item.number}
                 className="overflow-hidden rounded-[11px] border border-[#edf0f6] bg-white/95 shadow-[0_6px_20px_-6px_rgb(15_23_42/0.08)] backdrop-blur-xs transition-shadow hover:shadow-[0_10px_24px_-6px_rgb(15_23_42/0.12)] lg:rounded-[0.82vw]"
               >
@@ -233,7 +257,7 @@ export function LandingFaq() {
                   {/* Right Chevron */}
                   <svg
                     viewBox="0 0 16 16"
-                    className={`size-4 shrink-0 text-[#262b38] transition-transform duration-200 lg:size-[1.15vw] ${
+                    className={`size-4 shrink-0 text-[#262b38] transition-transform duration-300 lg:size-[1.15vw] ${
                       isOpen ? "rotate-180" : ""
                     }`}
                     fill="none"
@@ -249,15 +273,25 @@ export function LandingFaq() {
                   </svg>
                 </button>
 
-                {isOpen && (
-                  <div className="border-t border-[#f1f3f8] px-4 pt-2.5 pb-3.5 font-sans text-[13px] leading-[1.45] text-[#4c5162] lg:px-[1.2vw] lg:py-[0.85vw] lg:text-[0.96vw]">
-                    {item.answer}
-                  </div>
-                )}
-              </div>
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.28, ease: EASE_OUT_EXPO }}
+                      className="overflow-hidden"
+                    >
+                      <div className="border-t border-[#f1f3f8] px-4 pt-2.5 pb-3.5 font-sans text-[13px] leading-[1.45] text-[#4c5162] lg:px-[1.2vw] lg:py-[0.85vw] lg:text-[0.96vw]">
+                        {item.answer}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </StaggerItem>
             );
           })}
-        </div>
+        </StaggerGroup>
       </div>
     </section>
   );

@@ -2,6 +2,13 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { AnimatePresence, motion } from "motion/react";
+import {
+  EASE_OUT_EXPO,
+  Reveal,
+  StaggerGroup,
+  StaggerItem,
+} from "@/components/motion/MotionPrimitives";
 
 const SHOWREEL_ITEMS = [
   {
@@ -69,7 +76,7 @@ export function TwoDShowreel() {
       className="relative isolate w-full overflow-hidden bg-white py-6 lg:h-[56.25vw] lg:py-0"
     >
       {/* Top-Left Header: 05 Badge + 2D SHOWREEL + Subtitle */}
-      <div className="w-full px-6 pt-2 sm:px-10 lg:px-[2.15vw] lg:pt-[2.1vw]">
+      <Reveal className="w-full px-6 pt-2 sm:px-10 lg:px-[2.15vw] lg:pt-[2.1vw]" y={18}>
         <div className="flex items-center gap-4 lg:gap-[2.1vw]">
           <span className="grid h-[50px] w-[52px] shrink-0 place-items-center rounded-[12px] bg-[linear-gradient(135deg,#ff171d_0%,#ff4b16_55%,#ff7610_100%)] font-sans text-[21px] font-extrabold tracking-[-0.02em] text-white shadow-[0_8px_20px_-4px_rgb(255_55_22/0.45)] lg:h-[6.35vw] lg:w-[6.55vw] lg:rounded-[1.15vw] lg:text-[2.55vw]">
             05
@@ -86,20 +93,30 @@ export function TwoDShowreel() {
             </p>
           </div>
         </div>
-      </div>
+      </Reveal>
 
       {/* Main Wide Rounded Showreel Video Stage */}
-      <div className="mt-4 w-full px-6 sm:px-10 lg:mt-[1.4vw] lg:px-[2.05vw]">
+      <Reveal className="mt-4 w-full px-6 sm:px-10 lg:mt-[1.4vw] lg:px-[2.05vw]" y={22} delay={0.08}>
         <div className="group relative aspect-[16/9] w-full cursor-pointer overflow-hidden rounded-[14px] bg-[#0d0e14] shadow-[0_14px_34px_-10px_rgb(15_23_42/0.32)] lg:aspect-auto lg:h-[32.7vw] lg:rounded-[1.25vw]">
-          <Image
-            key={activeItem.image}
-            src={activeItem.image}
-            alt={activeItem.alt}
-            fill
-            quality={92}
-            sizes="96vw"
-            className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.015]"
-          />
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeItem.image}
+              initial={{ opacity: 0, scale: 1.02 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.99 }}
+              transition={{ duration: 0.42, ease: EASE_OUT_EXPO }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={activeItem.image}
+                alt={activeItem.alt}
+                fill
+                quality={92}
+                sizes="96vw"
+                className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.015]"
+              />
+            </motion.div>
+          </AnimatePresence>
 
           {/* Interactive Play Button Overlay */}
           <button
@@ -120,7 +137,7 @@ export function TwoDShowreel() {
             )}
           </button>
         </div>
-      </div>
+      </Reveal>
 
       {/* Bottom 5-Thumbnail Selector Strip with Red-Orange Outlined Navigation Arrows */}
       <div className="mt-5 flex w-full items-center justify-between gap-2 px-4 sm:px-8 lg:mt-[1.55vw] lg:justify-between lg:gap-[1.2vw] lg:px-[2.05vw]">
@@ -148,41 +165,43 @@ export function TwoDShowreel() {
         </button>
 
         {/* 5 Showreel Thumbnails */}
-        <div
+        <StaggerGroup
           role="tablist"
           aria-label="2D showreel clips"
           className="grid flex-1 grid-cols-5 gap-1.5 sm:gap-2.5 lg:flex lg:flex-initial lg:items-center lg:gap-[1.08vw]"
+          stagger={0.07}
         >
           {SHOWREEL_ITEMS.map((item, index) => {
             const isSelected = index === activeIndex;
             return (
-              <button
-                key={item.id}
-                type="button"
-                role="tab"
-                aria-selected={isSelected}
-                aria-label={item.title}
-                onClick={() => setActiveIndex(index)}
-                className={
-                  isSelected
-                    ? "group relative aspect-[16/10] w-full cursor-pointer overflow-hidden rounded-[10px] p-[2px] ring-[2.5px] ring-[#ff5a16] ring-offset-2 ring-offset-white shadow-[0_10px_24px_-6px_rgb(255_75_22/0.5)] transition-all duration-200 lg:aspect-auto lg:h-[9.7vw] lg:w-[15.8vw] lg:rounded-[0.82vw]"
-                    : "group relative aspect-[16/10] w-full cursor-pointer overflow-hidden rounded-[10px] opacity-95 shadow-[0_6px_16px_-6px_rgb(15_23_42/0.28)] transition-all duration-200 hover:-translate-y-0.5 hover:opacity-100 lg:aspect-auto lg:h-[9.1vw] lg:w-[15.1vw] lg:rounded-[0.75vw]"
-                }
-              >
-                <div className="relative h-full w-full overflow-hidden rounded-[8px] lg:rounded-[0.68vw]">
-                  <Image
-                    src={item.thumb}
-                    alt={item.title}
-                    fill
-                    quality={85}
-                    sizes="(min-width: 1024px) 16vw, (min-width: 640px) 18vw, 45vw"
-                    className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-              </button>
+              <StaggerItem key={item.id} y={16}>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={isSelected}
+                  aria-label={item.title}
+                  onClick={() => setActiveIndex(index)}
+                  className={
+                    isSelected
+                      ? "group relative aspect-[16/10] w-full cursor-pointer overflow-hidden rounded-[10px] p-[2px] ring-[2.5px] ring-[#ff5a16] ring-offset-2 ring-offset-white shadow-[0_10px_24px_-6px_rgb(255_75_22/0.5)] transition-all duration-200 lg:aspect-auto lg:h-[9.7vw] lg:w-[15.8vw] lg:rounded-[0.82vw]"
+                      : "group relative aspect-[16/10] w-full cursor-pointer overflow-hidden rounded-[10px] opacity-95 shadow-[0_6px_16px_-6px_rgb(15_23_42/0.28)] transition-all duration-200 hover:-translate-y-0.5 hover:opacity-100 lg:aspect-auto lg:h-[9.1vw] lg:w-[15.1vw] lg:rounded-[0.75vw]"
+                  }
+                >
+                  <div className="relative h-full w-full overflow-hidden rounded-[8px] lg:rounded-[0.68vw]">
+                    <Image
+                      src={item.thumb}
+                      alt={item.title}
+                      fill
+                      quality={85}
+                      sizes="(min-width: 1024px) 16vw, (min-width: 640px) 18vw, 45vw"
+                      className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                </button>
+              </StaggerItem>
             );
           })}
-        </div>
+        </StaggerGroup>
 
         {/* Next Clip Arrow */}
         <button

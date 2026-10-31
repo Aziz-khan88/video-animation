@@ -2,6 +2,13 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { AnimatePresence, motion } from "motion/react";
+import {
+  EASE_OUT_EXPO,
+  Reveal,
+  StaggerGroup,
+  StaggerItem,
+} from "@/components/motion/MotionPrimitives";
 
 const WORLD_SCENES = [
   {
@@ -56,15 +63,25 @@ export function TwoDWorldTakesShape() {
     >
       {/* Upper Panoramic 2D World Stage */}
       <div className="relative aspect-[16/9] w-full overflow-hidden lg:aspect-auto lg:h-[41.2vw]">
-        <Image
-          key={activeScene.image}
-          src={activeScene.image}
-          alt={activeScene.alt}
-          fill
-          quality={90}
-          sizes="100vw"
-          className="object-cover object-center transition-opacity duration-300"
-        />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeScene.image}
+            initial={{ opacity: 0, scale: 1.02 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.99 }}
+            transition={{ duration: 0.45, ease: EASE_OUT_EXPO }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={activeScene.image}
+              alt={activeScene.alt}
+              fill
+              quality={90}
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+          </motion.div>
+        </AnimatePresence>
 
         {/* Top-Left Curved White Header Cutout Wave (Desktop) matching the reference */}
         <svg
@@ -86,7 +103,7 @@ export function TwoDWorldTakesShape() {
         </svg>
 
         {/* Mobile/Tablet Header Bar on White */}
-        <div className="relative z-20 bg-white/95 px-6 py-5 backdrop-blur-xs sm:px-10 lg:bg-transparent lg:px-[2.4vw] lg:pt-[2.2vw] lg:pb-0 lg:backdrop-blur-none">
+        <Reveal className="relative z-20 bg-white/95 px-6 py-5 backdrop-blur-xs sm:px-10 lg:bg-transparent lg:px-[2.4vw] lg:pt-[2.2vw] lg:pb-0 lg:backdrop-blur-none" y={18}>
           <div className="flex items-center gap-4 lg:gap-[2.05vw]">
             <span className="grid h-[50px] w-[52px] shrink-0 place-items-center rounded-[12px] bg-[linear-gradient(135deg,#ff171d_0%,#ff4b16_55%,#ff7610_100%)] font-sans text-[21px] font-extrabold tracking-[-0.02em] text-white shadow-[0_8px_20px_-4px_rgb(255_55_22/0.45)] lg:h-[6.35vw] lg:w-[6.55vw] lg:rounded-[1.15vw] lg:text-[2.55vw]">
               04
@@ -103,7 +120,7 @@ export function TwoDWorldTakesShape() {
               </p>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
 
       {/* Bottom 5-Thumbnail Selector Strip with Left/Right Arrows */}
@@ -132,41 +149,43 @@ export function TwoDWorldTakesShape() {
         </button>
 
         {/* 5 Scene Thumbnails */}
-        <div
+        <StaggerGroup
           role="tablist"
           aria-label="2D world scenes"
           className="grid flex-1 grid-cols-5 gap-1.5 sm:gap-2.5 lg:flex lg:flex-initial lg:items-center lg:gap-[1.08vw]"
+          stagger={0.07}
         >
           {WORLD_SCENES.map((scene, index) => {
             const isSelected = index === activeIndex;
             return (
-              <button
-                key={scene.id}
-                type="button"
-                role="tab"
-                aria-selected={isSelected}
-                aria-label={scene.title}
-                onClick={() => setActiveIndex(index)}
-                className={
-                  isSelected
-                    ? "group relative aspect-[16/10] w-full cursor-pointer overflow-hidden rounded-[10px] p-[2px] ring-[2.5px] ring-[#ff5a16] ring-offset-2 ring-offset-white transition-all duration-200 lg:aspect-auto lg:h-[9.6vw] lg:w-[15.7vw] lg:rounded-[0.78vw]"
-                    : "group relative aspect-[16/10] w-full cursor-pointer overflow-hidden rounded-[10px] opacity-95 shadow-[0_6px_16px_-6px_rgb(15_23_42/0.25)] transition-all duration-200 hover:-translate-y-0.5 hover:opacity-100 lg:aspect-auto lg:h-[9.1vw] lg:w-[15.1vw] lg:rounded-[0.72vw]"
-                }
-              >
-                <div className="relative h-full w-full overflow-hidden rounded-[8px] lg:rounded-[0.65vw]">
-                  <Image
-                    src={scene.image}
-                    alt={scene.title}
-                    fill
-                    quality={85}
-                    sizes="(min-width: 1024px) 16vw, (min-width: 640px) 18vw, 45vw"
-                    className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-              </button>
+              <StaggerItem key={scene.id} y={16}>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={isSelected}
+                  aria-label={scene.title}
+                  onClick={() => setActiveIndex(index)}
+                  className={
+                    isSelected
+                      ? "group relative aspect-[16/10] w-full cursor-pointer overflow-hidden rounded-[10px] p-[2px] ring-[2.5px] ring-[#ff5a16] ring-offset-2 ring-offset-white transition-all duration-200 lg:aspect-auto lg:h-[9.6vw] lg:w-[15.7vw] lg:rounded-[0.78vw]"
+                      : "group relative aspect-[16/10] w-full cursor-pointer overflow-hidden rounded-[10px] opacity-95 shadow-[0_6px_16px_-6px_rgb(15_23_42/0.25)] transition-all duration-200 hover:-translate-y-0.5 hover:opacity-100 lg:aspect-auto lg:h-[9.1vw] lg:w-[15.1vw] lg:rounded-[0.72vw]"
+                  }
+                >
+                  <div className="relative h-full w-full overflow-hidden rounded-[8px] lg:rounded-[0.65vw]">
+                    <Image
+                      src={scene.image}
+                      alt={scene.title}
+                      fill
+                      quality={85}
+                      sizes="(min-width: 1024px) 16vw, (min-width: 640px) 18vw, 45vw"
+                      className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                </button>
+              </StaggerItem>
             );
           })}
-        </div>
+        </StaggerGroup>
 
         {/* Next Scene Arrow */}
         <button

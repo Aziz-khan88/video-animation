@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Reveal } from "@/components/motion/MotionPrimitives";
 
 const FOOTER_NAV_ITEMS = [
@@ -13,6 +14,11 @@ const FOOTER_NAV_ITEMS = [
 ] as const;
 
 export function Footer() {
+  const pathname = usePathname();
+  if (pathname.startsWith("/landing-page")) {
+    return null;
+  }
+
   return (
     <footer className="w-full border-t border-[#eceef3] bg-white px-6 py-6 text-[#0c0c10] sm:px-10 lg:flex lg:h-[9.57vw] lg:flex-col lg:justify-between lg:px-[4.39vw] lg:pt-[2.15vw] lg:pb-[1.45vw]">
       {/* Top Row: Brand Logo (Left) + Navigation Links (Center) + Social Icons (Right) */}
