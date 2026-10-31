@@ -1,28 +1,35 @@
+"use client";
+
 import Link from "next/link";
+import { Reveal } from "@/components/motion/MotionPrimitives";
 
 const FOOTER_NAV_ITEMS = [
-  { label: "Home", href: "/#home" },
-  { label: "Services", href: "/#services" },
-  { label: "Work", href: "/#work" },
-  { label: "About", href: "/#about" },
-  { label: "Process", href: "/#process" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Home", href: "/" },
+  { label: "Portfolio", href: "/portfolio" },
+  { label: "Services", href: "/2d-animation" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "About Us", href: "/about-us" },
+  { label: "Contact Us", href: "/contact-us" },
 ] as const;
 
 export function Footer() {
   return (
     <footer className="w-full border-t border-[#eceef3] bg-white px-6 py-6 text-[#0c0c10] sm:px-10 lg:flex lg:h-[9.57vw] lg:flex-col lg:justify-between lg:px-[4.39vw] lg:pt-[2.15vw] lg:pb-[1.45vw]">
       {/* Top Row: Brand Logo (Left) + Navigation Links (Center) + Social Icons (Right) */}
-      <div className="relative flex flex-col items-center justify-between gap-5 md:flex-row">
+      <Reveal
+        y={14}
+        duration={0.55}
+        className="relative flex flex-col items-center justify-between gap-5 md:flex-row"
+      >
         {/* Left: Brand Logo */}
         <Link
           href="/"
           aria-label="VideoAnimation.us — Home"
-          className="inline-flex shrink-0 items-center gap-2 lg:gap-[0.75vw]"
+          className="group inline-flex shrink-0 items-center gap-2 lg:gap-[0.75vw]"
         >
           <svg
             viewBox="0 0 42 44"
-            className="h-[32px] w-[30px] shrink-0 lg:h-[3.3vw] lg:w-[3.1vw]"
+            className="h-[32px] w-[30px] shrink-0 transition-transform duration-300 group-hover:scale-105 lg:h-[3.3vw] lg:w-[3.1vw]"
             aria-hidden="true"
           >
             <defs>
@@ -55,7 +62,7 @@ export function Footer() {
               <li key={item.label}>
                 <Link
                   href={item.href}
-                  className="whitespace-nowrap font-sans text-[13.5px] font-normal text-[#383a42] transition-colors hover:text-[#0c0c10] lg:text-[1.12vw]"
+                  className="whitespace-nowrap font-sans text-[13.5px] font-normal text-[#383a42] transition-colors duration-200 hover:text-[#ff251b] lg:text-[1.12vw]"
                 >
                   {item.label}
                 </Link>
@@ -72,7 +79,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="YouTube"
-            className="text-[#0c0c10] transition-opacity hover:opacity-75"
+            className="text-[#0c0c10] transition-all duration-200 hover:-translate-y-0.5 hover:text-[#ff251b]"
           >
             <svg
               viewBox="0 0 24 24"
@@ -90,7 +97,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="text-[#0c0c10] transition-opacity hover:opacity-75"
+            className="text-[#0c0c10] transition-all duration-200 hover:-translate-y-0.5 hover:text-[#ff251b]"
           >
             <svg
               viewBox="0 0 24 24"
@@ -108,7 +115,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
-            className="text-[#0c0c10] transition-opacity hover:opacity-75"
+            className="text-[#0c0c10] transition-all duration-200 hover:-translate-y-0.5 hover:text-[#ff251b]"
           >
             <svg
               viewBox="0 0 24 24"
@@ -130,7 +137,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Vimeo"
-            className="text-[#0c0c10] transition-opacity hover:opacity-75"
+            className="text-[#0c0c10] transition-all duration-200 hover:-translate-y-0.5 hover:text-[#ff251b]"
           >
             <svg
               viewBox="0 0 24 24"
@@ -142,12 +149,18 @@ export function Footer() {
             </svg>
           </a>
         </div>
-      </div>
+      </Reveal>
 
       {/* Bottom Row: Copyright */}
-      <p className="mt-4 text-center font-sans text-[11.5px] font-normal text-[#6d707b] lg:mt-0 lg:text-[0.92vw]">
+      <Reveal
+        as="p"
+        y={10}
+        delay={0.08}
+        duration={0.5}
+        className="mt-4 text-center font-sans text-[11.5px] font-normal text-[#6d707b] lg:mt-0 lg:text-[0.92vw]"
+      >
         © 2024 VideoAnimation.us. All rights reserved.
-      </p>
+      </Reveal>
     </footer>
   );
 }

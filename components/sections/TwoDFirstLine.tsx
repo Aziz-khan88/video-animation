@@ -7,20 +7,8 @@ export function TwoDFirstLine() {
       aria-labelledby="first-line-heading"
       className="relative isolate w-full overflow-hidden bg-white lg:h-[56.25vw]"
     >
-      {/* Full-width 16:9 animator's sketch & red pencil background artwork */}
-      <div className="pointer-events-none relative aspect-[16/9] w-full overflow-hidden lg:absolute lg:inset-0 lg:-z-10 lg:aspect-auto">
-        <Image
-          src="/images/two-d-first-line-bg.jpg"
-          alt="Animator's hand holding a bright red pencil sketching a joyful young adventurer girl on cream construction-grid paper, with a full-body pose study on the left and a sweeping red-orange line flourish"
-          fill
-          quality={90}
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-      </div>
-
       {/* Full-width overlay layout calibrated to the 1024x576 reference coordinates */}
-      <div className="flex w-full flex-col justify-between gap-8 px-6 py-8 sm:px-10 lg:h-[56.25vw] lg:px-[3.1vw] lg:pt-[3.1vw] lg:pb-[6.2vw]">
+      <div className="flex w-full flex-col justify-between gap-6 px-6 py-8 sm:px-10 lg:h-[56.25vw] lg:px-[3.1vw] lg:pt-[3.1vw] lg:pb-[6.2vw]">
         {/* Top-Left: 02 Badge + THE FIRST LINE + Subtitle */}
         <div className="relative z-10 flex items-center gap-4 lg:gap-[2.15vw]">
           <span className="grid h-[52px] w-[54px] shrink-0 place-items-center rounded-[12px] bg-[linear-gradient(135deg,#ff171d_0%,#ff4b16_55%,#ff7610_100%)] font-sans text-[22px] font-extrabold tracking-[-0.02em] text-white shadow-[0_8px_20px_-4px_rgb(255_55_22/0.45)] lg:h-[6.4vw] lg:w-[6.6vw] lg:rounded-[1.15vw] lg:text-[2.6vw]">
@@ -37,6 +25,18 @@ export function TwoDFirstLine() {
               It all starts with a simple idea.
             </p>
           </div>
+        </div>
+
+        {/* Full-width 16:9 animator's sketch & red pencil artwork (inline on mobile/tablet, full-bleed background on desktop) */}
+        <div className="pointer-events-none relative -mx-6 aspect-[16/9] w-[calc(100%+3rem)] overflow-hidden sm:-mx-10 sm:w-[calc(100%+5rem)] lg:absolute lg:inset-0 lg:-z-10 lg:mx-0 lg:aspect-auto lg:w-full">
+          <Image
+            src="/images/two-d-first-line-bg.jpg"
+            alt="Animator's hand holding a bright red pencil sketching a joyful young adventurer girl on cream construction-grid paper, with a full-body pose study on the left and a sweeping red-orange line flourish"
+            fill
+            quality={90}
+            sizes="100vw"
+            className="object-cover object-center"
+          />
         </div>
 
         {/* Bottom-Right: Hand-drawn curved orange arrow + 3-Line Display Quote */}
@@ -64,10 +64,10 @@ export function TwoDFirstLine() {
               />
             </svg>
 
-            <p className="font-sans text-[clamp(1.65rem,3.38vw,3.52rem)] font-extrabold leading-[1.08] tracking-[-0.03em] text-[#0b0d12]">
-              <span className="block whitespace-nowrap">A single line</span>
-              <span className="block whitespace-nowrap">sparks a world</span>
-              <span className="block whitespace-nowrap">
+            <p className="font-sans text-[clamp(1.5rem,3.38vw,3.52rem)] font-extrabold leading-[1.08] tracking-[-0.03em] text-[#0b0d12]">
+              <span className="block sm:whitespace-nowrap">A single line</span>
+              <span className="block sm:whitespace-nowrap">sparks a world</span>
+              <span className="block sm:whitespace-nowrap">
                 of{" "}
                 <span className="bg-[linear-gradient(90deg,#f03219_0%,#ff5615_55%,#ff7611_100%)] bg-clip-text text-transparent">
                   possibilities

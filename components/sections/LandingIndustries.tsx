@@ -93,10 +93,10 @@ export function LandingIndustries() {
             {/* 2-Line Display Heading */}
             <h2
               id="landing-industries-heading"
-              className="mt-3 font-sans text-[clamp(2.35rem,5.2vw,5.35rem)] font-extrabold leading-[1.01] tracking-[-0.045em] text-[#090a0d] lg:mt-[1.1vw]"
+              className="mt-3 font-sans text-[clamp(2rem,5.2vw,5.35rem)] font-extrabold leading-[1.02] tracking-[-0.045em] text-[#090a0d] lg:mt-[1.1vw]"
             >
-              <span className="block whitespace-nowrap">Animation for</span>
-              <span className="mt-[0.04vw] block whitespace-nowrap bg-[linear-gradient(90deg,#ef131e_0%,#ff4617_54%,#ff6c10_100%)] bg-clip-text text-transparent">
+              <span className="block sm:whitespace-nowrap">Animation for</span>
+              <span className="mt-[0.04vw] block sm:whitespace-nowrap bg-[linear-gradient(90deg,#ef131e_0%,#ff4617_54%,#ff6c10_100%)] bg-clip-text text-transparent">
                 every industry.
               </span>
             </h2>

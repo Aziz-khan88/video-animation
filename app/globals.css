@@ -46,3 +46,9 @@ body {
 .bg-cta-gradient {
   background: linear-gradient(92deg, #ff1224 0%, #ff4719 52%, #ff6c11 100%);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

@@ -8,7 +8,7 @@ const ANIMATION_STYLES = [
     line2: "Animation",
     image: "/images/portfolio-style-1-2d.jpg",
     alt: "Cheerful 2D animated girl with wavy brown hair smiling in warm golden sunlight",
-    href: "#work",
+    href: "/2d-animation",
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ const ANIMATION_STYLES = [
     line2: "Animation",
     image: "/images/portfolio-style-2-3d.jpg",
     alt: "Cute glossy white 3D robot character with glowing blue eyes in an animation studio",
-    href: "#work",
+    href: "/3d-animation",
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ const ANIMATION_STYLES = [
     line2: "Graphics",
     image: "/images/portfolio-style-3-motion.jpg",
     alt: "Abstract 3D motion graphics with glowing red and orange geometric neon ribbons",
-    href: "#motion-graphics-portfolio",
+    href: "/motion-graphics",
   },
   {
     id: 4,
@@ -32,7 +32,7 @@ const ANIMATION_STYLES = [
     line2: "Animation",
     image: "/images/portfolio-style-4-whiteboard.jpg",
     alt: "Hand-drawn black line-art whiteboard illustration of a presenter with lightbulb and bar chart",
-    href: "#work",
+    href: "/whiteboard-animation",
   },
   {
     id: 5,
@@ -40,7 +40,7 @@ const ANIMATION_STYLES = [
     line2: "Animation",
     image: "/images/portfolio-style-5-cel.jpg",
     alt: "Anime cel-shaded adventurer looking toward a sunlit hillside fairytale castle",
-    href: "#work",
+    href: "/cel-animation",
   },
   {
     id: 6,
@@ -48,7 +48,7 @@ const ANIMATION_STYLES = [
     line2: "Animation",
     image: "/images/portfolio-style-6-hybrid.jpg",
     alt: "Detailed 2D and 3D hybrid fantasy red dragon in a misty sunlit canyon with waterfalls",
-    href: "#work",
+    href: "/hybrid-animation",
   },
 ] as const;
 

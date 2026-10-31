@@ -130,7 +130,7 @@ export function LandingHowItWorks() {
             </p>
             <svg
               viewBox="0 0 210 14"
-              className="ml-1 h-3.5 w-32 shrink-0 text-[#686f80] lg:ml-[0.6vw] lg:h-[1.05vw] lg:w-[20.5vw]"
+              className="ml-1 h-3.5 w-16 shrink-0 text-[#686f80] sm:w-32 lg:ml-[0.6vw] lg:h-[1.05vw] lg:w-[20.5vw]"
               fill="none"
               aria-hidden="true"
             >

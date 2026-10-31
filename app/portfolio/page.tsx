@@ -9,6 +9,7 @@ import { MotionGraphicsPortfolio } from "@/components/sections/MotionGraphicsPor
 import { AllProjects } from "@/components/sections/AllProjects";
 import { BehindTheFrames } from "@/components/sections/BehindTheFrames";
 import { TrustedByCreators } from "@/components/sections/TrustedByCreators";
+import { ReadyToSeeStory } from "@/components/sections/ReadyToSeeStory";
 
 export const metadata: Metadata = {
   title: "Portfolio | VideoAnimation.us",
@@ -30,6 +31,7 @@ export default function PortfolioPage() {
         <AllProjects />
         <BehindTheFrames />
         <TrustedByCreators />
+        <ReadyToSeeStory />
       </main>
     </div>
   );

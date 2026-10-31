@@ -151,7 +151,7 @@ export function TwoDShowreel() {
         <div
           role="tablist"
           aria-label="2D showreel clips"
-          className="grid flex-1 grid-cols-2 gap-2.5 sm:grid-cols-5 lg:flex lg:flex-initial lg:items-center lg:gap-[1.08vw]"
+          className="grid flex-1 grid-cols-5 gap-1.5 sm:gap-2.5 lg:flex lg:flex-initial lg:items-center lg:gap-[1.08vw]"
         >
           {SHOWREEL_ITEMS.map((item, index) => {
             const isSelected = index === activeIndex;

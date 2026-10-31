@@ -144,7 +144,7 @@ export function BehindTheFrames() {
             {PROCESS_STEPS.map((step) => (
               <li
                 key={step.number}
-                className="relative z-10 flex flex-col items-center text-center lg:w-[11vw]"
+                className="relative z-10 flex flex-col items-center text-center last:col-span-2 sm:last:col-span-1 lg:w-[11vw]"
               >
                 <span
                   className={`grid size-[52px] place-items-center rounded-full border-[2.5px] bg-white shadow-[0_6px_16px_-4px_rgb(242_100_27/0.25)] lg:size-[5.35vw] lg:border-[0.26vw] ${step.ringClass}`}

@@ -48,13 +48,13 @@ export function PortfolioHero() {
           {/* 3-Line Display Heading */}
           <h1
             id="portfolio-hero-heading"
-            className="mt-6 font-sans text-[clamp(2.85rem,6.35vw,6.6rem)] font-extrabold leading-[0.97] tracking-[-0.045em] text-[#0a0a0d] lg:mt-[2.45vw]"
+            className="mt-6 font-sans text-[clamp(2.35rem,6.35vw,6.6rem)] font-extrabold leading-[0.98] tracking-[-0.045em] text-[#0a0a0d] lg:mt-[2.45vw]"
           >
-            <span className="block whitespace-nowrap">Stories</span>
-            <span className="mt-[0.04vw] block whitespace-nowrap">
+            <span className="block sm:whitespace-nowrap">Stories</span>
+            <span className="mt-[0.04vw] block sm:whitespace-nowrap">
               That <span className="bg-[linear-gradient(92deg,#ff4a14_0%,#f36d17_100%)] bg-clip-text text-transparent">Move</span>
             </span>
-            <span className="mt-[0.04vw] block whitespace-nowrap bg-[linear-gradient(92deg,#ff3d16_0%,#f36d17_100%)] bg-clip-text text-transparent">
+            <span className="mt-[0.04vw] block sm:whitespace-nowrap bg-[linear-gradient(92deg,#ff3d16_0%,#f36d17_100%)] bg-clip-text text-transparent">
               People.
             </span>
           </h1>

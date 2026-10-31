@@ -4,6 +4,8 @@ import { LandingShowreel } from "@/components/sections/LandingShowreel";
 import { LandingIndustries } from "@/components/sections/LandingIndustries";
 import { LandingFeaturedWork } from "@/components/sections/LandingFeaturedWork";
 import { LandingHowItWorks } from "@/components/sections/LandingHowItWorks";
+import { LandingPricing } from "@/components/sections/LandingPricing";
+import { LandingFaq } from "@/components/sections/LandingFaq";
 
 export const metadata: Metadata = {
   title: "Landing Page | VideoAnimation.us",
@@ -20,6 +22,8 @@ export default function LandingPage() {
         <LandingIndustries />
         <LandingFeaturedWork />
         <LandingHowItWorks />
+        <LandingPricing />
+        <LandingFaq />
       </main>
     </div>
   );

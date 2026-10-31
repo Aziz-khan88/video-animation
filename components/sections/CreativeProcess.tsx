@@ -1,4 +1,13 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "motion/react";
+import {
+  Reveal,
+  StaggerGroup,
+  StaggerItem,
+  EASE_OUT_EXPO,
+} from "@/components/motion/MotionPrimitives";
 
 const PROCESS_STEPS = [
   {
@@ -115,7 +124,7 @@ export function CreativeProcess() {
     >
       {/* Top Centered Header */}
       <div className="mx-auto flex flex-col items-center text-center">
-        <div className="flex items-center gap-3.5 lg:gap-[1.46vw]">
+        <Reveal y={14} className="flex items-center gap-3.5 lg:gap-[1.46vw]">
           <span
             aria-hidden="true"
             className="h-[1.5px] w-6 rounded-full bg-[#ff4518] lg:h-[0.14vw] lg:w-[2.15vw]"
@@ -127,33 +136,54 @@ export function CreativeProcess() {
             aria-hidden="true"
             className="h-[1.5px] w-6 rounded-full bg-[#ff4518] lg:h-[0.14vw] lg:w-[2.15vw]"
           />
-        </div>
+        </Reveal>
 
-        <h2
-          id="creative-process-heading"
+        <Reveal
+          as="h2"
+          y={20}
+          delay={0.07}
           className="mt-3 font-sans text-[clamp(1.85rem,4.25vw,4.4rem)] font-extrabold leading-[1.05] tracking-[-0.043em] text-[#0a0a0d] lg:mt-[1.05vw]"
         >
-          From First Thought to <span className="text-hero-gradient">Final Frame.</span>
-        </h2>
+          <span id="creative-process-heading">
+            From First Thought to <span className="text-hero-gradient">Final Frame.</span>
+          </span>
+        </Reveal>
 
-        <p className="mt-2 font-sans text-[14px] font-normal leading-[1.4] tracking-[-0.01em] text-[#565863] lg:mt-[0.65vw] lg:text-[1.36vw]">
+        <Reveal
+          as="p"
+          y={16}
+          delay={0.14}
+          className="mt-2 font-sans text-[14px] font-normal leading-[1.4] tracking-[-0.01em] text-[#565863] lg:mt-[0.65vw] lg:text-[1.36vw]"
+        >
           A simple, collaborative process that brings your ideas to life.
-        </p>
+        </Reveal>
       </div>
 
       {/* 4-Step Timeline + Bottom Thumbnail Cards */}
       <div className="relative mt-10 w-full lg:mt-[1.35vw]">
-        {/* Horizontal Connecting Orange-Red Gradient Line behind the 4 Circles (Desktop) */}
-        <span
+        {/* Animated Horizontal Connecting Orange-Red Gradient Line behind the 4 Circles (Desktop) */}
+        <motion.span
           aria-hidden="true"
-          className="pointer-events-none absolute top-[3.32vw] right-[12%] left-[12%] hidden h-[0.24vw] -translate-y-1/2 bg-gradient-to-r from-[#ff1e1e] via-[#ff5a14] to-[#ff1e1e] lg:block"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.95, delay: 0.15, ease: EASE_OUT_EXPO }}
+          className="pointer-events-none absolute top-[3.32vw] right-[12%] left-[12%] hidden h-[0.24vw] origin-left -translate-y-1/2 bg-gradient-to-r from-[#ff1e1e] via-[#ff5a14] to-[#ff1e1e] lg:block"
         />
 
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-[1.76vw]">
+        <StaggerGroup
+          stagger={0.12}
+          delayChildren={0.12}
+          className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-[1.76vw]"
+        >
           {PROCESS_STEPS.map((step) => (
-            <div key={step.number} className="relative z-10 flex flex-col items-center text-center">
+            <StaggerItem
+              key={step.number}
+              y={24}
+              className="group relative z-10 flex flex-col items-center text-center"
+            >
               {/* Circular Icon Badge */}
-              <div className="grid size-16 place-items-center rounded-full border-2 border-[#ff3319] bg-white text-[#ff2e17] shadow-[0_4px_22px_rgb(255_59_31/0.32)] lg:size-[6.64vw] lg:border-[0.2vw]">
+              <div className="grid size-16 place-items-center rounded-full border-2 border-[#ff3319] bg-white text-[#ff2e17] shadow-[0_4px_22px_rgb(255_59_31/0.32)] transition-transform duration-300 group-hover:scale-105 lg:size-[6.64vw] lg:border-[0.2vw]">
                 {step.icon}
               </div>
 
@@ -174,19 +204,19 @@ export function CreativeProcess() {
               </p>
 
               {/* Bottom 16:9 Stage Thumbnail Card */}
-              <div className="relative mt-4 aspect-[16/9] w-full overflow-hidden rounded-[12px] bg-[#101218] shadow-[0_10px_24px_-8px_rgb(15_23_42/0.22)] lg:mt-[1.15vw] lg:aspect-auto lg:h-[11.82vw] lg:rounded-[0.95vw]">
+              <div className="relative mt-4 aspect-[16/9] w-full overflow-hidden rounded-[12px] bg-[#101218] shadow-[0_10px_24px_-8px_rgb(15_23_42/0.22)] transition-transform duration-300 group-hover:-translate-y-1 lg:mt-[1.15vw] lg:aspect-auto lg:h-[11.82vw] lg:rounded-[0.95vw]">
                 <Image
                   src={step.image}
                   alt={step.alt}
                   fill
                   quality={85}
                   sizes="(min-width: 1024px) 23vw, (min-width: 640px) 48vw, 95vw"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
       </div>
     </section>
   );

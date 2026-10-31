@@ -135,7 +135,7 @@ export function TwoDWorldTakesShape() {
         <div
           role="tablist"
           aria-label="2D world scenes"
-          className="grid flex-1 grid-cols-2 gap-2.5 sm:grid-cols-5 lg:flex lg:flex-initial lg:items-center lg:gap-[1.08vw]"
+          className="grid flex-1 grid-cols-5 gap-1.5 sm:gap-2.5 lg:flex lg:flex-initial lg:items-center lg:gap-[1.08vw]"
         >
           {WORLD_SCENES.map((scene, index) => {
             const isSelected = index === activeIndex;

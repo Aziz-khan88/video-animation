@@ -63,7 +63,7 @@ export function TwoDStoryboardToFinal() {
     <section
       id="storyboard-to-final"
       aria-labelledby="storyboard-to-final-heading"
-      className="relative isolate w-full overflow-hidden bg-white py-8 lg:h-[56.25vw] lg:py-0"
+      className="relative isolate w-full overflow-hidden bg-white py-8 lg:min-h-[56.25vw] lg:py-0"
     >
       {/* Top-Left Header: 08 Badge + STORYBOARD TO FINAL + Subtitle */}
       <div className="w-full px-6 pt-2 sm:px-10 lg:px-[2.45vw] lg:pt-[2.2vw]">
@@ -100,7 +100,7 @@ export function TwoDStoryboardToFinal() {
 
         {/* Bottom Interactive Timeline Waveform & Scrubber */}
         <div className="mt-4 w-full select-none lg:mt-[1.25vw]">
-          <div className="relative flex h-12 w-full items-center justify-between gap-[3px] px-1 lg:h-[5.4vw] lg:gap-[0.95vw]">
+          <div className="relative flex h-12 w-full items-center justify-between gap-[2px] px-1 sm:gap-[3px] lg:h-[5.4vw] lg:gap-[0.95vw]">
             {/* 50 Vertical Waveform Bars */}
             {WAVEFORM_BARS.map((bar, index) => (
               <span
@@ -109,7 +109,7 @@ export function TwoDStoryboardToFinal() {
                   height: `${bar.heightPct}%`,
                   backgroundColor: bar.color,
                 }}
-                className="w-[4px] shrink-0 rounded-full transition-transform duration-150 lg:w-[0.58vw]"
+                className="min-w-[2px] max-w-[4px] flex-1 rounded-full transition-transform duration-150 lg:w-[0.58vw] lg:max-w-none lg:flex-initial lg:shrink-0"
               />
             ))}
 

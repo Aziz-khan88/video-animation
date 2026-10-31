@@ -37,7 +37,7 @@ export function TwoDStyles() {
     <section
       id="two-d-styles"
       aria-labelledby="two-d-styles-heading"
-      className="relative isolate w-full overflow-hidden bg-white py-8 lg:h-[56.25vw] lg:py-0"
+      className="relative isolate w-full overflow-hidden bg-white py-8 lg:min-h-[56.25vw] lg:py-0"
     >
       {/* Top-Left Header: 06 Badge + 2D STYLES + Subtitle */}
       <div className="w-full px-6 pt-2 sm:px-10 lg:px-[2.45vw] lg:pt-[2.4vw]">

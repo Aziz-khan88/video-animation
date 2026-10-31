@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Inter_Tight } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
+import { MotionProvider } from "@/components/motion/MotionPrimitives";
 import "./globals.css";
 
 const inter = Inter({
@@ -28,8 +29,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${interTight.variable}`}>
       <body className="antialiased">
-        {children}
-        <Footer />
+        <MotionProvider>
+          {children}
+          <Footer />
+        </MotionProvider>
       </body>
     </html>
   );

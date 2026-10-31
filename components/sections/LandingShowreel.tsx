@@ -177,11 +177,11 @@ export function LandingShowreel() {
             {/* 3-Line Display Heading */}
             <h2
               id="landing-showreel-heading"
-              className="mt-4 font-sans text-[clamp(2.45rem,5.25vw,5.4rem)] font-extrabold leading-[0.98] tracking-[-0.045em] text-[#08090c] lg:mt-[1.35vw]"
+              className="mt-4 font-sans text-[clamp(2.1rem,5.25vw,5.4rem)] font-extrabold leading-[0.99] tracking-[-0.045em] text-[#08090c] lg:mt-[1.35vw]"
             >
-              <span className="block whitespace-nowrap">Every idea</span>
-              <span className="mt-[0.04vw] block whitespace-nowrap">deserves</span>
-              <span className="mt-[0.04vw] block whitespace-nowrap bg-[linear-gradient(90deg,#ef131e_0%,#ff4617_54%,#ff6c10_100%)] bg-clip-text text-transparent">
+              <span className="block sm:whitespace-nowrap">Every idea</span>
+              <span className="mt-[0.04vw] block sm:whitespace-nowrap">deserves</span>
+              <span className="mt-[0.04vw] block sm:whitespace-nowrap bg-[linear-gradient(90deg,#ef131e_0%,#ff4617_54%,#ff6c10_100%)] bg-clip-text text-transparent">
                 motion.
               </span>
             </h2>

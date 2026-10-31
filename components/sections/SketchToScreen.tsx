@@ -1,4 +1,9 @@
 import Image from "next/image";
+import {
+  Reveal,
+  StaggerGroup,
+  StaggerItem,
+} from "@/components/motion/MotionPrimitives";
 
 const STAGES = [
   {
@@ -55,7 +60,7 @@ export function SketchToScreen() {
       <div className="flex w-full flex-col justify-between gap-10 px-6 py-14 sm:px-10 lg:min-h-[35.55vw] lg:flex-row lg:items-start lg:gap-[1.15vw] lg:pl-[3.22vw] lg:pr-[2.93vw] lg:pt-[6.74vw] lg:pb-[5.5vw]">
         {/* Left Column: Eyebrow + Heading + Description */}
         <div className="w-full max-w-[460px] shrink-0 lg:w-[22.8vw] lg:max-w-none lg:pt-[0.1vw]">
-          <div className="flex items-center gap-3 lg:gap-[0.95vw]">
+          <Reveal y={16} className="flex items-center gap-3 lg:gap-[0.95vw]">
             <span className="whitespace-nowrap font-sans text-[11px] font-bold uppercase tracking-[0.115em] text-[#ff251b] lg:text-[0.98vw]">
               FROM SKETCH TO SCREEN
             </span>
@@ -63,42 +68,55 @@ export function SketchToScreen() {
               aria-hidden="true"
               className="h-[2.5px] w-10 shrink-0 rounded-full bg-gradient-to-r from-[#ff251b] to-[#ff7a00] lg:h-[0.22vw] lg:w-[3.85vw]"
             />
-          </div>
+          </Reveal>
 
           <h2
             id="sketch-to-screen-heading"
-            className="mt-3 font-sans text-[clamp(2.15rem,4.08vw,4.25rem)] font-extrabold leading-[1.03] tracking-[-0.045em] text-[#0a0a0d] lg:mt-[1.65vw]"
+            className="mt-3 font-sans text-[clamp(2rem,4.08vw,4.25rem)] font-extrabold leading-[1.03] tracking-[-0.045em] text-[#0a0a0d] lg:mt-[1.65vw]"
           >
-            <span className="block whitespace-nowrap">From Sketch</span>
-            <span className="mt-[0.1vw] block whitespace-nowrap">
+            <Reveal as="span" y={20} delay={0.06} className="block sm:whitespace-nowrap">
+              From Sketch
+            </Reveal>
+            <Reveal as="span" y={20} delay={0.12} className="mt-[0.1vw] block sm:whitespace-nowrap">
               to Screen<span className="text-[#ff3b1f]">.</span>
-            </span>
+            </Reveal>
           </h2>
 
-          <p className="mt-4 font-sans text-[14px] font-normal leading-[1.48] tracking-[-0.01em] text-[#636773] lg:mt-[1.65vw] lg:w-[22.4vw] lg:text-[1.14vw]">
+          <Reveal
+            as="p"
+            y={18}
+            delay={0.18}
+            className="mt-4 font-sans text-[14px] font-normal leading-[1.48] tracking-[-0.01em] text-[#636773] lg:mt-[1.65vw] lg:w-[22.4vw] lg:text-[1.14vw]"
+          >
             We turn ideas, sketches and concepts
             <br className="hidden lg:inline" /> into stunning animated videos that
             <br className="hidden lg:inline" /> inspire, engage and bring your story
             <br className="hidden lg:inline" /> to life.
-          </p>
+          </Reveal>
         </div>
 
         {/* Right Column: 4 Stage Cards + Overlapping Circular Arrows + Bottom Labels */}
-        <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:flex lg:w-auto lg:items-start lg:gap-[1.32vw]">
+        <StaggerGroup
+          stagger={0.11}
+          delayChildren={0.1}
+          className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:flex lg:w-auto lg:items-start lg:gap-[1.32vw]"
+        >
           {STAGES.map((stage, index) => (
-            <div
+            <StaggerItem
               key={stage.label}
-              className={`relative flex flex-col items-center ${stage.widthClass}`}
+              y={24}
+              scale={0.98}
+              className={`group relative flex flex-col items-center ${stage.widthClass}`}
             >
               {/* Card Image */}
-              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[12px] bg-[#f5efe6] shadow-[0_10px_26px_-8px_rgb(15_23_42/0.16)] lg:aspect-auto lg:h-[19.92vw] lg:rounded-[0.95vw]">
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[12px] bg-[#f5efe6] shadow-[0_10px_26px_-8px_rgb(15_23_42/0.16)] transition-transform duration-300 group-hover:-translate-y-1 lg:aspect-auto lg:h-[19.92vw] lg:rounded-[0.95vw]">
                 <Image
                   src={stage.image}
                   alt={stage.alt}
                   fill
                   quality={85}
                   sizes="(min-width: 1024px) 24vw, (min-width: 640px) 45vw, 90vw"
-                  className={`object-cover ${stage.objectPosition}`}
+                  className={`object-cover transition-transform duration-500 group-hover:scale-105 ${stage.objectPosition}`}
                 />
               </div>
 
@@ -128,9 +146,9 @@ export function SketchToScreen() {
               <p className="mt-3 text-center font-sans text-[13px] font-extrabold uppercase tracking-[0.025em] text-[#17181c] lg:mt-[1.22vw] lg:text-[1.16vw]">
                 {stage.label}
               </p>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
       </div>
     </section>
   );

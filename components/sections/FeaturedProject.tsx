@@ -43,10 +43,10 @@ export function FeaturedProject() {
           {/* 2-Line Display Heading */}
           <h2
             id="featured-project-heading"
-            className="mt-6 font-sans text-[clamp(2.15rem,4.78vw,4.95rem)] font-extrabold leading-[1.02] tracking-[-0.042em] text-[#0a0a0d] lg:mt-[3.5vw]"
+            className="mt-6 font-sans text-[clamp(1.85rem,4.78vw,4.95rem)] font-extrabold leading-[1.03] tracking-[-0.042em] text-[#0a0a0d] lg:mt-[3.5vw]"
           >
-            <span className="block whitespace-nowrap">A Heartwarming</span>
-            <span className="mt-[0.05vw] block whitespace-nowrap">
+            <span className="block sm:whitespace-nowrap">A Heartwarming</span>
+            <span className="mt-[0.05vw] block sm:whitespace-nowrap">
               Animated{" "}
               <span className="bg-[linear-gradient(92deg,#f11920_0%,#ff5516_52%,#ff9114_100%)] bg-clip-text text-transparent">
                 Story

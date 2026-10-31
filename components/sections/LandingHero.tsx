@@ -165,13 +165,13 @@ export function LandingHero() {
           {/* 3-Line Display Heading */}
           <h1
             id="landing-hero-heading"
-            className="mt-4 font-sans text-[clamp(2.35rem,4.78vw,4.95rem)] font-extrabold leading-[1.03] tracking-[-0.042em] text-[#0a0a0d] lg:mt-[1.35vw]"
+            className="mt-4 font-sans text-[clamp(1.95rem,4.78vw,4.95rem)] font-extrabold leading-[1.04] tracking-[-0.042em] text-[#0a0a0d] lg:mt-[1.35vw]"
           >
-            <span className="block whitespace-nowrap">Animation that</span>
-            <span className="mt-[0.05vw] block whitespace-nowrap bg-[linear-gradient(90deg,#ef131e_0%,#ff4118_54%,#ff6811_100%)] bg-clip-text text-transparent">
+            <span className="block sm:whitespace-nowrap">Animation that</span>
+            <span className="mt-[0.05vw] block sm:whitespace-nowrap bg-[linear-gradient(90deg,#ef131e_0%,#ff4118_54%,#ff6811_100%)] bg-clip-text text-transparent">
               explains, educates
             </span>
-            <span className="mt-[0.05vw] block whitespace-nowrap bg-[linear-gradient(90deg,#ef131e_0%,#ff4617_54%,#ff6c10_100%)] bg-clip-text text-transparent">
+            <span className="mt-[0.05vw] block sm:whitespace-nowrap bg-[linear-gradient(90deg,#ef131e_0%,#ff4617_54%,#ff6c10_100%)] bg-clip-text text-transparent">
               and inspires.
             </span>
           </h1>

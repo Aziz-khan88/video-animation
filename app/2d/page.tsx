@@ -9,6 +9,8 @@ import { TwoDProcess } from "@/components/sections/TwoDProcess";
 import { TwoDStoryboardToFinal } from "@/components/sections/TwoDStoryboardToFinal";
 import { TwoDIndustries } from "@/components/sections/TwoDIndustries";
 import { TwoDPricingPlans } from "@/components/sections/TwoDPricingPlans";
+import { TwoDWhyChooseUs } from "@/components/sections/TwoDWhyChooseUs";
+import { TwoDReadyToCreate } from "@/components/sections/TwoDReadyToCreate";
 
 export const metadata: Metadata = {
   title: "2D Animation | VideoAnimation.us",
@@ -30,6 +32,8 @@ export default function TwoDPage() {
         <TwoDStoryboardToFinal />
         <TwoDIndustries />
         <TwoDPricingPlans />
+        <TwoDWhyChooseUs />
+        <TwoDReadyToCreate />
       </main>
     </div>
   );

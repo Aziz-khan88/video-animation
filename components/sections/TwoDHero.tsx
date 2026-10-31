@@ -43,11 +43,11 @@ export function TwoDHero() {
           {/* 3-Line Uppercase Display Heading */}
           <h1
             id="two-d-hero-heading"
-            className="mt-6 font-sans text-[clamp(2.4rem,5.2vw,5.4rem)] font-black uppercase leading-[1.03] tracking-[-0.03em] text-[#090a0d] lg:mt-[2.8vw]"
+            className="mt-6 font-sans text-[clamp(2rem,5.2vw,5.4rem)] font-black uppercase leading-[1.04] tracking-[-0.03em] text-[#090a0d] lg:mt-[2.8vw]"
           >
-            <span className="block whitespace-nowrap">FROM FIRST</span>
-            <span className="mt-[0.06vw] block whitespace-nowrap">SKETCH TO</span>
-            <span className="mt-[0.06vw] block whitespace-nowrap bg-[linear-gradient(90deg,#ff171b_0%,#ff4c15_52%,#ff7b11_100%)] bg-clip-text text-transparent">
+            <span className="block sm:whitespace-nowrap">FROM FIRST</span>
+            <span className="mt-[0.06vw] block sm:whitespace-nowrap">SKETCH TO</span>
+            <span className="mt-[0.06vw] block sm:whitespace-nowrap bg-[linear-gradient(90deg,#ff171b_0%,#ff4c15_52%,#ff7b11_100%)] bg-clip-text text-transparent">
               LIVING STORY.
             </span>
           </h1>

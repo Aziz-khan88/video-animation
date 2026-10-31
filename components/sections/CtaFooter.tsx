@@ -1,5 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import {
+  Reveal,
+  StaggerGroup,
+  StaggerItem,
+  ParallaxBackground,
+} from "@/components/motion/MotionPrimitives";
 
 export function CtaFooter() {
   return (
@@ -9,7 +15,11 @@ export function CtaFooter() {
       className="relative w-full overflow-hidden bg-white lg:h-[46.58vw]"
     >
       {/* Full-bleed background illustration (boy on cliff overlooking sunset valley & castle) */}
-      <div className="pointer-events-none relative aspect-[1024/477] w-full lg:absolute lg:inset-0 lg:aspect-auto lg:h-full">
+      <ParallaxBackground
+        offset={20}
+        scaleFrom={1.035}
+        className="pointer-events-none relative aspect-[1024/477] w-full lg:absolute lg:inset-0 lg:aspect-auto lg:h-full"
+      >
         <Image
           src="/images/cta-bg.jpg"
           alt="Boy with backpack sitting on a rocky cliff at sunset overlooking a glowing fairytale castle and winding river valley"
@@ -23,20 +33,20 @@ export function CtaFooter() {
           aria-hidden="true"
           className="hidden lg:block lg:absolute lg:inset-y-0 lg:left-0 lg:w-[41vw] lg:bg-[linear-gradient(90deg,#ffffff_0%,#ffffff_76%,rgba(255,255,255,0)_100%)]"
         />
-      </div>
+      </ParallaxBackground>
 
       {/* Foreground Content Container */}
       <div className="relative z-10 w-full px-6 py-10 sm:px-10 lg:h-full lg:px-[4.39vw] lg:py-0">
         {/* Top Brand Logo (y = 23..65 -> pt-[2.34vw]) */}
-        <div className="lg:pt-[2.34vw]">
+        <Reveal y={16} className="lg:pt-[2.34vw]">
           <Link
             href="/"
             aria-label="VideoAnimation.us — Home"
-            className="inline-flex items-center gap-2.5 lg:gap-[0.85vw]"
+            className="group inline-flex items-center gap-2.5 lg:gap-[0.85vw]"
           >
             <svg
               viewBox="0 0 42 44"
-              className="h-[36px] w-[34px] shrink-0 lg:h-[3.9vw] lg:w-[3.7vw]"
+              className="h-[36px] w-[34px] shrink-0 transition-transform duration-300 group-hover:scale-105 lg:h-[3.9vw] lg:w-[3.7vw]"
               aria-hidden="true"
             >
               <defs>
@@ -58,10 +68,14 @@ export function CtaFooter() {
               VideoAnimation.us
             </span>
           </Link>
-        </div>
+        </Reveal>
 
         {/* Eyebrow Row: ANIMATION • STORYTELLING • REAL RESULTS (y = 92..103) */}
-        <div className="mt-6 flex flex-wrap items-center gap-2.5 lg:mt-[2.55vw] lg:gap-[1.15vw]">
+        <Reveal
+          y={14}
+          delay={0.06}
+          className="mt-6 flex flex-wrap items-center gap-2.5 lg:mt-[2.55vw] lg:gap-[1.15vw]"
+        >
           <span className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#6d707b] lg:text-[0.94vw]">
             ANIMATION
           </span>
@@ -79,40 +93,51 @@ export function CtaFooter() {
           <span className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#6d707b] lg:text-[0.94vw]">
             REAL RESULTS
           </span>
-        </div>
+        </Reveal>
 
         {/* Main 2-Line Display Heading (y = 120..239) */}
         <h2
           id="cta-heading"
           className="mt-3 font-sans text-[clamp(2.35rem,5.42vw,5.65rem)] font-extrabold leading-[1.03] tracking-[-0.044em] text-[#0a0a0d] lg:mt-[1.45vw]"
         >
-          <span className="block whitespace-nowrap">Let’s Bring Your</span>
-          <span className="mt-[0.04em] block whitespace-nowrap">
+          <Reveal as="span" y={22} delay={0.11} className="block whitespace-nowrap">
+            Let’s Bring Your
+          </Reveal>
+          <Reveal as="span" y={22} delay={0.17} className="mt-[0.04em] block whitespace-nowrap">
             Idea to <span className="text-hero-gradient">Life.</span>
-          </span>
+          </Reveal>
         </h2>
 
         {/* 2-Line Lead Paragraph (y = 259..305) */}
-        <p className="mt-4 max-w-[480px] font-sans text-[15px] font-normal leading-[1.46] tracking-[-0.01em] text-[#565863] lg:mt-[1.5vw] lg:max-w-none lg:text-[1.42vw]">
+        <Reveal
+          as="p"
+          y={18}
+          delay={0.23}
+          className="mt-4 max-w-[480px] font-sans text-[15px] font-normal leading-[1.46] tracking-[-0.01em] text-[#565863] lg:mt-[1.5vw] lg:max-w-none lg:text-[1.42vw]"
+        >
           <span className="lg:block lg:whitespace-nowrap">
             Whether you have a concept, a sketch or a big vision,
           </span>
           <span className="lg:block lg:whitespace-nowrap">
             we’re here to turn it into an unforgettable animated video.
           </span>
-        </p>
+        </Reveal>
 
         {/* Dual CTA Buttons Row (y = 317..370) */}
-        <div className="mt-6 flex flex-wrap items-center gap-3.5 lg:mt-[1.65vw] lg:gap-[1.25vw]">
+        <Reveal
+          y={18}
+          delay={0.29}
+          className="mt-6 flex flex-wrap items-center gap-3.5 lg:mt-[1.65vw] lg:gap-[1.25vw]"
+        >
           {/* Primary Gradient Button: Start a Project -> */}
           <Link
             href="#quote"
-            className="inline-flex h-[48px] items-center justify-center gap-2.5 rounded-[10px] bg-cta-gradient px-6 font-sans text-[15px] font-semibold tracking-[-0.01em] text-white shadow-[0_12px_26px_-6px_rgb(255_37_27/0.48)] transition-transform duration-200 hover:-translate-y-0.5 lg:h-[4.69vw] lg:w-[20.02vw] lg:gap-[0.75vw] lg:rounded-[0.82vw] lg:px-0 lg:text-[1.38vw]"
+            className="group inline-flex h-[48px] items-center justify-center gap-2.5 rounded-[10px] bg-cta-gradient px-6 font-sans text-[15px] font-semibold tracking-[-0.01em] text-white shadow-[0_12px_26px_-6px_rgb(255_37_27/0.48)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_16px_32px_-6px_rgb(255_37_27/0.58)] lg:h-[4.69vw] lg:w-[20.02vw] lg:gap-[0.75vw] lg:rounded-[0.82vw] lg:px-0 lg:text-[1.38vw]"
           >
             <span>Start a Project</span>
             <svg
               viewBox="0 0 20 20"
-              className="size-4 lg:size-[1.35vw]"
+              className="size-4 transition-transform duration-200 group-hover:translate-x-1 lg:size-[1.35vw]"
               fill="none"
               aria-hidden="true"
             >
@@ -128,11 +153,11 @@ export function CtaFooter() {
 
           {/* Secondary White Button: Watch Showreel */}
           <Link
-            href="#showreel"
-            className="inline-flex h-[48px] items-center justify-center gap-2.5 rounded-[10px] border border-[#dcdfe6] bg-white/95 px-5 font-sans text-[14.5px] font-bold tracking-[-0.015em] text-[#0c0c10] shadow-[0_2px_10px_rgb(10_10_13/0.04)] transition-transform duration-200 hover:-translate-y-0.5 lg:h-[4.69vw] lg:w-[17.87vw] lg:gap-[0.75vw] lg:rounded-[0.82vw] lg:px-0 lg:text-[1.28vw]"
+            href="#about"
+            className="group inline-flex h-[48px] items-center justify-center gap-2.5 rounded-[10px] border border-[#dcdfe6] bg-white/95 px-5 font-sans text-[14.5px] font-bold tracking-[-0.015em] text-[#0c0c10] shadow-[0_2px_10px_rgb(10_10_13/0.04)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#b5b8c2] lg:h-[4.69vw] lg:w-[17.87vw] lg:gap-[0.75vw] lg:rounded-[0.82vw] lg:px-0 lg:text-[1.28vw]"
           >
             {/* Circular Red-Orange Outlined Play Icon */}
-            <span className="inline-flex size-7 shrink-0 items-center justify-center rounded-full border-[2px] border-[#ff3b1f] text-[#ff3b1f] lg:size-[2.55vw] lg:border-[0.18vw]">
+            <span className="inline-flex size-7 shrink-0 items-center justify-center rounded-full border-[2px] border-[#ff3b1f] text-[#ff3b1f] transition-transform duration-200 group-hover:scale-105 lg:size-[2.55vw] lg:border-[0.18vw]">
               <svg
                 viewBox="0 0 16 16"
                 className="ml-[1px] size-3 lg:size-[1.05vw]"
@@ -144,12 +169,16 @@ export function CtaFooter() {
             </span>
             <span>Watch Showreel</span>
           </Link>
-        </div>
+        </Reveal>
 
         {/* Bottom 3 Trust Features Row (y = 394..432) */}
-        <div className="mt-8 flex flex-wrap items-center gap-6 lg:mt-[2.4vw] lg:gap-[2.8vw]">
+        <StaggerGroup
+          stagger={0.09}
+          delayChildren={0.35}
+          className="mt-8 flex flex-wrap items-center gap-6 lg:mt-[2.4vw] lg:gap-[2.8vw]"
+        >
           {/* 1. Creative Partnership */}
-          <div className="flex items-center gap-2.5 lg:gap-[0.85vw]">
+          <StaggerItem className="flex items-center gap-2.5 lg:gap-[0.85vw]">
             <svg
               viewBox="0 0 36 36"
               className="size-8 shrink-0 text-[#ff2e17] lg:size-[3.3vw]"
@@ -181,10 +210,10 @@ export function CtaFooter() {
               <span className="block">Creative</span>
               <span className="block">Partnership</span>
             </div>
-          </div>
+          </StaggerItem>
 
           {/* 2. Studio-Quality Production */}
-          <div className="flex items-center gap-2.5 lg:gap-[0.85vw]">
+          <StaggerItem className="flex items-center gap-2.5 lg:gap-[0.85vw]">
             <svg
               viewBox="0 0 36 36"
               className="size-8 shrink-0 text-[#ff2e17] lg:size-[3.15vw]"
@@ -209,10 +238,10 @@ export function CtaFooter() {
               <span className="block">Studio-Quality</span>
               <span className="block">Production</span>
             </div>
-          </div>
+          </StaggerItem>
 
           {/* 3. On-Time Delivery */}
-          <div className="flex items-center gap-2.5 lg:gap-[0.85vw]">
+          <StaggerItem className="flex items-center gap-2.5 lg:gap-[0.85vw]">
             <svg
               viewBox="0 0 38 36"
               className="size-8 shrink-0 text-[#ff2e17] lg:size-[3.25vw]"
@@ -252,8 +281,8 @@ export function CtaFooter() {
               <span className="block">On-Time</span>
               <span className="block">Delivery</span>
             </div>
-          </div>
-        </div>
+          </StaggerItem>
+        </StaggerGroup>
       </div>
     </section>
   );
