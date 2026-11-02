@@ -56,7 +56,8 @@ export function LandingPricing() {
           src="/images/landing-pricing-bg.jpg"
           alt="2D character sketches and a smiling animated girl alongside a 3D astronaut robot and futuristic CAD monitors"
           fill
-          quality={90}
+          quality={100}
+          unoptimized
           sizes="100vw"
           className="object-cover object-center"
         />

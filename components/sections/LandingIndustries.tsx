@@ -75,7 +75,8 @@ export function LandingIndustries() {
           src="/images/landing-industries-bg.jpg"
           alt="Cheerful 3D animated young woman with flowing brown hair reaching toward floating holographic play and globe screens"
           fill
-          quality={90}
+          quality={100}
+          unoptimized
           sizes="100vw"
           className="object-cover object-center"
         />

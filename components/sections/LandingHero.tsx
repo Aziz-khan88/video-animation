@@ -143,7 +143,8 @@ export function LandingHero() {
           alt="Sunlit animation studio featuring a glossy white and orange 3D robot character drawing on a digital pen display at a wooden desk with storyboards and animation books, pointing upward toward floating industry video screens"
           fill
           priority
-          quality={90}
+          quality={100}
+          unoptimized
           sizes="100vw"
           className="object-cover object-[74%_center] lg:object-right"
         />

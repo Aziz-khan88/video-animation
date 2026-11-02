@@ -92,6 +92,8 @@ export function LandingContact() {
           src="/images/landing-contact-bg.jpg"
           alt="3D animator illustrating storyboards and 3D scenes on a dual studio display"
           fill
+          quality={100}
+          unoptimized
           sizes="100vw"
           className="object-cover object-top"
         />

@@ -146,7 +146,8 @@ export function LandingShowreel() {
           src="/images/landing-showreel-bg.jpg"
           alt="3D robot character reaching out from a widescreen showreel video player surrounded by floating industry animation frames for education, technology, marketing, and healthcare"
           fill
-          quality={90}
+          quality={100}
+          unoptimized
           sizes="100vw"
           className="object-cover object-center"
         />

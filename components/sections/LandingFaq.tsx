@@ -149,7 +149,8 @@ export function LandingFaq() {
           src="/images/landing-faq-bg.jpg"
           alt="Thoughtful 3D animated woman in a red sweater sitting at a desk with a laptop and branded mug, surrounded by floating 3D question mark bubbles, video player, storyboard sketch, and clapperboard cards"
           fill
-          quality={90}
+          quality={100}
+          unoptimized
           sizes="100vw"
           className="object-cover object-right lg:object-center"
         />
