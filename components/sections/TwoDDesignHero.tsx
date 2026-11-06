@@ -172,6 +172,7 @@ const TRUST_BADGES = [
 export function TwoDDesignHero() {
   const [activeShowreel, setActiveShowreel] = useState<HeroVideoThumbnail | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [hoveredNav, setHoveredNav] = useState<string | null>(null);
 
   return (
     <section
@@ -193,9 +194,11 @@ export function TwoDDesignHero() {
             aria-label="VideoAnimation.us — Home"
             className="group inline-flex shrink-0 items-center gap-2.5"
           >
-            <svg
+            <motion.svg
               viewBox="0 0 42 44"
-              className="h-[28px] w-[26px] shrink-0 transition-transform duration-300 group-hover:scale-105 lg:h-[31px] lg:w-[29px]"
+              whileHover={{ rotate: -6, scale: 1.08 }}
+              transition={{ type: "spring", stiffness: 320, damping: 18 }}
+              className="h-[28px] w-[26px] shrink-0 lg:h-[31px] lg:w-[29px]"
               aria-hidden="true"
             >
               <defs>
@@ -205,14 +208,17 @@ export function TwoDDesignHero() {
                   <stop offset="100%" stopColor="#ff6f10" />
                 </linearGradient>
               </defs>
-              <path
+              <motion.path
                 d="M6.5 7.2c0-2.7 3-4.3 5.3-2.9l23.4 14.8c2.1 1.3 2.1 4.5 0 5.8L11.8 39.7c-2.3 1.4-5.3-.2-5.3-2.9V7.2Z"
                 fill="none"
                 stroke="url(#twod-design-play-grad)"
                 strokeWidth="4.8"
                 strokeLinejoin="round"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 0.9, ease: EASE_OUT_EXPO }}
               />
-            </svg>
+            </motion.svg>
             <span className="font-sans text-[19px] font-extrabold tracking-[-0.035em] text-[#0c0d12] lg:text-[21px]">
               VideoAnimation<span className="text-[#ef231c]">.us</span>
             </span>
@@ -221,22 +227,35 @@ export function TwoDDesignHero() {
           {/* Center: Navigation Links */}
           <nav
             aria-label="2D Animation Page Navigation"
+            onMouseLeave={() => setHoveredNav(null)}
             className="hidden h-full md:flex md:items-center"
           >
             <ul className="flex h-full items-center gap-7 lg:gap-9">
               {NAV_LINKS.map((item) => (
-                <li key={item.label} className="relative flex h-full items-center">
+                <li
+                  key={item.label}
+                  onMouseEnter={() => setHoveredNav(item.label)}
+                  className="relative flex h-full items-center"
+                >
                   <Link
                     href={item.href}
                     aria-current={item.active ? "page" : undefined}
                     className={
                       item.active
-                        ? "font-sans text-[14.5px] font-bold tracking-[-0.01em] text-[#eb2419] lg:text-[15px]"
-                        : "font-sans text-[14.5px] font-bold tracking-[-0.01em] text-[#14161d] transition-colors duration-200 hover:text-[#eb2419] lg:text-[15px]"
+                        ? "relative z-10 font-sans text-[14.5px] font-bold tracking-[-0.01em] text-[#eb2419] lg:text-[15px]"
+                        : "relative z-10 font-sans text-[14.5px] font-bold tracking-[-0.01em] text-[#14161d] transition-colors duration-200 hover:text-[#eb2419] lg:text-[15px]"
                     }
                   >
                     {item.label}
                   </Link>
+                  {hoveredNav === item.label && !item.active && (
+                    <motion.span
+                      layoutId="twod-design-nav-hover"
+                      aria-hidden="true"
+                      transition={{ duration: 0.22, ease: EASE_OUT_EXPO }}
+                      className="absolute inset-x-0 bottom-0 h-[2.5px] rounded-full bg-[#ff6c18]/55"
+                    />
+                  )}
                   {item.active && (
                     <motion.span
                       layoutId="twod-design-nav-underline"
@@ -329,7 +348,12 @@ export function TwoDDesignHero() {
       {/* Main Hero Stage — 70vh height on desktop as requested */}
       <div className="relative isolate w-full overflow-hidden lg:h-[70vh] lg:min-h-[540px] lg:max-h-[760px]">
         {/* Regenerated Clean 2D Animator Studio Background Image (1960x768, matched to 70vh aspect ratio) */}
-        <div className="pointer-events-none absolute inset-0 -z-10 w-full">
+        <motion.div
+          initial={{ opacity: 0, scale: 1.035 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.15, ease: EASE_OUT_EXPO }}
+          className="pointer-events-none absolute inset-0 -z-10 w-full"
+        >
           <Image
             src="/images/two-d-design-hero-bg.jpg?v=4"
             alt="Sunlit 2D animation studio where an animator in a red hoodie and headphones illustrates on a digital tablet while viewing a running character animation on a desktop monitor"
@@ -342,7 +366,7 @@ export function TwoDDesignHero() {
           />
           {/* Responsive readability gradient for smaller viewports */}
           <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-[#fbfaf7] via-[#fbfaf7]/95 to-[#fbfaf7]/35 lg:hidden" />
-        </div>
+        </motion.div>
 
         {/* Left Column: Hero Typography, Dual Pill CTAs & 3 Trust Badges */}
         <div className="relative z-10 mx-auto flex h-full w-[96%] flex-col justify-center pt-8 pb-10 lg:py-8">
@@ -378,12 +402,25 @@ export function TwoDDesignHero() {
                 {/* Primary Pill CTA: Get a Fixed Quote -> */}
                 <Link
                   href="#quote"
-                  className="group inline-flex h-[46px] items-center justify-center gap-2 rounded-full bg-[linear-gradient(90deg,#ea2127_0%,#f35321_54%,#f88c15_100%)] px-6 font-sans text-[14.5px] font-bold tracking-[-0.01em] text-white shadow-[0_10px_22px_-6px_rgb(238_42_24/0.5)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_28px_-6px_rgb(238_42_24/0.65)] lg:h-[50px] lg:px-7 lg:text-[15.5px]"
+                  className="group relative inline-flex h-[46px] items-center justify-center gap-2 overflow-hidden rounded-full bg-[linear-gradient(90deg,#ea2127_0%,#f35321_54%,#f88c15_100%)] px-6 font-sans text-[14.5px] font-bold tracking-[-0.01em] text-white shadow-[0_10px_22px_-6px_rgb(238_42_24/0.5)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_28px_-6px_rgb(238_42_24/0.65)] lg:h-[50px] lg:px-7 lg:text-[15.5px]"
                 >
-                  <span>Get a Fixed Quote</span>
+                  {/* Continuous Diagonal Light Shimmer */}
+                  <motion.span
+                    aria-hidden="true"
+                    initial={{ x: "-140%" }}
+                    animate={{ x: "260%" }}
+                    transition={{
+                      duration: 2.6,
+                      repeat: Infinity,
+                      repeatDelay: 2.2,
+                      ease: "easeInOut",
+                    }}
+                    className="pointer-events-none absolute inset-y-0 w-14 -skew-x-20 bg-gradient-to-r from-transparent via-white/35 to-transparent"
+                  />
+                  <span className="relative z-10">Get a Fixed Quote</span>
                   <svg
                     viewBox="0 0 20 20"
-                    className="size-4 transition-transform duration-300 group-hover:translate-x-1"
+                    className="relative z-10 size-4 transition-transform duration-300 group-hover:translate-x-1"
                     fill="none"
                     aria-hidden="true"
                   >
@@ -398,20 +435,24 @@ export function TwoDDesignHero() {
                 </Link>
 
                 {/* Secondary Pill CTA: Watch Showreel */}
-                <button
+                <motion.button
                   type="button"
+                  whileHover={{ y: -2, scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   onClick={() => setActiveShowreel(HERO_VIDEO_THUMBNAILS[0])}
-                  className="group inline-flex h-[46px] cursor-pointer items-center justify-center gap-2 rounded-full border-[1.8px] border-[#262932] bg-white/95 px-6 font-sans text-[14.5px] font-bold tracking-[-0.01em] text-[#0c0d12] shadow-[0_4px_12px_rgb(12_13_18/0.05)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#eb2419] hover:text-[#eb2419] lg:h-[50px] lg:px-7 lg:text-[15.5px]"
+                  className="group inline-flex h-[46px] cursor-pointer items-center justify-center gap-2 rounded-full border-[1.8px] border-[#262932] bg-white/95 px-6 font-sans text-[14.5px] font-bold tracking-[-0.01em] text-[#0c0d12] shadow-[0_4px_12px_rgb(12_13_18/0.05)] transition-colors duration-300 hover:border-[#eb2419] hover:text-[#eb2419] lg:h-[50px] lg:px-7 lg:text-[15.5px]"
                 >
-                  <svg
+                  <motion.svg
                     viewBox="0 0 18 18"
-                    className="size-4 shrink-0 fill-current transition-transform duration-300 group-hover:scale-110"
+                    animate={{ scale: [1, 1.15, 1] }}
+                    transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+                    className="size-4 shrink-0 fill-current"
                     aria-hidden="true"
                   >
                     <path d="M4.2 3.3c0-.7.75-1.12 1.35-.75l8.1 5.1c.56.35.56 1.15 0 1.5l-8.1 5.1c-.6.37-1.35-.05-1.35-.75V3.3Z" />
-                  </svg>
+                  </motion.svg>
                   <span>Watch Showreel</span>
-                </button>
+                </motion.button>
               </div>
             </StaggerItem>
 
@@ -419,17 +460,39 @@ export function TwoDDesignHero() {
             <StaggerItem>
               <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-[#eceef4] pt-4 sm:gap-x-0 sm:border-t-0 sm:pt-0 lg:mt-8 lg:flex-nowrap">
                 {TRUST_BADGES.map((badge, index) => (
-                  <div key={badge.title} className="flex shrink-0 items-center">
+                  <motion.div
+                    key={badge.title}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: 0.35 + index * 0.1,
+                      ease: EASE_OUT_EXPO,
+                    }}
+                    className="flex shrink-0 items-center"
+                  >
                     {index > 0 && (
-                      <span
+                      <motion.span
                         aria-hidden="true"
-                        className="mx-3 hidden h-7 w-px bg-[#dadde6] sm:inline-block lg:mx-3.5"
+                        initial={{ scaleY: 0 }}
+                        animate={{ scaleY: 1 }}
+                        transition={{ duration: 0.45, delay: 0.4 + index * 0.1 }}
+                        className="mx-3 hidden h-7 w-px origin-center bg-[#dadde6] sm:inline-block lg:mx-3.5"
                       />
                     )}
                     <div className="group flex shrink-0 items-center gap-2.5">
-                      <div className="transition-transform duration-300 group-hover:scale-110">
+                      <motion.div
+                        animate={{ y: [0, -2, 0] }}
+                        transition={{
+                          duration: 3 + index * 0.4,
+                          delay: index * 0.3,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }}
+                        className="transition-transform duration-300 group-hover:scale-110"
+                      >
                         {badge.icon}
-                      </div>
+                      </motion.div>
                       <div className="leading-[1.2]">
                         <p className="font-sans text-[12.5px] font-extrabold tracking-[-0.015em] text-[#0c0d12] xl:text-[13.5px]">
                           {badge.title}
@@ -439,7 +502,7 @@ export function TwoDDesignHero() {
                         </p>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </StaggerItem>

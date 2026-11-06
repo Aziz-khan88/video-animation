@@ -92,8 +92,17 @@ export function TwoDDesignApprovalProcess() {
         <Reveal className="flex flex-col items-center text-center">
           <div className="flex items-center justify-center gap-3 sm:gap-5 lg:gap-7">
             {/* Left Red Spark Rays */}
-            <svg
+            <motion.svg
               viewBox="0 0 38 44"
+              initial={{ opacity: 0, scale: 0.6, rotate: -12 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+              viewport={{ once: true, amount: 0.6 }}
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{
+                duration: 2.8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
               className="hidden size-10 shrink-0 text-[#e61e24] sm:block lg:size-14 xl:size-16"
               fill="none"
               aria-hidden="true"
@@ -104,22 +113,38 @@ export function TwoDDesignApprovalProcess() {
                 strokeWidth="4.5"
                 strokeLinecap="round"
               />
-            </svg>
+            </motion.svg>
 
             <h2
               id="two-d-approval-process-heading"
               className="flex flex-wrap items-center justify-center gap-x-3.5 gap-y-2 font-sans text-[32px] font-extrabold tracking-[-0.03em] text-[#0c0d12] sm:text-[44px] lg:text-[56px] xl:text-[66px] 2xl:text-[74px]"
             >
               <span>Our Simple</span>
-              <span className="inline-block -skew-x-10 rounded-[10px] bg-[linear-gradient(90deg,#e4171f_0%,#f14f1b_52%,#f88212_100%)] px-4 py-0.5 text-white shadow-[0_10px_22px_-6px_rgb(235_45_25/0.55)] lg:px-6 lg:py-1">
+              <motion.span
+                initial={{ opacity: 0, scale: 0.84, rotate: -4 }}
+                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                viewport={{ once: true, amount: 0.6 }}
+                transition={{ duration: 0.55, delay: 0.12, ease: EASE_OUT_EXPO }}
+                className="inline-block -skew-x-10 rounded-[10px] bg-[linear-gradient(90deg,#e4171f_0%,#f14f1b_52%,#f88212_100%)] px-4 py-0.5 text-white shadow-[0_10px_22px_-6px_rgb(235_45_25/0.55)] lg:px-6 lg:py-1"
+              >
                 <span className="inline-block skew-x-10 italic">4-Step</span>
-              </span>
+              </motion.span>
               <span>Approval Process</span>
             </h2>
 
             {/* Right Orange Spark Rays */}
-            <svg
+            <motion.svg
               viewBox="0 0 38 44"
+              initial={{ opacity: 0, scale: 0.6, rotate: 12 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+              viewport={{ once: true, amount: 0.6 }}
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{
+                duration: 2.8,
+                delay: 0.4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
               className="hidden size-10 shrink-0 text-[#f37519] sm:block lg:size-14 xl:size-16"
               fill="none"
               aria-hidden="true"
@@ -130,7 +155,7 @@ export function TwoDDesignApprovalProcess() {
                 strokeWidth="4.5"
                 strokeLinecap="round"
               />
-            </svg>
+            </motion.svg>
           </div>
         </Reveal>
 
@@ -139,7 +164,7 @@ export function TwoDDesignApprovalProcess() {
           {/* Top Row: 4 Staggered Step Cards Aligned Flush Across the 96% Container */}
           <StaggerGroup
             className="relative z-30 grid grid-cols-4 items-start gap-6 xl:gap-8"
-            stagger={0.09}
+            stagger={0.12}
             delayChildren={0.05}
           >
             {APPROVAL_STEPS.map((step) => (
@@ -147,7 +172,11 @@ export function TwoDDesignApprovalProcess() {
                 key={step.id}
                 className={`flex flex-col ${step.cardOffsetClass}`}
               >
-                <div className="group w-full overflow-hidden rounded-[16px] border-[2px] border-[#ee5a24] bg-[linear-gradient(90deg,#e3141f_0%,#f14e1b_55%,#f88312_100%)] shadow-[0_10px_24px_-10px_rgb(15_23_42/0.12)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_-10px_rgb(235_55_25/0.24)]">
+                <motion.div
+                  whileHover={{ y: -5, scale: 1.015 }}
+                  transition={{ duration: 0.28, ease: EASE_OUT_EXPO }}
+                  className="group w-full overflow-hidden rounded-[16px] border-[2px] border-[#ee5a24] bg-[linear-gradient(90deg,#e3141f_0%,#f14e1b_55%,#f88312_100%)] shadow-[0_10px_24px_-10px_rgb(15_23_42/0.12)] transition-shadow duration-300 hover:shadow-[0_16px_32px_-10px_rgb(235_55_25/0.24)]"
+                >
                   {/* Top Red-to-Orange Header Bar */}
                   <div className="px-4 py-2 xl:px-5 xl:py-2.5">
                     <h3 className="font-sans text-[17.5px] font-extrabold tracking-[-0.02em] text-white xl:text-[21px]">
@@ -163,7 +192,7 @@ export function TwoDDesignApprovalProcess() {
 
                     {step.hasApprovalBadge && (
                       <div className="mt-3">
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-[#24a13b] px-4 py-1 font-sans text-[13px] font-bold text-white shadow-xs">
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-[#24a13b] px-4 py-1 font-sans text-[13px] font-bold text-white shadow-xs transition-transform duration-300 group-hover:scale-105">
                           <svg
                             viewBox="0 0 14 14"
                             className="size-3.5 shrink-0"
@@ -183,7 +212,7 @@ export function TwoDDesignApprovalProcess() {
                       </div>
                     )}
                   </div>
-                </div>
+                </motion.div>
               </StaggerItem>
             ))}
           </StaggerGroup>
@@ -191,10 +220,10 @@ export function TwoDDesignApprovalProcess() {
           {/* Bottom Unified Panoramic 3D Winding Route Map + 4 Stage Illustrations Image */}
           <div className="relative z-10 -mt-[8px] aspect-[1347/366] w-full">
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 14, scale: 0.985 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.75, ease: EASE_OUT_EXPO }}
+              transition={{ duration: 0.85, ease: EASE_OUT_EXPO }}
               className="relative h-full w-full"
             >
               <Image
@@ -237,35 +266,69 @@ export function TwoDDesignApprovalProcess() {
                 </linearGradient>
               </defs>
 
-              {APPROVAL_STEPS.map((step) => {
+              {APPROVAL_STEPS.map((step, idx) => {
                 const stemHeight = step.pinY - step.stemStartY;
                 return (
                   <g key={step.id}>
-                    {/* Vertical Red-to-Orange Connector Stem (rendered as a 4px wide rect so it never suffers from SVG zero-width line bounding box hiding) */}
-                    <rect
+                    {/* Animated Vertical Red-to-Orange Connector Stem drawing downward from card to road pin */}
+                    <motion.rect
                       x={step.pinX - 2}
                       y={step.stemStartY}
                       width="4"
                       height={stemHeight}
                       rx="2"
                       fill="url(#process-stem-grad)"
+                      initial={{ scaleY: 0, opacity: 0 }}
+                      whileInView={{ scaleY: 1, opacity: 1 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{
+                        duration: 0.55,
+                        delay: 0.22 + idx * 0.12,
+                        ease: EASE_OUT_EXPO,
+                      }}
+                      style={{
+                        transformOrigin: `${step.pinX}px ${step.stemStartY}px`,
+                      }}
                     />
-                    {/* Soft Outer Pin Halo */}
-                    <circle
+                    {/* Continuous Pulsing Outer Pin Halo */}
+                    <motion.circle
                       cx={step.pinX}
                       cy={step.pinY}
                       r="14"
                       fill="#f25219"
-                      fillOpacity="0.26"
+                      animate={{
+                        scale: [1, 1.38, 1],
+                        opacity: [0.22, 0.48, 0.22],
+                      }}
+                      transition={{
+                        duration: 2.4,
+                        delay: idx * 0.35,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                      style={{
+                        transformOrigin: `${step.pinX}px ${step.pinY}px`,
+                      }}
                     />
                     {/* Glowing Orange-Red Pin Circle with White Border */}
-                    <circle
+                    <motion.circle
                       cx={step.pinX}
                       cy={step.pinY}
                       r="10"
                       fill="url(#process-pin-grad)"
                       stroke="#ffffff"
                       strokeWidth="3"
+                      initial={{ scale: 0, opacity: 0 }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{
+                        duration: 0.45,
+                        delay: 0.36 + idx * 0.12,
+                        ease: EASE_OUT_EXPO,
+                      }}
+                      style={{
+                        transformOrigin: `${step.pinX}px ${step.pinY}px`,
+                      }}
                     />
                   </g>
                 );
@@ -337,16 +400,24 @@ export function TwoDDesignApprovalProcess() {
           className="mt-6 flex items-center justify-center gap-4 sm:gap-6 lg:mt-5"
           delay={0.2}
         >
-          <span
+          <motion.span
             aria-hidden="true"
-            className="h-[2px] w-14 rounded-full bg-[linear-gradient(90deg,#d82420_0%,#eb521d_100%)] sm:w-28 lg:w-56"
+            initial={{ scaleX: 0, opacity: 0 }}
+            whileInView={{ scaleX: 1, opacity: 1 }}
+            viewport={{ once: true, amount: 0.6 }}
+            transition={{ duration: 0.65, delay: 0.28, ease: EASE_OUT_EXPO }}
+            className="h-[2px] w-14 origin-right rounded-full bg-[linear-gradient(90deg,#d82420_0%,#eb521d_100%)] sm:w-28 lg:w-56"
           />
           <p className="text-center font-sans text-[14px] font-bold italic tracking-[-0.01em] text-[#0c0d12] sm:text-[15.5px] lg:text-[17px]">
             Two revision rounds are included at each stage.
           </p>
-          <span
+          <motion.span
             aria-hidden="true"
-            className="h-[2px] w-14 rounded-full bg-[linear-gradient(90deg,#ef661c_0%,#f68c13_100%)] sm:w-28 lg:w-56"
+            initial={{ scaleX: 0, opacity: 0 }}
+            whileInView={{ scaleX: 1, opacity: 1 }}
+            viewport={{ once: true, amount: 0.6 }}
+            transition={{ duration: 0.65, delay: 0.28, ease: EASE_OUT_EXPO }}
+            className="h-[2px] w-14 origin-left rounded-full bg-[linear-gradient(90deg,#ef661c_0%,#f68c13_100%)] sm:w-28 lg:w-56"
           />
         </Reveal>
       </div>

@@ -20,9 +20,11 @@ const SERVICE_STRIP_ITEMS: readonly ServiceStripItem[] = [
     title: "Explainer Videos",
     subtitle: "Simplify & educate",
     icon: (
-      <svg
+      <motion.svg
         viewBox="0 0 40 32"
-        className="h-8 w-10 shrink-0 text-white transition-transform duration-300 group-hover:scale-110 group-hover:text-[#ff531a]"
+        animate={{ y: [0, -2, 0] }}
+        transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut" }}
+        className="h-8 w-10 shrink-0 text-white transition-colors duration-300 group-hover:scale-110 group-hover:text-[#ff531a]"
         fill="none"
         aria-hidden="true"
       >
@@ -50,8 +52,14 @@ const SERVICE_STRIP_ITEMS: readonly ServiceStripItem[] = [
           stroke="currentColor"
           strokeWidth="2"
         />
-        <path d="M17.2 11.2v9.6l7.8-4.8-7.8-4.8Z" fill="currentColor" />
-      </svg>
+        <motion.path
+          d="M17.2 11.2v9.6l7.8-4.8-7.8-4.8Z"
+          fill="currentColor"
+          animate={{ scale: [1, 1.16, 1] }}
+          transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+          style={{ transformOrigin: "20px 16px" }}
+        />
+      </motion.svg>
     ),
   },
   {
@@ -59,9 +67,11 @@ const SERVICE_STRIP_ITEMS: readonly ServiceStripItem[] = [
     title: "Technical Animation",
     subtitle: "Show how it works",
     icon: (
-      <svg
+      <motion.svg
         viewBox="0 0 36 36"
-        className="size-9 shrink-0 text-white transition-transform duration-500 group-hover:rotate-45 group-hover:scale-110 group-hover:text-[#ff531a]"
+        animate={{ rotate: [0, 360] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+        className="size-9 shrink-0 text-white transition-colors duration-500 group-hover:scale-110 group-hover:text-[#ff531a]"
         fill="none"
         aria-hidden="true"
       >
@@ -72,7 +82,7 @@ const SERVICE_STRIP_ITEMS: readonly ServiceStripItem[] = [
           strokeLinejoin="round"
         />
         <circle cx="18" cy="18" r="5" stroke="currentColor" strokeWidth="2.3" />
-      </svg>
+      </motion.svg>
     ),
   },
   {
@@ -80,9 +90,11 @@ const SERVICE_STRIP_ITEMS: readonly ServiceStripItem[] = [
     title: "Product Animation",
     subtitle: "Present, demo & sell",
     icon: (
-      <svg
+      <motion.svg
         viewBox="0 0 36 36"
-        className="size-9 shrink-0 text-white transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-110 group-hover:text-[#ff531a]"
+        animate={{ y: [0, -2.5, 0] }}
+        transition={{ duration: 3.1, delay: 0.3, repeat: Infinity, ease: "easeInOut" }}
+        className="size-9 shrink-0 text-white transition-colors duration-300 group-hover:scale-110 group-hover:text-[#ff531a]"
         fill="none"
         aria-hidden="true"
       >
@@ -99,7 +111,7 @@ const SERVICE_STRIP_ITEMS: readonly ServiceStripItem[] = [
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-      </svg>
+      </motion.svg>
     ),
   },
   {
@@ -107,9 +119,11 @@ const SERVICE_STRIP_ITEMS: readonly ServiceStripItem[] = [
     title: "Training & Process Videos",
     subtitle: "Teach, onboard & drive results",
     icon: (
-      <svg
+      <motion.svg
         viewBox="0 0 40 34"
-        className="h-9 w-10 shrink-0 text-white transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-110 group-hover:text-[#ff531a]"
+        animate={{ y: [0, -2, 0] }}
+        transition={{ duration: 3.6, delay: 0.6, repeat: Infinity, ease: "easeInOut" }}
+        className="h-9 w-10 shrink-0 text-white transition-colors duration-300 group-hover:scale-110 group-hover:text-[#ff531a]"
         fill="none"
         aria-hidden="true"
       >
@@ -133,7 +147,7 @@ const SERVICE_STRIP_ITEMS: readonly ServiceStripItem[] = [
           strokeLinecap="round"
         />
         <circle cx="34.2" cy="25.8" r="1.5" fill="currentColor" />
-      </svg>
+      </motion.svg>
     ),
   },
 ] as const;
@@ -148,12 +162,13 @@ export function TwoDDesignServiceStrip() {
       <div className="mx-auto w-[96%] py-5">
         <StaggerGroup
           className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:flex lg:items-center lg:justify-between lg:gap-0"
-          stagger={0.09}
+          stagger={0.11}
           delayChildren={0.05}
         >
           {SERVICE_STRIP_ITEMS.map((item, idx) => (
-            <div
+            <StaggerItem
               key={item.id}
+              y={16}
               className="flex items-center lg:flex-1 lg:justify-center first:lg:justify-start last:lg:justify-end"
             >
               {/* Vertical Divider Line on Desktop between columns */}
@@ -172,20 +187,22 @@ export function TwoDDesignServiceStrip() {
                 />
               )}
 
-              <StaggerItem className="w-full lg:w-auto">
-                <div className="group flex items-center gap-3.5 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 transition-colors duration-300 hover:border-white/20 hover:bg-white/[0.05] lg:gap-4 lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:hover:bg-transparent">
-                  {item.icon}
-                  <div className="min-w-0 leading-tight">
-                    <h2 className="font-sans text-[15px] font-extrabold tracking-[-0.015em] text-white transition-colors duration-300 group-hover:text-[#ff6a26] lg:text-[16px] xl:text-[17px]">
-                      {item.title}
-                    </h2>
-                    <p className="mt-0.5 font-sans text-[12.5px] font-normal tracking-[-0.01em] text-white/85 lg:text-[13.5px]">
-                      {item.subtitle}
-                    </p>
-                  </div>
+              <motion.div
+                whileHover={{ y: -2 }}
+                transition={{ duration: 0.25, ease: EASE_OUT_EXPO }}
+                className="group flex w-full items-center gap-3.5 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 transition-colors duration-300 hover:border-white/20 hover:bg-white/[0.05] lg:w-auto lg:gap-4 lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:hover:bg-transparent"
+              >
+                {item.icon}
+                <div className="min-w-0 leading-tight">
+                  <h2 className="font-sans text-[15px] font-extrabold tracking-[-0.015em] text-white transition-colors duration-300 group-hover:text-[#ff6a26] lg:text-[16px] xl:text-[17px]">
+                    {item.title}
+                  </h2>
+                  <p className="mt-0.5 font-sans text-[12.5px] font-normal tracking-[-0.01em] text-white/85 lg:text-[13.5px]">
+                    {item.subtitle}
+                  </p>
                 </div>
-              </StaggerItem>
-            </div>
+              </motion.div>
+            </StaggerItem>
           ))}
         </StaggerGroup>
       </div>

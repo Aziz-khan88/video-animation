@@ -1,10 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
-import { EASE_OUT_EXPO, Reveal } from "@/components/motion/MotionPrimitives";
+import {
+  EASE_OUT_EXPO,
+  Reveal,
+  StaggerGroup,
+  StaggerItem,
+} from "@/components/motion/MotionPrimitives";
 
 interface PortfolioSlide {
   id: string;
@@ -83,8 +88,17 @@ export function TwoDDesignPortfolio() {
   // Default active slide is index 3 ("Mechanical Engine") matching the reference image
   const [activeIndex, setActiveIndex] = useState<number>(3);
   const [modalSlide, setModalSlide] = useState<PortfolioSlide | null>(null);
+  const [isPaused, setIsPaused] = useState<boolean>(false);
 
   const total = PORTFOLIO_SLIDES.length;
+
+  useEffect(() => {
+    if (isPaused || modalSlide) return;
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % total);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [isPaused, modalSlide, total]);
 
   const handlePrev = () => {
     setActiveIndex((prev) => (prev - 1 + total) % total);
@@ -209,22 +223,36 @@ export function TwoDDesignPortfolio() {
           </h2>
 
           <div className="mt-3 flex items-center justify-center gap-3.5 sm:gap-5">
-            <span
+            <motion.span
               aria-hidden="true"
-              className="h-[2px] w-14 bg-gradient-to-r from-transparent to-[#ef2920] sm:w-28 lg:w-36"
+              initial={{ scaleX: 0, opacity: 0 }}
+              whileInView={{ scaleX: 1, opacity: 1 }}
+              viewport={{ once: true, amount: 0.6 }}
+              transition={{ duration: 0.65, delay: 0.15, ease: EASE_OUT_EXPO }}
+              className="h-[2px] w-14 origin-right bg-gradient-to-r from-transparent to-[#ef2920] sm:w-28 lg:w-36"
             />
             <p className="font-sans text-[15px] font-normal tracking-[-0.01em] text-white/90 sm:text-[18px] lg:text-[21px] xl:text-[23px]">
               See ideas come to life across industries.
             </p>
-            <span
+            <motion.span
               aria-hidden="true"
-              className="h-[2px] w-14 bg-gradient-to-l from-transparent to-[#ff8212] sm:w-28 lg:w-36"
+              initial={{ scaleX: 0, opacity: 0 }}
+              whileInView={{ scaleX: 1, opacity: 1 }}
+              viewport={{ once: true, amount: 0.6 }}
+              transition={{ duration: 0.65, delay: 0.15, ease: EASE_OUT_EXPO }}
+              className="h-[2px] w-14 origin-left bg-gradient-to-l from-transparent to-[#ff8212] sm:w-28 lg:w-36"
             />
           </div>
         </Reveal>
 
         {/* Desktop 3D Perspective Coverflow Stage */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 24, scale: 0.96 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.85, ease: EASE_OUT_EXPO }}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
           className="relative mt-8 hidden h-[390px] w-full select-none lg:block"
           style={{ perspective: "1250px" }}
         >
@@ -268,14 +296,22 @@ export function TwoDDesignPortfolio() {
                       aria-hidden="true"
                       className="pointer-events-none absolute -top-[18px] bottom-0 -left-[9px] w-[14px] border-t-[1.8px] border-l-[1.8px] border-[#ff2f24]"
                     >
-                      <span className="absolute -top-[4px] right-0 size-2 rounded-full bg-[#ff2a22] shadow-[0_0_8px_#ff2a22]" />
+                      <motion.span
+                        animate={{ scale: [1, 1.35, 1], opacity: [0.85, 1, 0.85] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute -top-[4px] right-0 size-2 rounded-full bg-[#ff2a22] shadow-[0_0_8px_#ff2a22]"
+                      />
                     </div>
                     {/* Right Vertical Tech Post */}
                     <div
                       aria-hidden="true"
                       className="pointer-events-none absolute -top-[18px] -right-[9px] bottom-0 w-[14px] border-t-[1.8px] border-r-[1.8px] border-[#ff8a12]"
                     >
-                      <span className="absolute -top-[4px] left-0 size-2 rounded-full bg-[#ff8a12] shadow-[0_0_8px_#ff8a12]" />
+                      <motion.span
+                        animate={{ scale: [1, 1.35, 1], opacity: [0.85, 1, 0.85] }}
+                        transition={{ duration: 2, delay: 0.4, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute -top-[4px] left-0 size-2 rounded-full bg-[#ff8a12] shadow-[0_0_8px_#ff8a12]"
+                      />
                     </div>
                   </>
                 )}
@@ -362,46 +398,51 @@ export function TwoDDesignPortfolio() {
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
         {/* Mobile / Tablet Responsive Portfolio Grid */}
-        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:hidden">
+        <StaggerGroup
+          className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:hidden"
+          stagger={0.08}
+          delayChildren={0.05}
+        >
           {PORTFOLIO_SLIDES.map((slide, idx) => (
-            <button
-              key={slide.id}
-              type="button"
-              onClick={() => {
-                setActiveIndex(idx);
-                setModalSlide(slide);
-              }}
-              className={`group relative aspect-video w-full cursor-pointer overflow-hidden rounded-xl border-2 text-left shadow-xl ${
-                idx === activeIndex ? "border-[#ff6b18]" : "border-white/20"
-              }`}
-            >
-              <Image
-                src={slide.image}
-                alt={slide.alt}
-                fill
-                unoptimized
-                sizes="(min-width: 640px) 48vw, 94vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/25">
-                <span className="grid size-12 place-items-center rounded-full border-2 border-[#ff6c18] bg-[#141829]/85 text-white shadow-lg">
-                  <svg viewBox="0 0 20 20" className="size-5 translate-x-[1px] fill-current">
-                    <path d="M5 3.8v12.4l10.2-6.2L5 3.8Z" />
-                  </svg>
-                </span>
-              </div>
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3">
-                <span className="font-sans text-[11px] font-bold uppercase tracking-wider text-[#ff7c2a]">
-                  {slide.category}
-                </span>
-                <p className="font-sans text-sm font-bold text-white">{slide.title}</p>
-              </div>
-            </button>
+            <StaggerItem key={slide.id}>
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveIndex(idx);
+                  setModalSlide(slide);
+                }}
+                className={`group relative aspect-video w-full cursor-pointer overflow-hidden rounded-xl border-2 text-left shadow-xl ${
+                  idx === activeIndex ? "border-[#ff6b18]" : "border-white/20"
+                }`}
+              >
+                <Image
+                  src={slide.image}
+                  alt={slide.alt}
+                  fill
+                  unoptimized
+                  sizes="(min-width: 640px) 48vw, 94vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-black/25">
+                  <span className="grid size-12 place-items-center rounded-full border-2 border-[#ff6c18] bg-[#141829]/85 text-white shadow-lg">
+                    <svg viewBox="0 0 20 20" className="size-5 translate-x-[1px] fill-current">
+                      <path d="M5 3.8v12.4l10.2-6.2L5 3.8Z" />
+                    </svg>
+                  </span>
+                </div>
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3">
+                  <span className="font-sans text-[11px] font-bold uppercase tracking-wider text-[#ff7c2a]">
+                    {slide.category}
+                  </span>
+                  <p className="font-sans text-sm font-bold text-white">{slide.title}</p>
+                </div>
+              </button>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
 
         {/* Carousel Navigation Arrows + Pagination Dots */}
         <div className="mt-3 flex items-center justify-center gap-8 sm:gap-14 lg:gap-20">
@@ -473,15 +514,27 @@ export function TwoDDesignPortfolio() {
         </div>
 
         {/* Bottom Pill CTA: View Full Portfolio -> */}
-        <div className="mt-6 flex justify-center lg:mt-7">
+        <Reveal className="mt-6 flex justify-center lg:mt-7" delay={0.12}>
           <Link
             href="/portfolio"
-            className="group inline-flex h-[46px] items-center justify-center gap-2.5 rounded-[12px] bg-[linear-gradient(90deg,#e6171f_0%,#ff5114_55%,#ff8e0a_100%)] px-7 font-sans text-[15px] font-extrabold tracking-[-0.01em] text-white shadow-[0_14px_30px_-6px_rgb(245_55_20/0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_36px_-6px_rgb(245_55_20/0.75)] lg:h-[48px] lg:px-8 lg:text-[15.5px]"
+            className="group relative inline-flex h-[46px] items-center justify-center gap-2.5 overflow-hidden rounded-[12px] bg-[linear-gradient(90deg,#e6171f_0%,#ff5114_55%,#ff8e0a_100%)] px-7 font-sans text-[15px] font-extrabold tracking-[-0.01em] text-white shadow-[0_14px_30px_-6px_rgb(245_55_20/0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_36px_-6px_rgb(245_55_20/0.75)] lg:h-[48px] lg:px-8 lg:text-[15.5px]"
           >
-            <span>View Full Portfolio</span>
+            <motion.span
+              aria-hidden="true"
+              initial={{ x: "-140%" }}
+              animate={{ x: "260%" }}
+              transition={{
+                duration: 2.8,
+                repeat: Infinity,
+                repeatDelay: 2.3,
+                ease: "easeInOut",
+              }}
+              className="pointer-events-none absolute inset-y-0 w-16 -skew-x-20 bg-gradient-to-r from-transparent via-white/35 to-transparent"
+            />
+            <span className="relative z-10">View Full Portfolio</span>
             <svg
               viewBox="0 0 20 20"
-              className="size-4 transition-transform duration-300 group-hover:translate-x-1"
+              className="relative z-10 size-4 transition-transform duration-300 group-hover:translate-x-1"
               fill="none"
               aria-hidden="true"
             >
@@ -494,7 +547,7 @@ export function TwoDDesignPortfolio() {
               />
             </svg>
           </Link>
-        </div>
+        </Reveal>
       </div>
 
       {/* Lightbox Video Preview Modal */}

@@ -46,7 +46,7 @@ const FAQ_ITEMS: readonly FaqItem[] = [
 ] as const;
 
 export function TwoDDesignFaq() {
-  const [openId, setOpenId] = useState<string | null>(null);
+  const [openId, setOpenId] = useState<string | null>("whats-included");
 
   const toggleItem = (id: string) => {
     setOpenId((prev) => (prev === id ? null : id));
@@ -61,7 +61,11 @@ export function TwoDDesignFaq() {
       <div className="mx-auto w-[96%]">
         <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-12 lg:gap-8">
           {/* Left Column (4 Cols): Thinking Character Illustration Aligned Flush Left */}
-          <Reveal className="flex justify-center lg:col-span-4 lg:justify-start lg:pt-6">
+          <Reveal
+            x={-26}
+            y={0}
+            className="flex justify-center lg:col-span-4 lg:justify-start lg:pt-6"
+          >
             <FloatingElement amplitude={4.5} duration={4.6} className="w-full max-w-[380px] lg:max-w-[460px]">
               <div className="relative aspect-[16/11] w-full">
                 <Image
@@ -90,28 +94,42 @@ export function TwoDDesignFaq() {
 
             <StaggerGroup
               className="space-y-3"
-              stagger={0.08}
+              stagger={0.09}
               delayChildren={0.05}
             >
               {FAQ_ITEMS.map((item) => {
                 const isOpen = openId === item.id;
                 return (
                   <StaggerItem key={item.id}>
-                    <div className="overflow-hidden rounded-[12px] border border-[#e3e5ec] bg-[#f1f2f6] transition-colors duration-200 hover:border-[#d5d8e2] hover:bg-[#eceef3]">
+                    <motion.div
+                      whileHover={{ y: -1.5 }}
+                      transition={{ duration: 0.22, ease: EASE_OUT_EXPO }}
+                      className={`overflow-hidden rounded-[12px] border transition-colors duration-200 ${
+                        isOpen
+                          ? "border-[#f39c80] bg-[#fffaf8] shadow-[0_8px_22px_-10px_rgb(235_55_25/0.16)]"
+                          : "border-[#e3e5ec] bg-[#f1f2f6] hover:border-[#d5d8e2] hover:bg-[#eceef3]"
+                      }`}
+                    >
                       <button
                         type="button"
                         onClick={() => toggleItem(item.id)}
                         aria-expanded={isOpen}
                         className="flex w-full cursor-pointer items-center justify-between gap-4 px-5 py-3.5 text-left lg:px-6 lg:py-4"
                       >
-                        <span className="font-sans text-[14.5px] font-extrabold tracking-[-0.015em] text-[#0c0d12] sm:text-[15.5px] lg:text-[16px]">
+                        <span
+                          className={`font-sans text-[14.5px] font-extrabold tracking-[-0.015em] sm:text-[15.5px] lg:text-[16px] ${
+                            isOpen ? "text-[#e51a20]" : "text-[#0c0d12]"
+                          }`}
+                        >
                           {item.question}
                         </span>
                         <motion.svg
                           animate={{ rotate: isOpen ? 180 : 0 }}
                           transition={{ duration: 0.25, ease: EASE_OUT_EXPO }}
                           viewBox="0 0 20 20"
-                          className="size-5 shrink-0 text-[#14161d]"
+                          className={`size-5 shrink-0 ${
+                            isOpen ? "text-[#e51a20]" : "text-[#14161d]"
+                          }`}
                           fill="none"
                           aria-hidden="true"
                         >
@@ -134,13 +152,13 @@ export function TwoDDesignFaq() {
                             transition={{ duration: 0.28, ease: EASE_OUT_EXPO }}
                             className="overflow-hidden"
                           >
-                            <div className="border-t border-[#e2e4ec] px-5 pt-3 pb-4 font-sans text-[13.5px] leading-relaxed text-[#353843] lg:px-6 lg:text-[14.5px]">
+                            <div className="border-t border-[#f4dcd3] px-5 pt-3 pb-4 font-sans text-[13.5px] leading-relaxed text-[#353843] lg:px-6 lg:text-[14.5px]">
                               {item.answer}
                             </div>
                           </motion.div>
                         )}
                       </AnimatePresence>
-                    </div>
+                    </motion.div>
                   </StaggerItem>
                 );
               })}
@@ -151,14 +169,18 @@ export function TwoDDesignFaq() {
         {/* Bottom Mid-Page Orange-Red Gradient CTA Banner */}
         <Reveal className="mt-9 lg:mt-11" delay={0.12}>
           <div className="relative overflow-hidden rounded-[16px] bg-[linear-gradient(90deg,#f35b1c_0%,#f77c14_35%,#ea3c1d_72%,#f57816_100%)] px-6 py-4 text-white shadow-[0_14px_32px_-10px_rgb(238_65_24/0.45)] sm:px-8 sm:py-5 lg:px-10">
-            {/* Subtle Diagonal Sheen Accents */}
-            <div
+            {/* Subtle Animated Diagonal Sheen Accents */}
+            <motion.div
               aria-hidden="true"
-              className="pointer-events-none absolute -top-10 left-[8%] h-36 w-28 rotate-[28deg] bg-white/10"
+              animate={{ x: [0, 14, 0], opacity: [0.09, 0.16, 0.09] }}
+              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+              className="pointer-events-none absolute -top-10 left-[8%] h-36 w-28 rotate-[28deg] bg-white"
             />
-            <div
+            <motion.div
               aria-hidden="true"
-              className="pointer-events-none absolute -bottom-12 right-[12%] h-40 w-32 rotate-[28deg] bg-white/10"
+              animate={{ x: [0, -14, 0], opacity: [0.09, 0.16, 0.09] }}
+              transition={{ duration: 4.5, delay: 1.2, repeat: Infinity, ease: "easeInOut" }}
+              className="pointer-events-none absolute -bottom-12 right-[12%] h-40 w-32 rotate-[28deg] bg-white"
             />
 
             <div className="relative z-10 flex flex-col items-center justify-between gap-4 text-center md:flex-row md:text-left">
@@ -173,7 +195,7 @@ export function TwoDDesignFaq() {
 
               <Link
                 href="#quote"
-                className="group inline-flex h-[40px] shrink-0 items-center justify-center gap-2 rounded-full bg-white px-5 font-sans text-[13px] font-extrabold tracking-[-0.01em] text-[#14161d] shadow-[0_8px_20px_-4px_rgb(0_0_0/0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#fff9f6] lg:h-[42px] lg:px-6 lg:text-[14px]"
+                className="group inline-flex h-[40px] w-full shrink-0 items-center justify-center gap-2 rounded-full bg-white px-5 font-sans text-[13px] font-extrabold tracking-[-0.01em] text-[#14161d] shadow-[0_8px_20px_-4px_rgb(0_0_0/0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:bg-[#fff9f6] sm:w-auto lg:h-[42px] lg:px-6 lg:text-[14px]"
               >
                 <span>Get a Fixed Quote</span>
                 <svg

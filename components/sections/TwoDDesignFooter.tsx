@@ -2,7 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "motion/react";
 import {
+  EASE_OUT_EXPO,
   Reveal,
   StaggerGroup,
   StaggerItem,
@@ -40,7 +42,13 @@ export function TwoDDesignFooter() {
       {/* TOP PRE-FOOTER STAGE: Full-Bleed Unified Panoramic Artwork (Airplane, Gears, Bottle, Building & Sweeping Red-Orange Wave) */}
       <div className="relative isolate w-full overflow-hidden bg-white lg:aspect-[1376/578]">
         {/* Desktop Full-Bleed Panoramic Pre-Footer Background Image (includes integrated red-orange wave & #0d0814 bottom curve) */}
-        <div className="pointer-events-none absolute inset-0 z-0 hidden lg:block">
+        <motion.div
+          initial={{ opacity: 0, scale: 1.025 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.95, ease: EASE_OUT_EXPO }}
+          className="pointer-events-none absolute inset-0 z-0 hidden lg:block"
+        >
           <Image
             src="/images/two-d-design-footer-bg.jpg?v=5"
             alt="2D illustration collage featuring a flying red and white propeller plane with dashed trail, interlocking yellow/red/grey gears, a white botanical pump bottle with 3 orange sparks, and a modern commercial building with trees over a sweeping red-to-orange wave"
@@ -50,7 +58,7 @@ export function TwoDDesignFooter() {
             sizes="100vw"
             className="object-fill"
           />
-        </div>
+        </motion.div>
 
         {/* Left Column Content Aligned to the 96% Container Grid */}
         <div className="relative z-10 mx-auto flex h-full w-[96%] flex-col justify-start pt-8 pb-4 sm:pt-10 lg:pt-[2.2%] lg:pb-0">
@@ -65,8 +73,10 @@ export function TwoDDesignFooter() {
                 <span className="relative mt-0.5 inline-block bg-[linear-gradient(90deg,#e51b23_0%,#f2541b_52%,#f89614_100%)] bg-clip-text text-transparent sm:whitespace-nowrap">
                   ideas to life.
                   {/* 3 Warm Orange Burst Rays at the Top-Right of "life." */}
-                  <svg
+                  <motion.svg
                     viewBox="0 0 32 32"
+                    animate={{ scale: [1, 1.15, 1], rotate: [0, 4, 0] }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                     className="pointer-events-none absolute -top-1.5 -right-6 size-6 text-[#f68815] lg:-top-2 lg:-right-8 lg:size-7 xl:size-8"
                     fill="none"
                     aria-hidden="true"
@@ -77,7 +87,7 @@ export function TwoDDesignFooter() {
                       strokeWidth="3.4"
                       strokeLinecap="round"
                     />
-                  </svg>
+                  </motion.svg>
                 </span>
               </h2>
             </StaggerItem>
@@ -92,12 +102,24 @@ export function TwoDDesignFooter() {
               <div className="mt-4 lg:mt-4 xl:mt-6">
                 <Link
                   href="#quote"
-                  className="group inline-flex h-[46px] items-center justify-center gap-3 rounded-full bg-[linear-gradient(90deg,#e41520_0%,#f14f1b_52%,#f89012_100%)] px-7 font-sans text-[15.5px] font-extrabold tracking-[-0.01em] text-white shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.35),0_10px_24px_-6px_rgb(235_45_24/0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.45),0_14px_30px_-6px_rgb(235_45_24/0.7)] lg:h-[46px] lg:px-7 lg:text-[16px] xl:h-[54px] xl:px-10 xl:text-[19px]"
+                  className="group relative inline-flex h-[46px] items-center justify-center gap-3 overflow-hidden rounded-full bg-[linear-gradient(90deg,#e41520_0%,#f14f1b_52%,#f89012_100%)] px-7 font-sans text-[15.5px] font-extrabold tracking-[-0.01em] text-white shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.35),0_10px_24px_-6px_rgb(235_45_24/0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.45),0_14px_30px_-6px_rgb(235_45_24/0.7)] lg:h-[46px] lg:px-7 lg:text-[16px] xl:h-[54px] xl:px-10 xl:text-[19px]"
                 >
-                  <span>Get a Fixed Quote</span>
+                  <motion.span
+                    aria-hidden="true"
+                    initial={{ x: "-140%" }}
+                    animate={{ x: "260%" }}
+                    transition={{
+                      duration: 2.8,
+                      repeat: Infinity,
+                      repeatDelay: 2.2,
+                      ease: "easeInOut",
+                    }}
+                    className="pointer-events-none absolute inset-y-0 w-16 -skew-x-20 bg-gradient-to-r from-transparent via-white/35 to-transparent"
+                  />
+                  <span className="relative z-10">Get a Fixed Quote</span>
                   <svg
                     viewBox="0 0 20 20"
-                    className="size-4.5 transition-transform duration-300 group-hover:translate-x-1 lg:size-5"
+                    className="relative z-10 size-4.5 transition-transform duration-300 group-hover:translate-x-1 lg:size-5"
                     fill="none"
                     aria-hidden="true"
                   >
@@ -116,7 +138,13 @@ export function TwoDDesignFooter() {
         </div>
 
         {/* Mobile / Tablet Responsive Panoramic Illustration + Wave (crops empty left desktop space on small screens) */}
-        <div className="relative z-10 w-full lg:hidden">
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.75, ease: EASE_OUT_EXPO }}
+          className="relative z-10 w-full lg:hidden"
+        >
           <div className="relative aspect-[16/9] w-full sm:aspect-[16/7.5]">
             <Image
               src="/images/two-d-design-footer-bg.jpg?v=5"
@@ -128,7 +156,7 @@ export function TwoDDesignFooter() {
               className="object-cover object-right-bottom"
             />
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* DARK FOOTER BODY (#0d0814 — matches bottom pixel row of two-d-design-footer-bg.jpg seamlessly) */}
@@ -212,7 +240,11 @@ export function TwoDDesignFooter() {
                   href="tel:8336666684"
                   className="group inline-flex items-center gap-3.5 transition-transform duration-200 hover:translate-x-0.5"
                 >
-                  <span className="grid size-10 shrink-0 place-items-center rounded-full bg-[linear-gradient(135deg,#e51b22_0%,#ff7415_100%)] text-white shadow-[0_6px_16px_rgb(239_45_24/0.45)] lg:size-11">
+                  <motion.span
+                    animate={{ scale: [1, 1.08, 1] }}
+                    transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+                    className="grid size-10 shrink-0 place-items-center rounded-full bg-[linear-gradient(135deg,#e51b22_0%,#ff7415_100%)] text-white shadow-[0_6px_16px_rgb(239_45_24/0.45)] lg:size-11"
+                  >
                     <svg
                       viewBox="0 0 20 20"
                       className="size-5 fill-current"
@@ -220,8 +252,8 @@ export function TwoDDesignFooter() {
                     >
                       <path d="M2.8 4.2c0-.8.6-1.4 1.4-1.4h2.3c.6 0 1.2.4 1.3 1l.8 2.7c.2.5 0 1.1-.4 1.4l-1.3 1a11.2 11.2 0 0 0 4.2 4.2l1-1.3c.3-.4.9-.6 1.4-.4l2.7.8c.6.2 1 .7 1 1.3v2.3c0 .8-.6 1.4-1.4 1.4A14.4 14.4 0 0 1 2.8 4.2Z" />
                     </svg>
-                  </span>
-                  <span className="font-sans text-[22px] font-extrabold tracking-[-0.02em] text-white group-hover:text-[#ff7a20] lg:text-[25px] xl:text-[28px]">
+                  </motion.span>
+                  <span className="font-sans text-[22px] font-extrabold tracking-[-0.02em] text-white transition-colors group-hover:text-[#ff7a20] lg:text-[25px] xl:text-[28px]">
                     (833) 666-6684
                   </span>
                 </a>
@@ -235,16 +267,20 @@ export function TwoDDesignFooter() {
                 <h3 className="font-sans text-[16px] font-extrabold tracking-[-0.015em] text-white lg:text-[18px] xl:text-[19px]">
                   Services
                 </h3>
-                <span
+                <motion.span
                   aria-hidden="true"
-                  className="mt-1.5 block h-[3px] w-11 rounded-full bg-[linear-gradient(90deg,#e51a20_0%,#ff8712_100%)]"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.55, delay: 0.14, ease: EASE_OUT_EXPO }}
+                  className="mt-1.5 block h-[3px] w-11 origin-left rounded-full bg-[linear-gradient(90deg,#e51a20_0%,#ff8712_100%)]"
                 />
                 <ul className="mt-3 space-y-1.5">
                   {FOOTER_SERVICES.map((item) => (
                     <li key={item.label}>
                       <Link
                         href={item.href}
-                        className="font-sans text-[13.5px] font-normal leading-[1.4] text-white/90 transition-colors duration-200 hover:text-[#ff761b] lg:text-[14.5px] xl:text-[15px]"
+                        className="inline-block font-sans text-[13.5px] font-normal leading-[1.4] text-white/90 transition-all duration-200 hover:translate-x-1 hover:text-[#ff761b] lg:text-[14.5px] xl:text-[15px]"
                       >
                         {item.label}
                       </Link>
@@ -258,16 +294,20 @@ export function TwoDDesignFooter() {
                 <h3 className="font-sans text-[16px] font-extrabold tracking-[-0.015em] text-white lg:text-[18px] xl:text-[19px]">
                   Industries
                 </h3>
-                <span
+                <motion.span
                   aria-hidden="true"
-                  className="mt-1.5 block h-[3px] w-11 rounded-full bg-[linear-gradient(90deg,#e51a20_0%,#ff8712_100%)]"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.55, delay: 0.2, ease: EASE_OUT_EXPO }}
+                  className="mt-1.5 block h-[3px] w-11 origin-left rounded-full bg-[linear-gradient(90deg,#e51a20_0%,#ff8712_100%)]"
                 />
                 <ul className="mt-3 space-y-1.5">
                   {FOOTER_INDUSTRIES.map((item) => (
                     <li key={item.label}>
                       <Link
                         href={item.href}
-                        className="font-sans text-[13.5px] font-normal leading-[1.4] text-white/90 transition-colors duration-200 hover:text-[#ff761b] lg:text-[14.5px] xl:text-[15px]"
+                        className="inline-block font-sans text-[13.5px] font-normal leading-[1.4] text-white/90 transition-all duration-200 hover:translate-x-1 hover:text-[#ff761b] lg:text-[14.5px] xl:text-[15px]"
                       >
                         {item.label}
                       </Link>
@@ -281,16 +321,20 @@ export function TwoDDesignFooter() {
                 <h3 className="font-sans text-[16px] font-extrabold tracking-[-0.015em] text-white lg:text-[18px] xl:text-[19px]">
                   Company
                 </h3>
-                <span
+                <motion.span
                   aria-hidden="true"
-                  className="mt-1.5 block h-[3px] w-11 rounded-full bg-[linear-gradient(90deg,#e51a20_0%,#ff8712_100%)]"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.55, delay: 0.26, ease: EASE_OUT_EXPO }}
+                  className="mt-1.5 block h-[3px] w-11 origin-left rounded-full bg-[linear-gradient(90deg,#e51a20_0%,#ff8712_100%)]"
                 />
                 <ul className="mt-3 space-y-1.5">
                   {FOOTER_COMPANY.map((item) => (
                     <li key={item.label}>
                       <Link
                         href={item.href}
-                        className="font-sans text-[13.5px] font-normal leading-[1.4] text-white/90 transition-colors duration-200 hover:text-[#ff761b] lg:text-[14.5px] xl:text-[15px]"
+                        className="inline-block font-sans text-[13.5px] font-normal leading-[1.4] text-white/90 transition-all duration-200 hover:translate-x-1 hover:text-[#ff761b] lg:text-[14.5px] xl:text-[15px]"
                       >
                         {item.label}
                       </Link>
@@ -302,7 +346,10 @@ export function TwoDDesignFooter() {
           </div>
 
           {/* Bottom Copyright & Legal Links Bar */}
-          <div className="mt-7 flex flex-col items-center justify-between gap-3 border-t border-white/25 pt-4 text-center sm:flex-row sm:text-left lg:mt-8">
+          <Reveal
+            className="mt-7 flex flex-col items-center justify-between gap-3 border-t border-white/25 pt-4 text-center sm:flex-row sm:text-left lg:mt-8"
+            delay={0.22}
+          >
             <p className="font-sans text-[12.5px] font-normal text-white/85 lg:text-[13.5px]">
               © 2025 VideoAnimation.us. All Rights Reserved.
             </p>
@@ -317,7 +364,7 @@ export function TwoDDesignFooter() {
                 Terms
               </Link>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </footer>

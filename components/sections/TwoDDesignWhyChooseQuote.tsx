@@ -291,13 +291,28 @@ export function TwoDDesignWhyChooseQuote() {
 
         <StaggerGroup
           className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3 lg:mt-8 lg:gap-6"
-          stagger={0.09}
+          stagger={0.11}
           delayChildren={0.05}
         >
-          {WHY_CHOOSE_CARDS.map((card) => (
+          {WHY_CHOOSE_CARDS.map((card, idx) => (
             <StaggerItem key={card.id}>
-              <div className="group flex h-full items-center gap-4 rounded-[14px] border border-[#f8dfdc] bg-[#fdf3f2] px-5 py-4 shadow-[0_4px_14px_-6px_rgb(228_35_29/0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#f4beb8] hover:bg-[#fff7f6] hover:shadow-[0_12px_24px_-8px_rgb(228_35_29/0.15)] lg:px-6 lg:py-5">
-                {card.icon}
+              <motion.div
+                whileHover={{ y: -4, scale: 1.01 }}
+                transition={{ duration: 0.28, ease: EASE_OUT_EXPO }}
+                className="group relative flex h-full items-center gap-4 overflow-hidden rounded-[14px] border border-[#f8dfdc] bg-[#fdf3f2] px-5 py-4 shadow-[0_4px_14px_-6px_rgb(228_35_29/0.08)] transition-colors duration-300 hover:border-[#f4beb8] hover:bg-[#fff7f6] hover:shadow-[0_12px_24px_-8px_rgb(228_35_29/0.15)] lg:px-6 lg:py-5"
+              >
+                <motion.div
+                  animate={{ y: [0, -2.5, 0] }}
+                  transition={{
+                    duration: 3.4 + idx * 0.35,
+                    delay: idx * 0.25,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="shrink-0"
+                >
+                  {card.icon}
+                </motion.div>
                 <div className="min-w-0">
                   <h3 className="font-sans text-[17px] font-extrabold tracking-[-0.015em] text-[#0c0d12] lg:text-[19px] xl:text-[21px]">
                     {card.title}
@@ -306,7 +321,7 @@ export function TwoDDesignWhyChooseQuote() {
                     {card.description}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             </StaggerItem>
           ))}
         </StaggerGroup>
@@ -394,19 +409,31 @@ export function TwoDDesignWhyChooseQuote() {
                 />
               </motion.div>
 
-              {/* Subtle Interactive Pulse Ring Over the Central Play Button Orb */}
+              {/* Dual Interactive Pulse Rings Over the Central Play Button Orb */}
               <div className="pointer-events-none absolute top-[62%] left-[44%] z-10 -translate-x-1/2 -translate-y-1/2">
                 <motion.div
                   animate={{
-                    scale: [1, 1.07, 1],
-                    opacity: [0.25, 0.55, 0.25],
+                    scale: [1, 1.08, 1],
+                    opacity: [0.3, 0.65, 0.3],
                   }}
                   transition={{
-                    duration: 3.2,
+                    duration: 2.8,
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
-                  className="size-[150px] rounded-full ring-2 ring-[#ff5c16]/45 xl:size-[195px] 2xl:size-[220px]"
+                  className="size-[150px] rounded-full ring-2 ring-[#ff5c16]/50 xl:size-[195px] 2xl:size-[220px]"
+                />
+                <motion.div
+                  animate={{
+                    scale: [0.96, 1.24],
+                    opacity: [0.42, 0],
+                  }}
+                  transition={{
+                    duration: 2.8,
+                    repeat: Infinity,
+                    ease: "easeOut",
+                  }}
+                  className="absolute inset-0 rounded-full ring-2 ring-[#e4171f]/45"
                 />
               </div>
 
@@ -512,16 +539,23 @@ export function TwoDDesignWhyChooseQuote() {
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 rounded-[22px] bg-[linear-gradient(135deg,#e51520_0%,#ff5514_50%,#ff980a_100%)]"
               />
-              <div
+              <motion.div
                 aria-hidden="true"
-                className="pointer-events-none absolute -inset-[3px] -z-10 rounded-[24px] bg-[linear-gradient(135deg,#e51520_0%,#ff5514_50%,#ff980a_100%)] opacity-55 blur-md"
+                animate={{ opacity: [0.45, 0.8, 0.45] }}
+                transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
+                className="pointer-events-none absolute -inset-[3px] -z-10 rounded-[24px] bg-[linear-gradient(135deg,#e51520_0%,#ff5514_50%,#ff980a_100%)] blur-md"
               />
 
               {/* Form Card Interior */}
               <div className="relative rounded-[20px] bg-[#13141b] px-5 py-6 text-white sm:px-7 sm:py-7">
                 <form onSubmit={handleSubmit} className="space-y-4">
                   {/* Field 1: Your name */}
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.5, delay: 0.14, ease: EASE_OUT_EXPO }}
+                  >
                     <label
                       htmlFor="twod-quote-name"
                       className="mb-2 flex items-center gap-2.5 font-sans text-[14px] font-extrabold tracking-[-0.01em] text-white sm:text-[15px]"
@@ -559,10 +593,15 @@ export function TwoDDesignWhyChooseQuote() {
                       placeholder="Enter your full name"
                       className="h-[44px] w-full rounded-[10px] border border-white/15 bg-white px-4 font-sans text-[14px] font-medium text-[#14161d] placeholder:text-[#727684] focus:border-[#ff5a16] focus:ring-2 focus:ring-[#ff5a16]/35 focus:outline-none"
                     />
-                  </div>
+                  </motion.div>
 
                   {/* Field 2: Work email */}
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.5, delay: 0.21, ease: EASE_OUT_EXPO }}
+                  >
                     <label
                       htmlFor="twod-quote-email"
                       className="mb-2 flex items-center gap-2.5 font-sans text-[14px] font-extrabold tracking-[-0.01em] text-white sm:text-[15px]"
@@ -603,10 +642,15 @@ export function TwoDDesignWhyChooseQuote() {
                       placeholder="Enter your work email"
                       className="h-[44px] w-full rounded-[10px] border border-white/15 bg-white px-4 font-sans text-[14px] font-medium text-[#14161d] placeholder:text-[#727684] focus:border-[#ff5a16] focus:ring-2 focus:ring-[#ff5a16]/35 focus:outline-none"
                     />
-                  </div>
+                  </motion.div>
 
                   {/* Field 3: Industry */}
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.5, delay: 0.28, ease: EASE_OUT_EXPO }}
+                  >
                     <label
                       htmlFor="twod-quote-industry"
                       className="mb-2 flex items-center gap-2.5 font-sans text-[14px] font-extrabold tracking-[-0.01em] text-white sm:text-[15px]"
@@ -667,10 +711,15 @@ export function TwoDDesignWhyChooseQuote() {
                         />
                       </svg>
                     </div>
-                  </div>
+                  </motion.div>
 
                   {/* Field 4: Tell us about your project */}
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.5, delay: 0.35, ease: EASE_OUT_EXPO }}
+                  >
                     <label
                       htmlFor="twod-quote-details"
                       className="mb-2 flex items-center gap-2.5 font-sans text-[14px] font-extrabold tracking-[-0.01em] text-white sm:text-[15px]"
@@ -703,17 +752,31 @@ export function TwoDDesignWhyChooseQuote() {
                       placeholder="Share your idea, goals, scope, timeline, or any specific requirements..."
                       className="w-full resize-y rounded-[10px] border border-white/15 bg-white p-3.5 font-sans text-[13.5px] font-normal leading-relaxed text-[#14161d] placeholder:text-[#727684] focus:border-[#ff5a16] focus:ring-2 focus:ring-[#ff5a16]/35 focus:outline-none"
                     />
-                  </div>
+                  </motion.div>
 
                   {/* Submit Pill CTA Button */}
-                  <button
+                  <motion.button
                     type="submit"
-                    className="group relative mt-1 flex h-[50px] w-full cursor-pointer items-center justify-center gap-2.5 rounded-[12px] bg-[linear-gradient(90deg,#e4131e_0%,#ff4f14_52%,#ff9709_100%)] px-6 font-sans text-[16px] font-extrabold tracking-[-0.015em] text-white shadow-[0_12px_28px_-6px_rgb(245_55_20/0.6)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_34px_-4px_rgb(245_55_20/0.75)]"
+                    whileHover={{ y: -2, scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
+                    className="group relative mt-1 flex h-[50px] w-full cursor-pointer items-center justify-center gap-2.5 overflow-hidden rounded-[12px] bg-[linear-gradient(90deg,#e4131e_0%,#ff4f14_52%,#ff9709_100%)] px-6 font-sans text-[16px] font-extrabold tracking-[-0.015em] text-white shadow-[0_12px_28px_-6px_rgb(245_55_20/0.6)] transition-shadow duration-300 hover:shadow-[0_16px_34px_-4px_rgb(245_55_20/0.75)]"
                   >
-                    <span>Get a Fixed Quote</span>
+                    <motion.span
+                      aria-hidden="true"
+                      initial={{ x: "-140%" }}
+                      animate={{ x: "260%" }}
+                      transition={{
+                        duration: 2.8,
+                        repeat: Infinity,
+                        repeatDelay: 2.4,
+                        ease: "easeInOut",
+                      }}
+                      className="pointer-events-none absolute inset-y-0 w-16 -skew-x-20 bg-gradient-to-r from-transparent via-white/35 to-transparent"
+                    />
+                    <span className="relative z-10">Get a Fixed Quote</span>
                     <svg
                       viewBox="0 0 20 20"
-                      className="size-5 transition-transform duration-300 group-hover:translate-x-1"
+                      className="relative z-10 size-5 transition-transform duration-300 group-hover:translate-x-1"
                       fill="none"
                       aria-hidden="true"
                     >
@@ -725,7 +788,7 @@ export function TwoDDesignWhyChooseQuote() {
                         strokeLinejoin="round"
                       />
                     </svg>
-                  </button>
+                  </motion.button>
 
                   {submitted && (
                     <motion.p
