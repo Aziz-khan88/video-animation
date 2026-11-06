@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { TwoDBusinessPage } from "@/components/sections/TwoDBusinessPage";
 import "./service.css";
+import "./premium.css";
 
 export const metadata: Metadata = {
   title: "Custom 2D Animation Services for Business | VideoAnimation.us",

@@ -1,0 +1,14 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Use case: illustration-story. Asset type: premium website hero artwork, landscape 3:2, titled conceptually 'A story taking shape' but with NO TEXT in image. Create a bespoke editorial 2D hand-painted and cel-shaded illustration, crisp expressive shapes with subtle painterly paper texture, sophisticated animated-film background art. NOT 3D, NOT Pixar, NOT generic corporate flat vector. A charismatic adult female creative wearing a vermilion cardigan sits at a drawing desk in the lower-left/center, drawing with a stylus. Her sweeping coral brushstroke arcs dynamically and becomes a richly illustrated miniature coastal city spreading through the center-right and background: sun-washed colorful buildings by a muted turquoise sea, delicate foliage, a paper airplane, a few tiny expressive human characters going about their stories. Show story creation as purposeful craft, beautifully composed and detailed, no floating dashboard cards. Palette of coral/vermilion, warm ivory, muted turquoise, deep ink, apricot daylight. Warm optimistic expressive face, impressive dynamic composition, controlled contrast and beautiful restrained craft. Important face and drawing action should be near horizontal center, with city on right, so square mobile center crop retains both. The artwork will sit on RIGHT 57% of a cream webpage hero: use light ivory approximately #fbf8f3 soft natural edges along left and top, never a hard rectangular frame. Background remains warm and light with generous ivory breathing room. No neon glow, no glossy plastic, no text, letters, numbers, logos, watermarks, borders, UI chrome, or playback buttons.",
+  "title": "A story taking shape",
+  "png": "source-art/hero-story-v2.png",
+  "webp": "public/images/premium-v2/hero-story.webp",
+  "encoding": {
+    "format": "webp",
+    "quality": 91,
+    "maxWidth": 1800,
+    "nativeSizePreserved": true
+  },
+  "qualityObservation": "Expressive hand-painted 2D character and richly detailed coastal narrative; soft ivory edges and coral stroke retain a clear focal path without UI or glossy 3D treatment."
+}

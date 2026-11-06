@@ -2,6 +2,7 @@
 import { useState, type FormEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { TwoDShowcase, TwoDStoryboard } from "./TwoDShowcase";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -40,7 +41,7 @@ const goals = [
       "Service introductions",
     ],
     format: "Explainers · process animation · feature walkthroughs",
-    image: "two-d-design-thumb-1-mechanical.jpg",
+    image: "premium-v2/technical.webp",
     alt: "Illustrated mechanical cutaway showing the internal components",
     brief: "I want to explain a product, service or technical idea.",
   },
@@ -54,8 +55,8 @@ const goals = [
       "Patient communication",
     ],
     format: "Training videos · onboarding · educational animation",
-    image: "two-d-design-thumb-2-healthcare.jpg",
-    alt: "Illustrated doctor explaining a heart health concept",
+    image: "premium-v2/education-story.webp",
+    alt: "Illustrated doctor explaining care to a patient",
     brief: "I want to create an educational or training video.",
   },
 ];
@@ -63,61 +64,38 @@ const industries = [
   {
     name: "Product & retail",
     title: "Give your product a story worth noticing.",
-    image: "two-d-industry-card-product.jpg",
+    image: "premium-v2/brand-story.webp",
     text: "Bring features, ingredients and everyday benefits into focus. Build a product story for a launch, campaign or online store.",
   },
   {
     name: "Healthcare",
     title: "Help people understand their care.",
-    image: "two-d-industry-card-healthcare.jpg",
+    image: "premium-v2/education-story.webp",
     text: "Make patient journeys, services and medical information easier to follow, with terminology and visuals reviewed by your subject experts.",
   },
   {
     name: "Technical & industrial",
     title: "Make the complex feel clear.",
-    image: "two-d-industry-card-mechanical.jpg",
+    image: "premium-v2/technical.webp",
     text: "Show what a camera cannot: internal mechanisms, assembly sequences and the steps behind a complex process.",
   },
   {
-    name: "Automotive",
-    title: "Turn technical features into everyday value.",
-    image: "two-d-industry-card-automotive.jpg",
-    text: "Explain vehicle features, electric systems and ownership benefits with a visual story built around your audience.",
+    name: "SaaS & technology",
+    title: "Show the benefit beyond the interface.",
+    image: "premium-v2/product-story.webp",
+    text: "Connect your software to the everyday problems it solves. Make features, workflows and new ways of working easy to picture.",
   },
   {
     name: "Fashion & beauty",
     title: "Bring your brand’s point of view to life.",
-    image: "two-d-quote-thumb-5-beauty.jpg",
+    image: "premium-v2/fashion-beauty.webp",
     text: "Tell the story behind a collection, a formulation or a daily ritual. Create a distinctive visual language for your campaign.",
   },
   {
     name: "Property",
     title: "Help people picture what is possible.",
-    image: "two-d-industry-card-realestate.jpg",
+    image: "premium-v2/property.webp",
     text: "Introduce a property, location or customer journey through illustrated scenes and a clear narrative.",
-  },
-];
-const examples = [
-  {
-    image: "two-d-portfolio-right-headphones.jpg",
-    tag: "01 / PRODUCT & CAMPAIGN",
-    title: "Put the benefit in the spotlight.",
-    text: "Illustrated products, feature callouts and purposeful movement for launches and marketing.",
-    goal: 0,
-  },
-  {
-    image: "salvaged/portfolio-lab.webp",
-    tag: "02 / CHARACTER & STORY",
-    title: "Give your audience someone to follow.",
-    text: "Relatable characters and scenarios that make services and learning feel more human.",
-    goal: 2,
-  },
-  {
-    image: "two-d-portfolio-center-engine.jpg",
-    tag: "03 / TECHNICAL & PROCESS",
-    title: "Show what happens beneath the surface.",
-    text: "Cutaways and clear sequences that make mechanisms and complex processes easier to understand.",
-    goal: 1,
   },
 ];
 const steps = [
@@ -201,7 +179,7 @@ const faqs = [
   ],
 ];
 function CTA({
-  children = "Get a fixed quote",
+  children = "Get a custom quote",
   onClick,
   className = "",
 }: {
@@ -295,7 +273,7 @@ export function TwoDBusinessPage() {
               ["Your goals", "services"],
               ["Creative directions", "portfolio"],
               ["Process", "process"],
-              ["Pricing", "pricing"],
+              ["Your project", "pricing"],
             ].map(([label, id]) => (
               <a key={id} href={`#${id}`} onClick={() => setMenu(false)}>
                 {label}
@@ -318,95 +296,63 @@ export function TwoDBusinessPage() {
         </div>
       </header>
       <main id="main">
-        <section className="b2-hero b2-container">
-          <div className="b2-hero-copy">
-            <Eyebrow>Custom 2D animation services</Eyebrow>
-            <h1>
-              Custom 2D animation.
-              <br />
-              <em>
-                Built around
+        <section className="v2-hero">
+          <div className="b2-container v2-hero-inner">
+            <div className="v2-hero-copy">
+              <Eyebrow>Custom 2D animation studio</Eyebrow>
+              <h1>
+                Draw attention.
                 <br />
-                your business.
-              </em>
-            </h1>
-            <p>
-              From product launches to customer education, we create custom 2D
-              animation built around your audience, your brand and what you need
-              to communicate.
-            </p>
-            <div className="b2-actions">
-              <CTA />
-              <a className="b2-text-link" href="#portfolio">
-                Explore the possibilities <ArrowUpRight size={18} />
-              </a>
+                Tell your story.
+                <br />
+                <em>Move people.</em>
+              </h1>
+              <p>
+                Custom 2D animation for brands with something to say. Turn your
+                product, purpose or big idea into a story people connect with.
+              </p>
+              <div className="b2-actions">
+                <CTA>Let’s create your video</CTA>
+                <a className="b2-text-link" href="#portfolio">
+                  Explore the possibilities <ArrowUpRight size={18} />
+                </a>
+              </div>
+              <div className="v2-hero-proof">
+                <span>
+                  <Check size={15} /> From script to final frame
+                </span>
+                <span>
+                  <Check size={15} /> Made for your brand
+                </span>
+              </div>
             </div>
-            <div className="b2-hero-facts">
-              <span>
-                <Check />
-                Script to final delivery
-              </span>
-              <span>
-                <Check />
-                Clear approval stages
-              </span>
-              <span>
-                <Check />
-                Fixed quote before we start
-              </span>
-            </div>
-          </div>
-          <div className="b2-hero-art">
-            <div className="b2-art-top">
-              <span>BUILT AROUND YOUR MESSAGE</span>
-              <span>2D / STUDIO</span>
-            </div>
-            <div className="b2-hero-picture">
+            <div className="v2-hero-art">
               <Image
-                src="/images/two-d-design-thumb-3-product.jpg"
-                alt="2D illustrated orange juice campaign concept with fresh fruit"
+                src="/images/premium-v2/hero-story.webp"
+                alt="An illustrator draws a colorful coastal world of people, places and stories"
                 fill
                 priority
-                sizes="(max-width: 800px) 90vw, 48vw"
-                quality={85}
+                sizes="(max-width: 800px) 100vw, 64vw"
+                quality={90}
               />
-              <span className="b2-art-label">
-                PRODUCT STORYTELLING · CONCEPT
-              </span>
-            </div>
-            <div className="b2-art-caption">
-              <div>
-                <small>One product. A world of possibilities.</small>
-                <p>Turn the everyday into something memorable.</p>
+              <div className="v2-art-note">
+                <span>It starts with a little imagination.</span>
+                <ArrowUpRight size={24} />
+                <small>YOUR STORY. A WORLD OF ITS OWN.</small>
               </div>
-              <a href="#portfolio" aria-label="Explore creative directions">
-                <ArrowUpRight />
-              </a>
             </div>
-            <div className="b2-art-mini">
-              <Image
-                src="/images/two-d-design-thumb-2-healthcare.jpg"
-                alt="Character illustration for patient education"
-                width={76}
-                height={62}
-              />
-              <span>
-                Characters. Products. Processes.
-                <small>A visual language that fits your story.</small>
-              </span>
-              <Layers size={22} />
-            </div>
+          </div>
+          <div className="v2-hero-foot b2-container">
+            <span>Made to connect.</span>
+            <p>
+              Brand stories <i /> Product & SaaS <i /> Education & training
+            </p>
+            <a href="#portfolio" aria-label="Discover our creative directions">
+              <ArrowRight size={21} />
+            </a>
           </div>
         </section>
-        <div className="b2-scope">
-          <div className="b2-container">
-            <span>One creative partner, from first idea to final frame.</span>
-            <p>
-              Strategy & script <span> / </span> Illustration <span> / </span>{" "}
-              Animation <span> / </span> Voice & sound
-            </p>
-          </div>
-        </div>
+        <TwoDShowcase onChoose={chooseBrief} />
         <section id="services" className="b2-section b2-container">
           <div className="b2-section-head">
             <div>
@@ -473,50 +419,6 @@ export function TwoDBusinessPage() {
             </div>
           </div>
         </section>
-        <section id="portfolio" className="b2-dark b2-section">
-          <div className="b2-container">
-            <div className="b2-section-head">
-              <div>
-                <Eyebrow>Creative directions</Eyebrow>
-                <h2>
-                  Different stories.
-                  <br />
-                  <em>The right treatment.</em>
-                </h2>
-              </div>
-              <p>
-                Picture how your message could look. These illustrative concepts
-                show possible directions; your visuals are developed around your
-                own brief.
-              </p>
-            </div>
-            <div className="b2-example-grid">
-              {examples.map((x) => (
-                <article key={x.tag}>
-                  <div className="b2-example-image">
-                    <Image
-                      src={`/images/${x.image}`}
-                      alt={x.title}
-                      fill
-                      sizes="(max-width: 600px) 90vw, 30vw"
-                    />
-                    <span>Illustrative concept</span>
-                  </div>
-                  <small>{x.tag}</small>
-                  <h3>{x.title}</h3>
-                  <p>{x.text}</p>
-                  <a
-                    href="#quote"
-                    className="b2-text-link"
-                    onClick={() => chooseBrief(goals[x.goal].brief)}
-                  >
-                    Discuss a similar direction <ArrowUpRight size={17} />
-                  </a>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
         <section id="industries" className="b2-container b2-section">
           <div className="b2-section-head">
             <div>
@@ -532,44 +434,48 @@ export function TwoDBusinessPage() {
               product knowledge, brand guidelines and audience needs.
             </p>
           </div>
-          <div
-            className="b2-industry-tabs"
-            role="group"
-            aria-label="Explore industries"
-          >
-            {industries.map((x, i) => (
-              <button
-                key={x.name}
-                aria-pressed={industry === i}
-                aria-controls="industry-content"
-                onClick={() => setIndustry(i)}
-              >
-                {x.name}
-              </button>
-            ))}
-          </div>
-          <div className="b2-industry-panel" id="industry-content">
-            <div aria-live="polite">
-              <Eyebrow>2D animation for {sector.name}</Eyebrow>
-              <h3>{sector.title}</h3>
-              <p>{sector.text}</p>
-              <CTA
-                onClick={() =>
-                  chooseBrief(
-                    `I am looking for a 2D animation for ${sector.name.toLowerCase()}. `,
-                  )
-                }
-              >
-                Discuss my industry
-              </CTA>
+          <div className="v2-industry-layout">
+            <div
+              className="b2-industry-tabs"
+              role="group"
+              aria-label="Explore industries"
+            >
+              {industries.map((x, i) => (
+                <button
+                  key={x.name}
+                  aria-pressed={industry === i}
+                  aria-controls="industry-content"
+                  onClick={() => setIndustry(i)}
+                >
+                  <span>0{i + 1}</span>
+                  {x.name}
+                  <ArrowUpRight size={18} />
+                </button>
+              ))}
             </div>
-            <div className="b2-industry-image">
-              <Image
-                src={`/images/${sector.image}`}
-                alt={`${sector.name} illustrative animation direction`}
-                fill
-                sizes="(max-width: 600px) 90vw, 45vw"
-              />
+            <div className="b2-industry-panel" id="industry-content">
+              <div aria-live="polite">
+                <Eyebrow>2D animation for {sector.name}</Eyebrow>
+                <h3>{sector.title}</h3>
+                <p>{sector.text}</p>
+                <CTA
+                  onClick={() =>
+                    chooseBrief(
+                      `I am looking for a 2D animation for ${sector.name.toLowerCase()}. `,
+                    )
+                  }
+                >
+                  Discuss my industry
+                </CTA>
+              </div>
+              <div className="b2-industry-image">
+                <Image
+                  src={`/images/${sector.image}`}
+                  alt={`${sector.name} illustrative animation direction`}
+                  fill
+                  sizes="(max-width: 600px) 90vw, 45vw"
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -588,6 +494,7 @@ export function TwoDBusinessPage() {
                 forward. Each stage gives you a clear point to give feedback.
               </p>
             </div>
+            <TwoDStoryboard />
             <ol className="b2-steps">
               {steps.map((s, i) => (
                 <li key={s.title}>
@@ -643,6 +550,19 @@ export function TwoDBusinessPage() {
           <div className="b2-pricing">
             {plans.map((p, i) => (
               <article key={p.name} className={i ? "b2-plan-featured" : ""}>
+                <div
+                  className={`v2-plan-visual v2-plan-visual-${i}`}
+                  aria-hidden="true"
+                >
+                  <div />
+                  <div />
+                  <div />
+                  <span>
+                    {i
+                      ? "ONE STORY. MORE POSSIBILITIES."
+                      : "ONE IDEA. BEAUTIFULLY TOLD."}
+                  </span>
+                </div>
                 <div className="b2-plan-top">
                   <h3>{p.name}</h3>
                   <span>Custom quote</span>
@@ -854,6 +774,9 @@ export function TwoDBusinessPage() {
           </div>
         </section>
         <section className="b2-close">
+          <div className="v2-close-art" aria-hidden="true">
+            <Image src="/images/two-d-world-5.jpg" alt="" fill sizes="100vw" />
+          </div>
           <div className="b2-container">
             <Eyebrow>Your next story starts with a conversation</Eyebrow>
             <h2>
@@ -879,9 +802,6 @@ export function TwoDBusinessPage() {
         </nav>
         <small>© 2026 VideoAnimation.us</small>
       </footer>
-      <a href="#quote" className="b2-mobile-cta">
-        Plan your 2D video <ArrowUpRight size={18} />
-      </a>
     </div>
   );
 }

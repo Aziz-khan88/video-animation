@@ -4,7 +4,7 @@
 
 The page serves buyers looking for custom 2D animation. Interactive goal choices connect product promotion, explanation and training to relevant creative directions and an enquiry brief. The existing `/landing-page` route is the explainer-service cross-link.
 
-Visual design uses warm paper, charcoal, restrained red, fine borders and readable typography. The existing brand mark is preserved. Five artworks were salvaged from the user-owned Netlify page: four production stages and a character concept. No third-party client claims or results were added.
+Visual design pairs an original illustrated hero with a cinematic three-scene selector, interactive storyboard comparison, and illustrated industry panels. Warm paper, dark teal and restrained coral frame the artwork. Eight original assets include the hero, brand story, product story, education scene, matching graphite sketch, technical cutaway, fashion/beauty campaign and residential scene. Source artwork and prompts are in `source-art/`; optimized WebP files are in `public/images/premium-v2/`. The existing brand mark and four production-stage artworks from the user-owned Netlify page are preserved. No third-party client claims or results were added.
 
 Pricing uses custom scopes with no advertised prices or video lengths, as requested. Each proposal confirms deliverables, usage, revision rounds and schedule.
 
