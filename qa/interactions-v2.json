@@ -1,0 +1,44 @@
+[
+  {
+    "goal": "01 Promote a product",
+    "title": "Make the value easy to see."
+  },
+  {
+    "goal": "02 Explain an idea",
+    "title": "Help your audience get it."
+  },
+  {
+    "goal": "03 Teach a process",
+    "title": "Make every step easier to follow."
+  },
+  {
+    "industry": "01 Product & retail",
+    "title": "Give your product a story worth noticing."
+  },
+  {
+    "industry": "02 Healthcare",
+    "title": "Help people understand their care."
+  },
+  {
+    "industry": "03 Technical & industrial",
+    "title": "Make the complex feel clear."
+  },
+  {
+    "industry": "04 SaaS & technology",
+    "title": "Show the benefit beyond the interface."
+  },
+  {
+    "industry": "05 Fashion & beauty",
+    "title": "Bring your brand’s point of view to life."
+  },
+  {
+    "industry": "06 Property",
+    "title": "Help people picture what is possible."
+  },
+  {
+    "draft": "Name: Preview QA\nEmail: preview@example.com\nCompany: Not provided\nProject scope: A campaign or series\n\nProject brief:\nI am interested in a campaign or series. "
+  },
+  {
+    "draftCleared": true
+  }
+]
