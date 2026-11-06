@@ -15,7 +15,10 @@ const FOOTER_NAV_ITEMS = [
 
 export function Footer() {
   const pathname = usePathname();
-  if (pathname.startsWith("/landing-page")) {
+  if (
+    pathname.startsWith("/landing-page") ||
+    pathname.startsWith("/2d-animation-design")
+  ) {
     return null;
   }
 

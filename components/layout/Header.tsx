@@ -103,6 +103,7 @@ const PRIMARY_NAV_ITEMS = [
   { label: "ABOUT US", href: "/about-us" },
   { label: "CONTACT US", href: "/contact-us" },
   { label: "LANDING PAGE", href: "/landing-page" },
+  { label: "2D DESIGN", href: "/2d-animation-design" },
 ] as const;
 
 const SOCIAL_LINKS = [
