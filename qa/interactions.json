@@ -1,0 +1,38 @@
+[
+  {
+    "goal": 0,
+    "title": "Make the value easy to see."
+  },
+  {
+    "goal": 1,
+    "title": "Help your audience get it."
+  },
+  {
+    "goal": 2,
+    "title": "Make every step easier to follow."
+  },
+  {
+    "industry": 0,
+    "title": "Give your product a story worth noticing."
+  },
+  {
+    "industry": 1,
+    "title": "Help people understand their care."
+  },
+  {
+    "industry": 2,
+    "title": "Make the complex feel clear."
+  },
+  {
+    "industry": 3,
+    "title": "Turn technical features into everyday value."
+  },
+  {
+    "industry": 4,
+    "title": "Bring your brand’s point of view to life."
+  },
+  {
+    "industry": 5,
+    "title": "Help people picture what is possible."
+  }
+]

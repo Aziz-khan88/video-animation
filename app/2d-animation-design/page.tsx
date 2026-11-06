@@ -1,34 +1,13 @@
 import type { Metadata } from "next";
-import { TwoDDesignHero } from "@/components/sections/TwoDDesignHero";
-import { TwoDDesignServiceStrip } from "@/components/sections/TwoDDesignServiceStrip";
-import { TwoDDesignWhyChooseQuote } from "@/components/sections/TwoDDesignWhyChooseQuote";
-import { TwoDDesignApprovalProcess } from "@/components/sections/TwoDDesignApprovalProcess";
-import { TwoDDesignPricing } from "@/components/sections/TwoDDesignPricing";
-import { TwoDDesignPortfolio } from "@/components/sections/TwoDDesignPortfolio";
-import { TwoDDesignIndustries } from "@/components/sections/TwoDDesignIndustries";
-import { TwoDDesignFaq } from "@/components/sections/TwoDDesignFaq";
-import { TwoDDesignFooter } from "@/components/sections/TwoDDesignFooter";
+import { TwoDBusinessPage } from "@/components/sections/TwoDBusinessPage";
+import "./service.css";
 
 export const metadata: Metadata = {
-  title: "2D Animation Videos for Every Industry | VideoAnimation.us",
+  title: "Custom 2D Animation Services for Business | VideoAnimation.us",
   description:
-    "We turn complex ideas into clear, engaging 2D animation videos — for products, processes, training, marketing, and more across 8+ industries.",
+    "Custom 2D animation for product marketing, explainer videos and training. Explore creative directions, plan your scope, and plan your video with a fixed quote.",
 };
 
 export default function TwoDAnimationDesignPage() {
-  return (
-    <div className="min-h-screen bg-[#fbfaf7] text-[#0b0b0c]">
-      <main>
-        <TwoDDesignHero />
-        <TwoDDesignServiceStrip />
-        <TwoDDesignWhyChooseQuote />
-        <TwoDDesignApprovalProcess />
-        <TwoDDesignPricing />
-        <TwoDDesignPortfolio />
-        <TwoDDesignIndustries />
-        <TwoDDesignFaq />
-      </main>
-      <TwoDDesignFooter />
-    </div>
-  );
+  return <TwoDBusinessPage />;
 }
