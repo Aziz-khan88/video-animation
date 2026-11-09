@@ -39,5 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+infra/enquiry/parameters.local.json
+infra/enquiry/stack.generated.json
+infra/enquiry/deployment.local.json
+infra/enquiry/__pycache__/
 
 .vercel

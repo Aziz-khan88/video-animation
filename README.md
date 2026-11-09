@@ -2,6 +2,20 @@
 
 Premium single-page site for an independent 2D / 3D / motion animation studio.
 
+## 2D service page
+
+The PPC page lives at `/2d-animation-design`. Its content and interactive sections
+are in `components/sections/TwoDBusinessPage.tsx`, with separate showcase, studio
+film and enquiry components alongside it. Route-specific styles are in
+`app/2d-animation-design/`. Original artwork lives in `public/images/premium-v2/`;
+the coherent process study and published film poster are in `public/images/process-v3/`.
+
+The enquiry form requires `NEXT_PUBLIC_ENQUIRY_ENDPOINT` at build time. See
+[the enquiry deployment and operations guide](infra/enquiry/README.md) for AWS
+setup, notification verification and tests. Never add AWS credentials to the repo.
+
+Review deployment: https://two-d-premium.d3hxbg02ceyurf.amplifyapp.com/2d-animation-design/
+
 ## Stack
 
 - **Next.js 16** (App Router, Turbopack, Cache Components) + **TypeScript**

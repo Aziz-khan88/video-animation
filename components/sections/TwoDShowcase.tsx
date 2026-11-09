@@ -50,8 +50,8 @@ export function TwoDShowcase({
           <em>A story that feels like you.</em>
         </h2>
         <p>
-          Expressive characters. Distinctive worlds. A visual language built
-          around your message.
+          Explore three illustration directions for your next story. These are
+          concept artworks, separate from the published studio film above.
         </p>
         <div
           className="v2-scene-tabs"
@@ -180,8 +180,8 @@ export function TwoDStoryboard() {
       <div>
         <div className="v2-compare">
           <Image
-            src="/images/premium-v2/brand-story-sketch.webp"
-            alt="Pencil storyboard of a café owner greeting a customer"
+            src="/images/process-v3/storyboard.webp"
+            alt="Sketch treatment of a girl discovering a bird in her drawing"
             fill
             sizes="(max-width: 800px) 90vw, 60vw"
           />
@@ -190,8 +190,8 @@ export function TwoDStoryboard() {
             style={{ clipPath: `inset(0 ${100 - reveal}% 0 0)` }}
           >
             <Image
-              src="/images/premium-v2/brand-story.webp"
-              alt="The same café scene developed into a full color illustration"
+              src="/images/process-v3/final-scene.webp"
+              alt="The same girl and bird scene in full color"
               fill
               sizes="(max-width: 800px) 90vw, 60vw"
             />
@@ -200,7 +200,7 @@ export function TwoDStoryboard() {
             <MoveHorizontal size={20} />
           </span>
           <span className="v2-compare-tag v2-tag-left">Colour & character</span>
-          <span className="v2-compare-tag v2-tag-right">The first sketch</span>
+          <span className="v2-compare-tag v2-tag-right">Sketch treatment</span>
           <input
             type="range"
             min="0"
@@ -212,7 +212,8 @@ export function TwoDStoryboard() {
           />
         </div>
         <p className="v2-compare-note">
-          A creative direction, developed in stages. Illustration concept shown.
+          Sketch and colour treatments of one scene. Play its animation in the
+          final step below.
         </p>
       </div>
     </div>

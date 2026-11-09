@@ -439,6 +439,7 @@
   color: var(--red);
 }
 .b2-goal-panel {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   border: 1px solid #e3dcd1;
   border-radius: 14px;
   overflow: hidden;
@@ -447,6 +448,9 @@
   gap: 0;
 }
 .b2-goal-copy {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
   padding: 48px 46px;
 }
 .b2-goal-copy h3 {
@@ -455,6 +459,16 @@
 }
 .b2-goal-copy > p {
   font-size: 14px;
+}
+.b2-goal-copy > .b2-eyebrow {
+  display: block;
+  white-space: normal;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.b2-goal-copy > .b2-eyebrow::before {
+  display: inline-block;
+  margin: 0 9px 3px 0;
 }
 .b2-goal-image {
   border-radius: 0;
@@ -1202,7 +1216,7 @@
   }
   .b2-goal-panel {
     min-height: 0;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .b2-goal-copy {
     padding: 30px;

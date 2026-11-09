@@ -1,8 +1,10 @@
 "use client";
-import { useState, type FormEvent } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { TwoDShowcase, TwoDStoryboard } from "./TwoDShowcase";
+import { TwoDEnquiry } from "./TwoDEnquiry";
+import { TwoDStudioFilm } from "./TwoDStudioFilm";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -63,36 +65,48 @@ const goals = [
 const industries = [
   {
     name: "Product & retail",
+    applications: "Launch film · product benefits · social cutdowns",
+    inputs: "Product photographs, key benefits and campaign channels.",
     title: "Give your product a story worth noticing.",
     image: "premium-v2/brand-story.webp",
     text: "Bring features, ingredients and everyday benefits into focus. Build a product story for a launch, campaign or online store.",
   },
   {
     name: "Healthcare",
+    applications: "Patient journeys · service introductions · care guides",
+    inputs: "Approved clinical information and a subject expert to review it.",
     title: "Help people understand their care.",
     image: "premium-v2/education-story.webp",
     text: "Make patient journeys, services and medical information easier to follow, with terminology and visuals reviewed by your subject experts.",
   },
   {
     name: "Technical & industrial",
+    applications: "Assembly sequences · mechanism demos · operator training",
+    inputs: "Technical drawings, process steps and the details that matter.",
     title: "Make the complex feel clear.",
     image: "premium-v2/technical.webp",
     text: "Show what a camera cannot: internal mechanisms, assembly sequences and the steps behind a complex process.",
   },
   {
     name: "SaaS & technology",
+    applications: "Product walkthroughs · feature launches · onboarding",
+    inputs: "A product demo, the user’s problem and your core workflow.",
     title: "Show the benefit beyond the interface.",
     image: "premium-v2/product-story.webp",
     text: "Connect your software to the everyday problems it solves. Make features, workflows and new ways of working easy to picture.",
   },
   {
     name: "Fashion & beauty",
+    applications: "Collection launches · ingredient stories · brand rituals",
+    inputs: "Your collection or product, brand references and approved claims.",
     title: "Bring your brand’s point of view to life.",
     image: "premium-v2/fashion-beauty.webp",
     text: "Tell the story behind a collection, a formulation or a daily ritual. Create a distinctive visual language for your campaign.",
   },
   {
     name: "Property",
+    applications: "Location stories · development introductions · buyer guides",
+    inputs: "Plans, location details and the buyer journey you want to show.",
     title: "Help people picture what is possible.",
     image: "premium-v2/property.webp",
     text: "Introduce a property, location or customer journey through illustrated scenes and a clear narrative.",
@@ -133,22 +147,18 @@ const plans = [
     name: "A single video",
     intro: "One clear story, developed around your audience and objective.",
     items: [
-      "A creative direction for your brand",
-      "Script and storyboard development",
-      "Custom illustration and animation",
-      "Voice-over and sound requirements",
-      "Agreed formats and revision rounds",
+      "Creative direction, script & storyboard",
+      "Custom illustration, animation & sound",
+      "Agreed formats, usage & revision rounds",
     ],
   },
   {
     name: "A campaign or series",
     intro: "A consistent visual story across several videos or channels.",
     items: [
-      "A shared visual language across videos",
-      "A coordinated story and content plan",
-      "Reusable characters and visual assets",
-      "Channel-specific edits and versions",
-      "A production and delivery schedule",
+      "Shared visual language & content plan",
+      "Reusable assets & channel-specific edits",
+      "An agreed production & delivery schedule",
     ],
   },
 ];
@@ -159,7 +169,7 @@ const faqs = [
   ],
   [
     "How long does production take?",
-    "A standard 60–90 second video typically takes 3–4 weeks from kickoff, depending on complexity and feedback. Tell us your launch date so we can confirm a realistic schedule before you commit.",
+    "Timing depends on the story, illustration detail, deliverables and feedback schedule. Tell us your launch date; we confirm a realistic production plan and approval milestones before you commit.",
   ],
   [
     "Can I use the video for paid ads and social media?",
@@ -225,26 +235,12 @@ export function TwoDBusinessPage() {
   const [industry, setIndustry] = useState(0);
   const [brief, setBrief] = useState("");
   const [packageName, setPackageName] = useState("Help me choose");
-  const [prepared, setPrepared] = useState<{
-    body: string;
-    url: string;
-  } | null>(null);
-  const [copied, setCopied] = useState(false);
+  const [enquiryVersion, setEnquiryVersion] = useState(0);
   const active = goals[goal],
     sector = industries[industry];
-  function prepare(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const body = `Name: ${data.get("name")}\nEmail: ${data.get("email")}\nCompany: ${data.get("company") || "Not provided"}\nProject scope: ${packageName}\n\nProject brief:\n${brief}`;
-    setPrepared({
-      body,
-      url: `mailto:hello@videoanimation.us?subject=${encodeURIComponent("2D animation project enquiry")}&body=${encodeURIComponent(body)}`,
-    });
-    setCopied(false);
-  }
   function chooseBrief(text: string) {
     setBrief(text);
-    setPrepared(null);
+    setEnquiryVersion((value) => value + 1);
   }
   return (
     <div className="b2-page">
@@ -270,8 +266,9 @@ export function TwoDBusinessPage() {
             className={menu ? "is-open" : ""}
           >
             {[
+              ["Studio film", "studio-film"],
               ["Your goals", "services"],
-              ["Creative directions", "portfolio"],
+
               ["Process", "process"],
               ["Your project", "pricing"],
             ].map(([label, id]) => (
@@ -279,8 +276,22 @@ export function TwoDBusinessPage() {
                 {label}
               </a>
             ))}
+            <a
+              className="v3-menu-quote"
+              href="#quote"
+              onClick={() => setMenu(false)}
+            >
+              Get a custom quote <ArrowRight size={17} />
+            </a>
           </nav>
           <CTA className="b2-nav-cta" />
+          <a
+            className="v3-mobile-quote"
+            href="#quote"
+            onClick={() => setMenu(false)}
+          >
+            Get a quote
+          </a>
           <button
             className="b2-menu"
             aria-label={menu ? "Close menu" : "Open menu"}
@@ -301,20 +312,21 @@ export function TwoDBusinessPage() {
             <div className="v2-hero-copy">
               <Eyebrow>Custom 2D animation studio</Eyebrow>
               <h1>
-                Draw attention.
+                2D animation.
                 <br />
                 Tell your story.
                 <br />
                 <em>Move people.</em>
               </h1>
               <p>
-                Custom 2D animation for brands with something to say. Turn your
-                product, purpose or big idea into a story people connect with.
+                Custom illustration, animation and sound for product launches,
+                brand stories and customer education. Built around what your
+                audience needs to understand—and remember.
               </p>
               <div className="b2-actions">
                 <CTA>Let’s create your video</CTA>
-                <a className="b2-text-link" href="#portfolio">
-                  Explore the possibilities <ArrowUpRight size={18} />
+                <a className="b2-text-link" href="#studio-film">
+                  Watch the studio film <ArrowUpRight size={18} />
                 </a>
               </div>
               <div className="v2-hero-proof">
@@ -352,6 +364,7 @@ export function TwoDBusinessPage() {
             </a>
           </div>
         </section>
+        <TwoDStudioFilm />
         <TwoDShowcase onChoose={chooseBrief} />
         <section id="services" className="b2-section b2-container">
           <div className="b2-section-head">
@@ -458,6 +471,16 @@ export function TwoDBusinessPage() {
                 <Eyebrow>2D animation for {sector.name}</Eyebrow>
                 <h3>{sector.title}</h3>
                 <p>{sector.text}</p>
+                <dl className="v3-industry-detail">
+                  <div>
+                    <dt>Where it can work</dt>
+                    <dd>{sector.applications}</dd>
+                  </div>
+                  <div>
+                    <dt>A useful starting point</dt>
+                    <dd>{sector.inputs}</dd>
+                  </div>
+                </dl>
                 <CTA
                   onClick={() =>
                     chooseBrief(
@@ -502,13 +525,43 @@ export function TwoDBusinessPage() {
                     <span>0{i + 1}</span>
                     <s.icon size={24} />
                   </div>
-                  <div className="b2-step-image">
-                    <Image
-                      src={`/images/salvaged/${s.image}`}
-                      alt={s.title}
-                      fill
-                      sizes="(max-width: 600px) 43vw, 22vw"
-                    />
+                  <div className="b2-step-image v3-step-art">
+                    {i === 0 ? (
+                      <div className="v3-script-sheet">
+                        <small>THE STORY IN A SENTENCE</small>
+                        <p>
+                          A quiet room.
+                          <br />
+                          An idea on paper.
+                          <br />A bird takes flight.
+                        </p>
+                        <span>Illustrative story brief</span>
+                      </div>
+                    ) : i === 3 ? (
+                      <video
+                        controls
+                        playsInline
+                        preload="none"
+                        poster="/images/process-v3/final-scene.webp"
+                        aria-label="Play the sketch-to-story animation study"
+                      >
+                        <source
+                          src="/videos/sketch-to-story.mp4"
+                          type="video/mp4"
+                        />
+                      </video>
+                    ) : (
+                      <Image
+                        src={`/images/process-v3/${i === 1 ? "storyboard" : "final-scene"}.webp`}
+                        alt={
+                          i === 1
+                            ? "Sketch treatment of the girl and bird scene"
+                            : "Color development of the same girl and bird scene"
+                        }
+                        fill
+                        sizes="(max-width: 600px) 43vw, 22vw"
+                      />
+                    )}
                   </div>
                   <h3>{s.title}</h3>
                   <p>{s.text}</p>
@@ -519,6 +572,11 @@ export function TwoDBusinessPage() {
                 </li>
               ))}
             </ol>
+            <p className="v3-process-disclosure">
+              One illustrative process study, from a written idea to a moving
+              scene. AI-assisted artwork and animation shown; your production
+              approach is agreed in your brief.
+            </p>
             <div className="b2-delivery">
               <h3>Built for where you will use it.</h3>
               <p>
@@ -594,7 +652,7 @@ export function TwoDBusinessPage() {
               href="#quote"
               onClick={() => {
                 setPackageName("Custom scope");
-                setPrepared(null);
+                setEnquiryVersion((value) => value + 1);
               }}
             >
               Let’s scope your project <ArrowUpRight size={14} />
@@ -607,8 +665,9 @@ export function TwoDBusinessPage() {
               <Eyebrow>A focused next step</Eyebrow>
               <h2>Need to explain a complex offer?</h2>
               <p>
-                Explore our explainer service for a closer look at turning a
-                product or service into a clear, compelling story.
+                2D is the visual technique. An explainer is what the video does.
+                If your priority is helping people understand a product or
+                service, our explainer page takes you deeper into that approach.
               </p>
             </div>
             <Link className="b2-text-link" href="/landing-page">
@@ -616,7 +675,7 @@ export function TwoDBusinessPage() {
             </Link>
           </div>
         </section>
-        <section id="quote" className="b2-container b2-section b2-quote">
+        <section id="contact" className="b2-container b2-section b2-quote">
           <div>
             <Eyebrow>Let’s talk about your video</Eyebrow>
             <h2>
@@ -647,103 +706,13 @@ export function TwoDBusinessPage() {
               Prefer to talk? (833) 666-6684 <ArrowUpRight size={17} />
             </a>
           </div>
-          <form
-            onSubmit={prepare}
-            onChange={() => setPrepared(null)}
-            className="b2-form"
-          >
-            <h3>Your project starts here.</h3>
-            <p>No obligation. Just a useful first conversation.</p>
-            <div className="b2-form-row">
-              <label>
-                Your name
-                <input
-                  autoComplete="name"
-                  name="name"
-                  required
-                  placeholder="Full name"
-                />
-              </label>
-              <label>
-                Work email
-                <input
-                  type="email"
-                  autoComplete="email"
-                  name="email"
-                  required
-                  placeholder="you@company.com"
-                />
-              </label>
-            </div>
-            <label>
-              Company <span>(optional)</span>
-              <input
-                name="company"
-                autoComplete="organization"
-                placeholder="Company or brand"
-              />
-            </label>
-            <label>
-              Project scope
-              <select
-                value={packageName}
-                onChange={(e) => setPackageName(e.target.value)}
-              >
-                {[
-                  "Help me choose",
-                  "A single video",
-                  "A campaign or series",
-                  "Custom scope",
-                ].map((x) => (
-                  <option key={x}>{x}</option>
-                ))}
-              </select>
-            </label>
-            <label>
-              What would you like your video to do?
-              <textarea
-                required
-                name="brief"
-                rows={4}
-                value={brief}
-                onChange={(e) => setBrief(e.target.value)}
-                placeholder="Your product, audience, goal and any deadline…"
-              />
-            </label>
-            <button type="submit" className="b2-button">
-              Prepare my enquiry <ArrowRight size={18} />
-            </button>
-            <small className="b2-form-note">
-              Review your brief, then send it through your email app.
-            </small>
-            {prepared && (
-              <div className="b2-enquiry" role="status">
-                <strong>Your enquiry is ready to review.</strong>
-                <p>
-                  Nothing has been sent yet. Open the email draft to review and
-                  send, or copy your brief to email hello@videoanimation.us.
-                </p>
-                <pre>{prepared.body}</pre>
-                <a href={prepared.url} className="b2-button">
-                  Open email draft <ArrowUpRight size={18} />
-                </a>
-                <button
-                  type="button"
-                  className="b2-text-link"
-                  onClick={async () => {
-                    try {
-                      await navigator.clipboard.writeText(prepared.body);
-                      setCopied(true);
-                    } catch {
-                      setCopied(false);
-                    }
-                  }}
-                >
-                  {copied ? "Brief copied" : "Copy brief"}
-                </button>
-              </div>
-            )}
-          </form>
+          <TwoDEnquiry
+            key={enquiryVersion}
+            brief={brief}
+            setBrief={setBrief}
+            scope={packageName}
+            setScope={setPackageName}
+          />
         </section>
         <section id="faq" className="b2-faq b2-section">
           <div className="b2-container b2-faq-grid">
@@ -778,12 +747,16 @@ export function TwoDBusinessPage() {
             <Image src="/images/two-d-world-5.jpg" alt="" fill sizes="100vw" />
           </div>
           <div className="b2-container">
-            <Eyebrow>Your next story starts with a conversation</Eyebrow>
+            <Eyebrow>A clear scope. A considered story.</Eyebrow>
             <h2>
               Make your message
               <br />
-              worth paying attention to.
+              worth remembering.
             </h2>
+            <p className="v3-close-benefits">
+              Custom creative direction · Script and storyboard approval ·
+              Agreed deliverables
+            </p>
             <CTA>Let’s plan your 2D video</CTA>
           </div>
         </section>
