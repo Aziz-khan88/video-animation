@@ -1,0 +1,12 @@
+{
+  "tool": "built-in image_gen",
+  "mode": "generate",
+  "prompt": "Use case: illustration-story. Asset type: an original wide 16:9 premium 2D animated-film still for educational and patient communication on an animation studio website. An expressive adult female doctor seated at eye level with an adult patient in a warm sunlit modern consultation room, having a reassuring, thoughtful conversation. The doctor gestures gently toward a simple heart-and-botanical educational illustration on a clipboard, with no written text. Both people have natural attentive expressions and believable elegant anatomy, a clear human connection, and distinct appealing character design. Sophisticated cinematic 2D animation art direction: detailed handpainted background, elegant cel-shaded characters, fine painterly texture, deliberate graphic composition and dimensional lighting without 3D rendering. Warm ivory and apricot sunlight, small coral accents, muted teal greenery, beautiful indirect light and calm sophisticated interior details. Wide visual storytelling, adults never childish, hopeful and reassuring. No readable text, no logos, no watermarks, no glossy 3D, no Pixar rendering, no generic corporate vector illustration, no UI, no borders or frame.",
+  "source": "C:/Users/HP/.codex/generated_images/01a1b1e8-a560-7ce2-9351-227cd8741947/exec-54c127d5-d34e-4cff-be02-54e95b80f423.png",
+  "dimensions": [
+    1672,
+    941
+  ],
+  "quality": 90,
+  "inspection": "Passed: warm sophisticated 2D film still, adult doctor and patient with reassuring expressions, clear clipboard illustration without readable text, ivory/apricot/coral/teal palette, detailed handpainted environment."
+}

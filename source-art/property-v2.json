@@ -1,0 +1,12 @@
+{
+  "tool": "built-in image_gen",
+  "mode": "generate",
+  "prompt": "Use case: illustration-story. Asset type: a wide 16:9 sophisticated 2D editorial industry illustration for a premium animation studio website. An inviting contemporary residential courtyard with a beautifully designed terracotta townhouse, teal glass windows, a mature olive tree, warm golden late-afternoon sunlight. An adult couple walks toward the welcoming entrance; a bicycle and tasteful potted plants enrich the scene. House and people placed primarily in the right half, with calmer composition and generous softly lit space on the left. Premium handpainted and cel-shaded animation background, clear confidently drawn architectural lines, subtle fine-grain texture, warm ivory, coral terracotta, muted sage green and deep ink palette. Beautiful intentional graphic shapes, expressive but understated adult characters, aspirational thoughtful residential storytelling, excellent architectural composition. Absolutely an illustration, never 3D or photorealistic rendering. No readable text, logos, signage, branding, watermarks, UI, border or frame.",
+  "source": "C:/Users/HP/.codex/generated_images/01a1b1e8-a560-7ce2-9351-227cd8741947/exec-f74abfaa-6579-4377-a89c-d940a339a7e0.png",
+  "dimensions": [
+    1672,
+    941
+  ],
+  "quality": 90,
+  "inspection": "Passed: inviting handpainted 2D residential courtyard, couple approaching doorway, terracotta/teal/ivory/olive palette, composed right with calm courtyard left, no readable text or logos."
+}

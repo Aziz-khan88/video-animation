@@ -1,0 +1,12 @@
+{
+  "tool": "built-in image_gen",
+  "mode": "generate",
+  "prompt": "Use case: illustration-story. Asset type: original wide 16:9 campaign keyframe titled conceptually Product & SaaS — complexity becomes clarity, for a premium animation studio website. A sophisticated high-end 2D motion-design illustration, crisp deliberate graphic illustration with textured painted backgrounds and subtle fine grain. An expressive stylish adult man in navy and cream clothing steps confidently across a sequence of oversized coral, ivory and golden-yellow illustrated workflow tiles. A swirling path of papers and documents becomes neat connected shapes around a central elegant tablet-like interface. A clear visual metaphor of a business getting organised, focusing on the human benefit rather than technology itself. Rich layered composition, large graphic shapes with tiny human-scale storytelling details, sophisticated playful B2B software storytelling. Dramatic deep teal background with coral and apricot accent light. Keep the left-upper portion somewhat calmer to allow a title to be overlaid later. Editorial animation art direction with beautiful confident shapes, expressive anatomy and distinctive visual personality. Absolutely 2D, not 3D or Pixar, no glossy rendering, no generic corporate vector look, no sci-fi, no neon, no glassmorphism, no readable text, no fake metrics, no logos or watermark, no frames.",
+  "source": "C:/Users/HP/.codex/generated_images/01a1b1e8-a560-7ce2-9351-227cd8741947/exec-ee65d29b-60cb-4b54-81ce-e205c7f4c8d1.png",
+  "dimensions": [
+    1672,
+    941
+  ],
+  "quality": 90,
+  "inspection": "Passed: distinctive textured 2D editorial illustration, expressive adult protagonist, deep teal/coral/cream palette, workflow metaphor, calm upper-left space, no readable text or branding."
+}

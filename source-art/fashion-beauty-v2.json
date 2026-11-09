@@ -1,0 +1,12 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Use case: illustration-story. Asset type: premium 2D fashion and beauty campaign concept, landscape 16:9. Sophisticated editorial and cel illustration with expressive hand-drawn flat shapes and subtle painterly paper texture. An elegant adult woman in a beautifully draped coral outfit is positioned in the RIGHT half, warmly poised and expressive, with naturally stylized proportions. Leaf-green botanical shapes frame her and an abstract cream skincare bottle on a low simple plinth near the far right. Art-directed peach, terracotta, ivory and leafy green studio setting with tasteful painted arch-like color fields. Keep LEFT half calmer and mostly warm ivory-peach negative space for later HTML text overlay. Premium human expression, rich yet restrained detail, a designed magazine illustration with craftsmanship and confident shapes. Absolutely no 3D, no photorealistic product rendering, no glossy plastic, no generic corporate vector look. NO text, letters, numbers, legible bottle labels, logos, watermark, UI, borders, or playback controls. Full bleed composed artwork.",
+  "png": "source-art/fashion-beauty-v2.png",
+  "webp": "public/images/premium-v2/fashion-beauty.webp",
+  "encoding": {
+    "format": "webp",
+    "quality": 91,
+    "maxWidth": 1600
+  },
+  "qualityObservation": "Painted editorial character, warm coral drapery, botanical framing and deliberately quiet left half; entirely illustrative, no photorealistic render or typography."
+}
